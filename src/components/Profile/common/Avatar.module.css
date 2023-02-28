@@ -1,0 +1,4 @@
+.avatar img {
+   width: 100px !important;
+   z-index: 9999 !important;
+}
