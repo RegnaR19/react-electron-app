@@ -1,0 +1,67 @@
+/* стили */
+
+.header,
+.footer {
+   justify-content: center;
+   grid-row: auto;
+   flex: content;
+   flex-wrap: wrap;
+}
+
+.layout {
+   overflow: hidden;
+   margin-left: auto;
+   margin-right: auto;
+   width: 700px;
+}
+
+.layout1 {
+   overflow: hidden;
+   margin-left: auto;
+   margin-right: auto;
+   width: 1100px;
+}
+
+.col1_noborder {
+   float: left;
+   width: 180px;
+}
+
+.col1 {
+   float: left;
+   width: 180px;
+   border: 1px solid #424242;
+   height: 100% !important;
+}
+
+.col2 {
+   width: 300px;
+   margin: 0 200px 0 200px;
+   padding: 10px;
+   border: 1px solid #424242;
+   justify-content: center;
+}
+
+.col2_wide {
+   width: 700px;
+   margin: 0 200px 0 200px;
+   padding: 10px;
+   border: 1px solid #424242;
+   justify-content: center;
+}
+
+.col3_noborder {
+   width: 180px;
+   height: 94px;
+   float: right;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+}
+
+.col3 {
+   width: 180px;
+   float: right;
+   border: 1px solid #424242;
+   padding: 10px;
+}
