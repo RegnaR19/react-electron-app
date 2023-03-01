@@ -10,7 +10,7 @@ type Props = {
 
 const DialogItem: React.FC<Props> = ({ id, name }) => {
 
-   let path = "dialogs/" + id;
+   let path = "dialogs" + id;
 
    return (
       <div>

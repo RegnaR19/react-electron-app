@@ -1,5 +1,5 @@
 import { ThemeProvider } from "./ThemeProvider";
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import s from './App.module.css'
 import FooterOne from "./components/Navbar/Footer";
 import Navigation from './components/Navbar/Navigation';
@@ -31,29 +31,29 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <div className={style}>
-          <div className={s.col1_noborder}>
-            <img src="./electron-vite.svg" className={s.logo} />
-          </div>
-          <div className={s.col3_noborder}>
-            <Button variant="outline" size="sm"
-              onClick={() => { changeStyle(); changeStyle2() }}>
-              Изменить размер
-            </Button>
-          </div>
-          <div className={style2}>
-            <AccountMenu />
-          </div>
+
+      <div className={style}>
+        <div className={s.col1_noborder}>
+          <img src="./electron-vite.svg" className={s.logo} />
         </div>
-        <div className={style}>
-          <div className={s.col1}>
-            <Navigation />
-            <AutoUpdate />
-            <DrawerOpen />
-          </div>
-          <div className={s.col3}><Sidebar /></div>
-          <div className={style2}>
+        <div className={s.col3_noborder}>
+          <Button variant="outline" size="sm"
+            onClick={() => { changeStyle(); changeStyle2() }}>
+            Изменить размер
+          </Button>
+        </div>
+        <div className={style2}>
+          <AccountMenu />
+        </div>
+      </div>
+      <div className={style}>
+        <div className={s.col1}>
+          <Navigation />
+          <AutoUpdate />
+          <DrawerOpen />
+        </div>
+        <div className={s.col3}><Sidebar /></div>
+        <div className={style2}>
             <Routes>
               <Route path="profile" element={<MainProfile />} />
               <Route path="messages" element={<DialogsContainer />} />
@@ -64,16 +64,16 @@ const App = () => {
               <Route path="test" element={<TestPage />} />
               <Route path="video" element={<VideoPage />} />
             </Routes>
-          </div>
         </div>
-        <div className={style}>
-          <div className={s.col1_noborder}></div>
-          <div className={s.col3_noborder}></div>
-          <div className={style2}>
-            <div className={s.header}><FooterOne /></div>
-          </div>
+      </div>
+      <div className={style}>
+        <div className={s.col1_noborder}></div>
+        <div className={s.col3_noborder}></div>
+        <div className={style2}>
+          <div className={s.header}><FooterOne /></div>
         </div>
-      </BrowserRouter>
+      </div>
+
     </ThemeProvider>
   );
 }
