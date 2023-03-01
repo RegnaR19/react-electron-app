@@ -1,5 +1,7 @@
 import UsersPage from "./UsersPage";
 import React from "react";
+import { Alert } from '@mantine/core';
+import { IconAlertCircle } from '@tabler/icons';
 
 type Props = {
    users?: any,
@@ -14,6 +16,10 @@ let Users: React.FC<Props> = ({ ...props }) => {
    return (
       <>
          {usersElements}
+         <Alert icon={<IconAlertCircle size={16} />} title="Bummer!" color="red">
+            На данной странице я остановился в курсе на 54 уроке,
+            дальше будет здесь нумерация страниц.
+         </Alert>
       </>
    )
 }

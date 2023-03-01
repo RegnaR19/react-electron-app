@@ -15,6 +15,8 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import { useState } from "react";
 import { Button } from "@mantine/core";
+import AutoUpdate from "./components/Forms/AutoUpdate";
+import DrawerOpen from "./components/Forms/DrawerOpen";
 
 const App = () => {
   const [style, setStyle] = useState(s.layout)
@@ -45,7 +47,11 @@ const App = () => {
           </div>
         </div>
         <div className={style}>
-          <div className={s.col1}><Navigation /></div>
+          <div className={s.col1}>
+            <Navigation />
+            <AutoUpdate />
+            <DrawerOpen />
+          </div>
           <div className={s.col3}><Sidebar /></div>
           <div className={style2}>
             <Routes>
