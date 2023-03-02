@@ -11,21 +11,6 @@ const MusicPage = () => {
          <iframe style={{ border: 0, width: '100%', height: 180 }}
             width="100%" height="180"
             src="https://music.yandex.ru/iframe/#track/50685843/7019257"></iframe>
-         <UnderNav />
-
-         <Modal size="auto"
-            opened={opened}
-            onClose={() => setOpened(false)}
-            title="RICK ROLLED"
-         >
-            <img src="rickroll.jpg" />
-         </Modal>
-         <Indent10 />
-         <Group position="center">
-            <Button onClick={() => setOpened(true)}
-               variant="gradient" gradient={{ from: 'teal', to: 'blue', deg: 60 }}>
-               Тест модального окна</Button>
-         </Group>
       </>
    );
 }

@@ -6,18 +6,6 @@ const SET_USERS = 'SET_USERS'
 
 let initialState = {
    usersList: [
-      {
-         id: 1, name: "Vadim", status: "Погромист",
-         city: "Альменево", img: avatar, followed: "false"
-      },
-      {
-         id: 2, name: "Ruslan", status: "Студент",
-         city: "Челябинск", img: avatar, followed: "false"
-      },
-      {
-         id: 3, name: "Alexandr", status: "МЧС",
-         city: "Куртамыш", img: avatar, followed: "false"
-      }
    ]
 }
 

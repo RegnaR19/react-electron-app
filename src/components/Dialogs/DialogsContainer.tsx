@@ -5,8 +5,7 @@ import Dialogs from './Dialogs';
 let mapStateToProps = (state: any) => {
    return {
       dialogsPage: state.dialogsPage,
-      newMessageBody: state.dialogsPage.newMessageBody,
-      ab: "Привет"
+      newMessageBody: state.dialogsPage.newMessageBody
    }
 }
 

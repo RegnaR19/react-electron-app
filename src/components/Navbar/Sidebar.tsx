@@ -3,9 +3,6 @@ import { Image } from '@mantine/core';
 import react from "../../assets/react.png";
 import { Grid } from '@mantine/core';
 import s from './Sidebar.module.css';
-import { Alert } from '@mantine/core';
-import { IconAlertCircle } from '@tabler/icons';
-// import RatingsPage from '../Settings/RatingsPage';
 
 export default function Sidebar() {
    return (
@@ -29,10 +26,6 @@ export default function Sidebar() {
                   <p>9. Electron</p>
                   <p>10. На опыте</p>
                </center>
-               <Alert icon={<IconAlertCircle size={16} />} title="Bummer!" color="red">
-                  За Рик Ролл просим прощения.
-               </Alert>
-               <Image src="rickroll.jpg" />
             </Grid.Col>
          </Grid>
       </>

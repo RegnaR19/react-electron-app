@@ -1,27 +1,40 @@
 import UsersPage from "./UsersPage";
 import React from "react";
-import { Alert } from '@mantine/core';
-import { IconAlertCircle } from '@tabler/icons';
+import axios from 'axios'
 
 type Props = {
    users?: any,
    setUsers?: any
 }
 
-let Users: React.FC<Props> = ({ ...props }) => {
-
-   let usersElements = props.users.map((e: any) => <UsersPage id2={e.id} key={e.id} name={e.name}
-      status={e.status} city={e.city} img={e.img} />)
-
-   return (
-      <>
-         {usersElements}
-         <Alert icon={<IconAlertCircle size={16} />} title="Bummer!" color="red">
-            На данной странице я остановился в курсе на 54 уроке,
-            дальше будет здесь нумерация страниц.
-         </Alert>
-      </>
-   )
+interface Idata {
+   persons: any
 }
 
-export default Users;
+export default class Users extends React.Component<Props> {
+   state: Idata = {
+      persons: []
+   }
+
+   componentDidMount() {
+      axios({
+         baseURL: 'https://social-network.samuraijs.com/api/1.0/users',
+         method: 'GET'
+      }).then((response: any) => {
+         this.props.setUsers(response.data.items)
+         console.log(response);
+      })
+   }
+
+   usersElements = this.props.users.map((e: any) =>
+      <UsersPage id2={e.id} name={e.name}
+         status={e.status} city={e.city} img={e.img} />)
+
+   render() {
+      return (
+         <>
+            {this.usersElements}
+         </>
+      )
+   }
+}
