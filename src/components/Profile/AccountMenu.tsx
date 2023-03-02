@@ -57,14 +57,6 @@ const AccountMenu = () => {
                   email="nar200@yandex.ru"
                />
             </Menu.Target>
-            <Menu.Dropdown>
-            <Menu.Item
-               icon={<IconExternalLink size={14} />}
-               component="a"
-               href="/profile"
-            >
-               Открыть профиль
-            </Menu.Item></Menu.Dropdown>
          </Menu>
       </Group>
    );

@@ -15,6 +15,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import { useState } from "react";
 import { Button } from "@mantine/core";
+import Home from "./components/Home/Home";
 
 const App = () => {
   const [style, setStyle] = useState(s.layout)
@@ -50,16 +51,17 @@ const App = () => {
         </div>
         <div className={s.col3}><Sidebar /></div>
         <div className={style2}>
-            <Routes>
-              <Route path="profile" element={<MainProfile />} />
-              <Route path="messages" element={<DialogsContainer />} />
-              <Route path="users" element={<UsersContainer />} />
-              <Route path="news" element={<NewsPage />} />
-              <Route path="music" element={<MusicPage />} />
-              <Route path="settings" element={<SettingsPage />} />
-              <Route path="test" element={<TestPage />} />
-              <Route path="video" element={<VideoPage />} />
-            </Routes>
+          <Routes>
+            <Route path="/" element={<MainProfile />} />
+            <Route path="profile" element={<MainProfile />} />
+            <Route path="messages" element={<DialogsContainer />} />
+            <Route path="users" element={<UsersContainer />} />
+            <Route path="news" element={<NewsPage />} />
+            <Route path="music" element={<MusicPage />} />
+            <Route path="settings" element={<SettingsPage />} />
+            <Route path="test" element={<TestPage />} />
+            <Route path="video" element={<VideoPage />} />
+          </Routes>
         </div>
       </div>
       <div className={style}>

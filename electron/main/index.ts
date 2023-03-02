@@ -8,10 +8,9 @@ process.env.PUBLIC = process.env.VITE_DEV_SERVER_URL
    ? join(process.env.DIST_ELECTRON, '../public')
    : process.env.DIST
 
-app.commandLine.appendSwitch('ignore-certificate-errors')
+app.commandLine.appendSwitch('ignore-certificate-errors', 'OutOfBlinkCors')
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith('6.1')) app.disableHardwareAcceleration()
-
 
 // Set application name for Windows 10+ notifications
 if (process.platform === 'win32') app.setAppUserModelId(app.getName())
@@ -35,7 +34,6 @@ const indexHtml = join(process.env.DIST, 'index.html')
 async function createWindow() {
 
    win = new BrowserWindow({
-      title: 'Main window',
       icon: join(process.env.PUBLIC, 'favicon.ico'),
       width: 1280,
       height: 768,
@@ -47,24 +45,10 @@ async function createWindow() {
          // Consider using contextBridge.exposeInMainWorld
          // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
          nodeIntegration: true,
-         contextIsolation: false
+         contextIsolation: false,
+         webSecurity: false
       },
    })
-
-   win.webContents.session.webRequest.onBeforeSendHeaders(
-      (details, callback) => {
-         callback({ requestHeaders: { Origin: '*', ...details.requestHeaders } });
-      },
-   );
-
-   win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
-      callback({
-         responseHeaders: {
-            'Access-Control-Allow-Origin': ['*'],
-            ...details.responseHeaders,
-         },
-      });
-   });
 
    if (process.env.VITE_DEV_SERVER_URL) { // electron-vite-vue#298
       win.loadURL(url)
@@ -126,3 +110,5 @@ ipcMain.handle('open-win', (_, arg) => {
       childWindow.loadFile(indexHtml, { hash: arg })
    }
 })
+
+require('update-electron-app')()
