@@ -15,7 +15,6 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import { useState } from "react";
 import { Button } from "@mantine/core";
-import Home from "./components/Home/Home";
 
 const App = () => {
   const [style, setStyle] = useState(s.layout)
