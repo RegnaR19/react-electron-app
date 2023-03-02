@@ -1,6 +1,9 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
+import { autoUpdater, AppUpdater } from 'electron-updater'
+import log from 'electron-log'
+import path from 'path'
 
 process.env.DIST_ELECTRON = join(__dirname, '../')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
@@ -70,7 +73,29 @@ async function createWindow() {
    })
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(() => {
+   createWindow()
+   autoUpdater.checkForUpdatesAndNotify()
+})
+
+autoUpdater.on("update-available", () => {
+   log.info("update-available")
+})
+autoUpdater.on("checking-for-update", () => {
+   log.info("checking-for-update")
+})
+autoUpdater.on("download-progress", () => {
+   log.info("download-progress")
+})
+autoUpdater.on("update-downloaded", () => {
+   log.info("update-downloaded")
+})
+
+log.transports.file.resolvePathFn = () =>
+   path.join('C:/Users/R/Desktop', 'main.log')
+
+autoUpdater.autoDownload = false
+autoUpdater.autoInstallOnAppQuit = true
 
 app.on('window-all-closed', () => {
    win = null
@@ -110,5 +135,3 @@ ipcMain.handle('open-win', (_, arg) => {
       childWindow.loadFile(indexHtml, { hash: arg })
    }
 })
-
-require('update-electron-app')()
