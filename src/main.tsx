@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import './samples/node-api'
 import store from "./redux/redux-store";
 import { Provider } from "react-redux"
 import { BrowserRouter, HashRouter } from 'react-router-dom';

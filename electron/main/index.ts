@@ -1,9 +1,6 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
-// import { autoUpdater, AppUpdater } from 'electron-updater'
-// import log from 'electron-log'
-// import path from 'path'
 
 process.env.DIST_ELECTRON = join(__dirname, '../')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
@@ -51,7 +48,6 @@ async function createWindow() {
          contextIsolation: false,
          webSecurity: false
       },
-
    })
 
    if (process.env.VITE_DEV_SERVER_URL) { // electron-vite-vue#298
@@ -75,31 +71,7 @@ async function createWindow() {
 }
 
 app.whenReady().then(createWindow)
-   // autoUpdater.checkForUpdatesAndNotify()
 
-// log.transports.file.resolvePathFn = () =>
-//    path.join('C:', '/logs/main.log')
-
-// autoUpdater.on("update-available", () => {
-//    log.info("update-available")
-// })
-// autoUpdater.on("checking-for-update", () => {
-//    log.info("checking-for-update")
-// })
-// autoUpdater.on("download-progress", () => {
-//    log.info("download-progress")
-// })
-// autoUpdater.on("update-downloaded", (info) => {
-//    log.info("update-downloaded")
-//    log.info(info)
-// })
-// autoUpdater.on("download-progress", (progressTrack) => {
-//    log.info("\n\ndownload-progress")
-//    log.info(progressTrack)
-// })
-
-// autoUpdater.autoDownload = false
-// autoUpdater.autoInstallOnAppQuit = true
 
 app.on('window-all-closed', () => {
    win = null
@@ -130,6 +102,7 @@ ipcMain.handle('open-win', (_, arg) => {
          preload,
          nodeIntegration: true,
          contextIsolation: false,
+         webSecurity: false
       },
    })
 

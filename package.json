@@ -1,5 +1,5 @@
 {
-   "name": "oneleaf",
+   "name": "electron-vite-react",
    "version": "1.0.3",
    "main": "dist-electron/main/index.js",
    "description": "Beta version",
@@ -20,7 +20,6 @@
       "e2e": "playwright test"
    },
    "build": {
-      "productName": "OneLeaf",
       "publish": [
          {
             "provider": "github",
