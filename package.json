@@ -1,6 +1,6 @@
 {
    "name": "oneleaf",
-   "version": "1.0.1",
+   "version": "1.0.2",
    "main": "dist-electron/main/index.js",
    "description": "Electron app",
    "license": "MIT",
@@ -13,13 +13,14 @@
    },
    "scripts": {
       "dev": "vite",
-      "build": "tsc && vite build && electron-builder",
+      "build": "tsc && vite build && electron-builder --win",
       "publish": "tsc && vite build && electron-builder -p always",
       "preview": "vite preview",
       "pree2e": "vite build --mode=test",
       "e2e": "playwright test"
    },
    "build": {
+      "productName": "OneLeaf",
       "publish": [
          {
             "provider": "github",
@@ -30,8 +31,7 @@
       "nsis": {
          "oneClick": false,
          "perMachine": false,
-         "allowElevation": true,
-         "allowToChangeInstallationDirectory": true
+         "allowElevation": true
       }
    },
    "devDependencies": {
