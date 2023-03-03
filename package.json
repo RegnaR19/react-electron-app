@@ -19,20 +19,6 @@
       "pree2e": "vite build --mode=test",
       "e2e": "playwright test"
    },
-   "build": {
-      "publish": [
-         {
-            "provider": "github",
-            "owner": "RegnaR19",
-            "repo": "electron-vite-react"
-         }
-      ],
-      "nsis": {
-         "oneClick": false,
-         "perMachine": false,
-         "allowElevation": true
-      }
-   },
    "devDependencies": {
       "@playwright/test": "^1.31.0",
       "@types/react": "^18.0.28",

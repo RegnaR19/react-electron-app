@@ -11,6 +11,13 @@
     "dist-electron",
     "dist"
   ],
+  "publish": [
+         {
+            "provider": "github",
+            "owner": "RegnaR19",
+            "repo": "electron-vite-react"
+         }
+      ],
   "mac": {
     "artifactName": "${productName}_${version}.${ext}",
     "target": [
