@@ -4,7 +4,6 @@ import { join } from 'node:path'
 import { autoUpdater, AppUpdater } from 'electron-updater'
 import log from 'electron-log'
 import path from 'path'
-import { version } from 'vite'
 
 process.env.DIST_ELECTRON = join(__dirname, '../')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
