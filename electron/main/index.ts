@@ -8,7 +8,7 @@ process.env.PUBLIC = process.env.VITE_DEV_SERVER_URL
    ? join(process.env.DIST_ELECTRON, '../public')
    : process.env.DIST
 
-app.commandLine.appendSwitch('ignore-certificate-errors', 'OutOfBlinkCors')
+app.commandLine.appendSwitch('ignore-certificate-errors')
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith('6.1')) app.disableHardwareAcceleration()
 
@@ -46,7 +46,7 @@ async function createWindow() {
          // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
          nodeIntegration: true,
          contextIsolation: false,
-         webSecurity: false
+         // webSecurity: false
       },
    })
 
@@ -101,8 +101,7 @@ ipcMain.handle('open-win', (_, arg) => {
       webPreferences: {
          preload,
          nodeIntegration: true,
-         contextIsolation: false,
-         webSecurity: false
+         contextIsolation: false
       },
    })
 
