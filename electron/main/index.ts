@@ -83,32 +83,31 @@ async function createWindow() {
 app.whenReady().then(() => {
    createWindow()
    autoUpdater.checkForUpdatesAndNotify()
-
-   log.transports.file.resolvePathFn = () =>
-      path.join('C:', '/logs/main.log')
-
-   autoUpdater.on("update-available", () => {
-      log.info("update-available")
-   })
-   autoUpdater.on("checking-for-update", () => {
-      log.info("checking-for-update")
-   })
-   autoUpdater.on("download-progress", () => {
-      log.info("download-progress")
-   })
-   autoUpdater.on("update-downloaded", (info) => {
-      log.info("update-downloaded")
-      log.info(info)
-   })
-   autoUpdater.on("download-progress", (progressTrack) => {
-      log.info("\n\ndownload-progress")
-      log.info(progressTrack)
-   })
-
-   autoUpdater.autoDownload = false
-   autoUpdater.autoInstallOnAppQuit = true
-
 })
+
+log.transports.file.resolvePathFn = () =>
+   path.join('C:', '/logs/main.log')
+
+autoUpdater.on("update-available", () => {
+   log.info("update-available")
+})
+autoUpdater.on("checking-for-update", () => {
+   log.info("checking-for-update")
+})
+autoUpdater.on("download-progress", () => {
+   log.info("download-progress")
+})
+autoUpdater.on("update-downloaded", (info) => {
+   log.info("update-downloaded")
+   log.info(info)
+})
+autoUpdater.on("download-progress", (progressTrack) => {
+   log.info("\n\ndownload-progress")
+   log.info(progressTrack)
+})
+
+autoUpdater.autoDownload = false
+autoUpdater.autoInstallOnAppQuit = true
 
 app.on('window-all-closed', () => {
    win = null
