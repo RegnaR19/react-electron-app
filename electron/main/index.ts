@@ -74,10 +74,8 @@ async function createWindow() {
    })
 }
 
-app.whenReady().then(() => {
-   createWindow()
+app.whenReady().then(createWindow)
    // autoUpdater.checkForUpdatesAndNotify()
-})
 
 // log.transports.file.resolvePathFn = () =>
 //    path.join('C:', '/logs/main.log')
