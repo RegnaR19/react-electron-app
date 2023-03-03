@@ -20,14 +20,18 @@
       "e2e": "playwright test"
    },
    "build": {
-      "win": {
-         "publish": [
-            {
-               "provider": "github",
-               "owner": "RegnaR19",
-               "repo": "electron-vite-react"
-            }
-         ]
+      "publish": [
+         {
+            "provider": "github",
+            "owner": "RegnaR19",
+            "repo": "electron-vite-react"
+         }
+      ],
+      "nsis": {
+         "oneClick": false,
+         "perMachine": false,
+         "allowElevation": true,
+         "allowToChangeInstallationDirectory": true
       }
    },
    "devDependencies": {
