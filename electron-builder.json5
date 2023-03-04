@@ -2,16 +2,15 @@
  * @see https://www.electron.build/configuration/configuration
  */
 {
-  appId: 'YourAppID',
+  appId: 'oneleaf',
+  productName: 'OneLeaf',
   asar: true,
   directories: {
     output: 'release/${version}'
   },
   files: [
     'dist-electron',
-    'dist',
-    '!node_modules/**/*',
-    '!**node_modules/**/*'
+    'dist'
   ],
   publish: [
     {

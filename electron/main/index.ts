@@ -1,6 +1,8 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
+import { autoUpdater } from 'electron-updater'
+import log from 'electron-log'
 
 process.env.DIST_ELECTRON = join(__dirname, '../')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
@@ -23,7 +25,7 @@ if (!app.requestSingleInstanceLock()) {
 // Remove electron security warnings
 // This warning only shows in development mode
 // Read more on https://www.electronjs.org/docs/latest/tutorial/security
-// process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
 let win: BrowserWindow | null = null
 // Here, you can also use other preload
@@ -46,7 +48,7 @@ async function createWindow() {
          // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
          nodeIntegration: true,
          contextIsolation: false,
-         // webSecurity: false
+         webSecurity: false
       },
    })
 
@@ -70,8 +72,27 @@ async function createWindow() {
    })
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(() => {
+   createWindow()
+   autoUpdater.checkForUpdatesAndNotify()
+})
+autoUpdater.on("update-available", () => {
+   log.info("update-available")
+})
+autoUpdater.on("checking-for-update", () => {
+   log.info("checking-for-update")
+})
+autoUpdater.on("download-progress", () => {
+   log.info("download-progress")
+})
+autoUpdater.on("update-downloaded", () => {
+   log.info("update-downloaded")
+})
 
+log.transports.file.resolvePathFn = () => join('C:', '/main.log')
+
+autoUpdater.autoDownload = true
+autoUpdater.autoInstallOnAppQuit = true
 
 app.on('window-all-closed', () => {
    win = null
