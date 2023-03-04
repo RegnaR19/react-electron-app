@@ -35,8 +35,8 @@
   },
   nsis: {
     oneClick: false,
-    perMachine: false,
-    allowToChangeInstallationDirectory: true,
+    perMachine: true,
+    allowToChangeInstallationDirectory: false,
     deleteAppDataOnUninstall: false
   }
 }
