@@ -16,7 +16,8 @@
     {
       provider: 'github',
       owner: 'RegnaR19',
-      repo: 'electron-vite-react'
+      repo: 'electron-vite-react',
+      releaseType: 'release'
     }
   ],
   mac: {

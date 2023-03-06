@@ -99,8 +99,8 @@ autoUpdater.on("update-downloaded", (info) => {
    log.info(info)
 })
 
-autoUpdater.autoDownload = false
-autoUpdater.autoInstallOnAppQuit = false
+autoUpdater.autoDownload = true
+autoUpdater.autoInstallOnAppQuit = true
 
 app.on('window-all-closed', () => {
    win = null
