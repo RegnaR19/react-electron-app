@@ -45,7 +45,7 @@ const App = () => {
          </div>
          <div className={style}>
             <div className={s.col1}>
-               <Navigation />
+               <Navigation /> ЙОУ
             </div>
             <div className={s.col3}><Sidebar /></div>
             <div className={style2}>

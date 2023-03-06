@@ -1,7 +1,7 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
-import { autoUpdater } from 'electron-updater'
+import { autoUpdater, AppUpdater } from 'electron-updater'
 import log from 'electron-log'
 
 process.env.DIST_ELECTRON = join(__dirname, '../')
@@ -76,23 +76,31 @@ app.whenReady().then(() => {
    createWindow()
    autoUpdater.checkForUpdatesAndNotify()
 })
+
+log.transports.file.resolvePathFn = () => join('L:', 'logs/main.log')
+log.log("App version  = " + app.getVersion())
+
 autoUpdater.on("update-available", () => {
    log.info("update-available")
+})
+
+autoUpdater.on("update-not-available", () => {
+   log.info("update-not-available")
 })
 autoUpdater.on("checking-for-update", () => {
    log.info("checking-for-update")
 })
-autoUpdater.on("download-progress", () => {
-   log.info("download-progress")
+autoUpdater.on("download-progress", (progressTrack) => {
+   log.info("\n\ndownload-progress")
+   log.info(progressTrack)
 })
-autoUpdater.on("update-downloaded", () => {
+autoUpdater.on("update-downloaded", (info) => {
    log.info("update-downloaded")
+   log.info(info)
 })
 
-log.transports.file.resolvePathFn = () => join('C:', '/main.log')
-
-autoUpdater.autoDownload = true
-autoUpdater.autoInstallOnAppQuit = true
+autoUpdater.autoDownload = false
+autoUpdater.autoInstallOnAppQuit = false
 
 app.on('window-all-closed', () => {
    win = null
