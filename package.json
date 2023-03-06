@@ -2,7 +2,7 @@
    "name": "electron-vite-react",
    "version": "1.0.0",
    "main": "dist-electron/main/index.js",
-   "description": "Beta version",
+   "description": "beta version",
    "private": false,
    "author": "R19",
    "license": "MIT",

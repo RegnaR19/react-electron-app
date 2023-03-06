@@ -77,7 +77,7 @@ app.whenReady().then(() => {
    autoUpdater.checkForUpdatesAndNotify()
 })
 
-log.transports.file.resolvePathFn = () => join('L:', 'logs/main.log')
+log.transports.file.resolvePathFn = () => join(process.env.DIST, '../public/main.log')
 log.log("App version  = " + app.getVersion())
 
 autoUpdater.on("update-available", () => {
