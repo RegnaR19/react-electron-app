@@ -1,8 +1,7 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
-import { autoUpdater, AppUpdater } from 'electron-updater'
-import log from 'electron-log'
+import { autoUpdater } from 'electron-updater'
 
 process.env.DIST_ELECTRON = join(__dirname, '../')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
@@ -77,26 +76,21 @@ app.whenReady().then(() => {
    autoUpdater.checkForUpdatesAndNotify()
 })
 
-log.transports.file.resolvePathFn = () => join(process.env.DIST, '../public/main.log')
-log.log("App version  = " + app.getVersion())
-
 autoUpdater.on("update-available", () => {
-   log.info("update-available")
+   
 })
 
 autoUpdater.on("update-not-available", () => {
-   log.info("update-not-available")
+   
 })
 autoUpdater.on("checking-for-update", () => {
-   log.info("checking-for-update")
+   
 })
 autoUpdater.on("download-progress", (progressTrack) => {
-   log.info("\n\ndownload-progress")
-   log.info(progressTrack)
+   // log.info("\n\ndownload-progress")
 })
 autoUpdater.on("update-downloaded", (info) => {
-   log.info("update-downloaded")
-   log.info(info)
+   
 })
 
 autoUpdater.autoDownload = true
