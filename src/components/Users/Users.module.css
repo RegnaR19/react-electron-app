@@ -1,0 +1,7 @@
+/* стили */
+
+.selectedPage {
+   border: 2px solid #ff2c2c;
+   padding: 5px;
+   z-index: 99999;
+}
