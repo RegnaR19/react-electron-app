@@ -4,7 +4,9 @@ import axios from 'axios'
 
 type Props = {
    users: any,
-   setUsers: any
+   setUsers: any,
+   pageSize: number,
+   totalUsersCount: number
 }
 
 export default class Users extends React.Component<Props> {
@@ -16,14 +18,21 @@ export default class Users extends React.Component<Props> {
          })
    }
 
-   usersElements = this.props.users.map((e: any) =>
-      <UsersPage id2={e.id} name={e.name}
-         status={e.status} city={e.city} img={e.img} />)
-
    render() {
+
+      let usersElements = this.props.users.map((e: any) =>
+         <UsersPage id2={e.id} name={e.name}
+            status={e.status} city={e.city} img={e.img} />)
+
+      let pagesSize = this.props.pageSize
+      let totalUsersCount = this.props.totalUsersCount
+      let pagesCount = this.props.totalUsersCount / this.props.pageSize
+      
       return (
          <>
-            {this.usersElements}
+            Страниц: {pagesSize} и юзеров: {totalUsersCount}<br />
+            Выходит кол-во страниц: {pagesCount}
+            {usersElements}
          </>
       )
    }

@@ -41,7 +41,6 @@ const App = () => {
             </div>
             <div className={style2}>
                <AccountMenu />
-               Обновление до 1.0.1
             </div>
          </div>
          <div className={style}>
