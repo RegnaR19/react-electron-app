@@ -8,7 +8,8 @@ type Props = {
    setUsers: any,
    pageSize: number,
    totalUsersCount: number,
-   currentPage: number
+   currentPage: number,
+   setCurrentPage: any
 }
 
 export default class Users extends React.Component<Props> {
@@ -40,10 +41,12 @@ export default class Users extends React.Component<Props> {
             Страниц: {pagesSize} и юзеров: {totalUsersCount}<br />
             Выходит кол-во страниц: {pagesCount}<br />
             {pages.map((e: any) => {
-               return <span className={this.props.currentPage === e && s.selectedPage}>
+               return <span className={this.props.currentPage === e ? s.selectedPage : ""}
+                  onClick={() => { this.props.setCurrentPage(e) }}>
                   {e}
                </span>
             })}
+
             {usersElements}
          </>
       )
