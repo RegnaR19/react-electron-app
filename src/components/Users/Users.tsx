@@ -35,7 +35,6 @@ const Users: React.FC<Props> = ({ ...props }) => {
                {e}
             </span>
          })}
-
          {usersElements}
       </>
    )

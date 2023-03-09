@@ -11,7 +11,8 @@ type Props = {
    totalUsersCount: number,
    currentPage: number,
    setCurrentPage: any,
-   setTotalUsersCount: any
+   setTotalUsersCount: any,
+   isFetching: boolean
 }
 
 class UsersContainer extends React.Component<Props> {
@@ -33,12 +34,15 @@ class UsersContainer extends React.Component<Props> {
    }
 
    render() {
-      return <Users totalUsersCount={this.props.totalUsersCount}
-         users={this.props.users}
-         pageSize={this.props.pageSize}
-         currentPage={this.props.currentPage}
-         onPageChanged={this.onPageChanged}
-      />
+      return <>
+         {this.props.isFetching ? <img /> : null}
+         <Users totalUsersCount={this.props.totalUsersCount}
+            users={this.props.users}
+            pageSize={this.props.pageSize}
+            currentPage={this.props.currentPage}
+            onPageChanged={this.onPageChanged}
+         />
+      </>
    }
 }
 
@@ -47,7 +51,8 @@ let mapStateToProps = (state: any) => {
       users: state.usersPage.usersList,
       pageSize: state.usersPage.pageSize,
       totalUsersCount: state.usersPage.totalUsersCount,
-      currentPage: state.usersPage.currentPage
+      currentPage: state.usersPage.currentPage,
+      isFetching: state.usersPage.isFetching
    }
 }
 

@@ -8,7 +8,8 @@ let initialState = {
    usersList: [],
    pageSize: 10,
    totalUsersCount: 0,
-   currentPage: 1
+   currentPage: 1,
+   isFetching: false
 }
 
 const usersReducer = (state = initialState, action: any) => {
