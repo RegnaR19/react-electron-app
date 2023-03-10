@@ -4,7 +4,7 @@ import { NavLink as NavMantine } from '@mantine/core';
 import {
    IconHome2, IconSettings, 
    IconAt, IconActivity, IconCircleOff, IconBadge4k, IconUsers, IconAddressBook, IconNews
-} from '@tabler/icons';
+} from '@tabler/icons-react';
 import s from './Navigation.module.css'
 
 const Navigation = () => {

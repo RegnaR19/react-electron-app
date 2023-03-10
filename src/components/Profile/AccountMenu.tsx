@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { IconChevronRight, IconExternalLink } from '@tabler/icons';
+import { IconChevronRight, IconExternalLink } from '@tabler/icons-react';
 import { Group, Avatar, Text, Menu, UnstyledButton } from '@mantine/core';
 import avatar from "./../../assets/avatar.jpg";
 
@@ -40,7 +40,7 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
                </Text>
             </div>
 
-            {icon || <IconChevronRight size={16} />}
+            {icon || <IconChevronRight />}
          </Group>
       </UnstyledButton>
    )

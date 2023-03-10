@@ -3,6 +3,7 @@ import { Image } from '@mantine/core';
 import react from "../../assets/react.png";
 import { Grid } from '@mantine/core';
 import s from './Sidebar.module.css';
+import { IconInnerShadowTopLeft } from '@tabler/icons-react';
 
 export default function Sidebar() {
    return (
@@ -11,22 +12,10 @@ export default function Sidebar() {
             <Grid.Col>
                <Image src={react} className={s.logo} />
             </Grid.Col>
-            <Grid.Col>
-               <center>
-                  <p>Проект был<br />
-                     создан на:</p>
-                  <p>1. React</p>
-                  <p>2. Node.js</p>
-                  <p>3. JavaScript</p>
-                  <p>4. TypeScript</p>
-                  <p>5. Mantine UI</p>
-                  <p>6. Vite NPM</p>
-                  <p>7. GitHub</p>
-                  <p>8. VS Code</p>
-                  <p>9. Electron</p>
-                  <p>10. На опыте</p>
-               </center>
-            </Grid.Col>
+
+            <center>
+               <IconInnerShadowTopLeft size={80} className={s.preloader} /><br />
+            </center>
          </Grid>
       </>
    );

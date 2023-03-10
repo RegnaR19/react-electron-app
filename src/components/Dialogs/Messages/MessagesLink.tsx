@@ -1,5 +1,5 @@
 // ссылка на сообщения
-import { IconSend } from '@tabler/icons';
+import { IconSend } from '@tabler/icons-react';
 import { NavLink } from 'react-router-dom';
 
 type Props = {

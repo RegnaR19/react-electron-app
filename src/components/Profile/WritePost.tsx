@@ -1,6 +1,6 @@
 // страница написания постов
 import { Button, Textarea } from "@mantine/core";
-import { IconPencilPlus } from "@tabler/icons";
+import { IconPencilPlus } from "@tabler/icons-react";
 
 type Props = {
    newPostText?: any,

@@ -1,7 +1,7 @@
 // основная страница новостей
 import NewsCard from './NewsCard';
 import { Alert } from '@mantine/core';
-import { IconAlertCircle } from '@tabler/icons';
+import { IconAlertCircle } from '@tabler/icons-react';
 import Indent10 from '../Forms/Indent';
 
 const NewsPage = () => {
