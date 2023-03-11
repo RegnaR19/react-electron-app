@@ -2,6 +2,7 @@ import UsersPage from "./UsersPage";
 import React from "react";
 import s from './Users.module.css'
 import { IconCircleNumber5, IconInnerShadowTopLeft, IconInnerShadowTopRightFilled } from "@tabler/icons-react";
+import { NavLink } from "react-router-dom";
 
 type Props = {
    users: any,
@@ -31,10 +32,10 @@ const Users: React.FC<Props> = ({ ...props }) => {
          На странице: {pagesSize} и юзеров: {totalUsersCount}<br />
          Кол-во страниц: {pagesCount}<br />
          {pages.map((e: any) => {
-            return <span className={props.currentPage === e ? s.selectedPage : ""}
+            return <NavLink to={'/profile' + e.id}><span className={props.currentPage === e ? s.selectedPage : ""}
                onClick={() => { props.onPageChanged(e) }}>
                {e}
-            </span>
+            </span></NavLink>
          })}
          {usersElements}
 
