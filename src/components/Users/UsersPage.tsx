@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { Group, Avatar, Text, Menu, UnstyledButton } from '@mantine/core';
+import { NavLink } from 'react-router-dom';
 
 interface UserButtonProps extends React.ComponentPropsWithoutRef<'button'> {
    img: string;
@@ -60,20 +61,21 @@ type Props = {
 
 const UsersPage: React.FC<Props> = ({ id2, name, city, status, img }) => {
    return (
-      <Group position="center">
-         <Menu withArrow>
-            <Menu.Target>
-               <UserButton
-                  img={img}
-                  id2={id2}
-                  name={name}
-                  city={city}
-                  status={status}
-               />
-            </Menu.Target>
-         </Menu>
-      </Group>
-
+      <NavLink to={'/profile/' + id2}>
+         <Group position="center">
+            <Menu withArrow>
+               <Menu.Target>
+                  <UserButton
+                     img={img}
+                     id2={id2}
+                     name={name}
+                     city={city}
+                     status={status}
+                  />
+               </Menu.Target>
+            </Menu>
+         </Group>
+      </NavLink>
    );
 }
 
