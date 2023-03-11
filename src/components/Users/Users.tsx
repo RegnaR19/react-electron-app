@@ -1,7 +1,6 @@
 import UsersPage from "./UsersPage";
 import React from "react";
 import s from './Users.module.css'
-import { IconCircleNumber5, IconInnerShadowTopLeft, IconInnerShadowTopRightFilled } from "@tabler/icons-react";
 
 type Props = {
    users: any,

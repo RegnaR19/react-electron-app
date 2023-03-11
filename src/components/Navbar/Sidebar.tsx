@@ -3,7 +3,7 @@ import { Image } from '@mantine/core';
 import react from "../../assets/react.png";
 import { Grid } from '@mantine/core';
 import s from './Sidebar.module.css';
-import { IconInnerShadowTopLeft } from '@tabler/icons-react';
+import { IconAnalyze, IconCirclesFilled, IconCircuitBulb, IconInnerShadowTopLeft } from '@tabler/icons-react';
 
 export default function Sidebar() {
    return (
@@ -14,7 +14,10 @@ export default function Sidebar() {
             </Grid.Col>
 
             <center>
+               Тест аниманий
                <IconInnerShadowTopLeft size={80} className={s.preloader} /><br />
+               <IconAnalyze size={80} className={s.preloader} /><br />
+               <IconCircuitBulb size={80} className={s.preloader} /><br />
             </center>
          </Grid>
       </>
