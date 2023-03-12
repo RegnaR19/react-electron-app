@@ -23,7 +23,8 @@ let store = {
             { id: 2, post: "Chidori!", message: "НАРУТО!!!11!", likescount: 1000, img: avatar },
             { id: 3, post: "Rasengan!", message: "САСКЕ!!!11!", likescount: 5000, img: avatar },
          ],
-         newPostText: 'dattebayo naruto'
+         newPostText: 'dattebayo naruto',
+         profile: { photos: {} }
       }
    },
    // задаем возврат состояния
