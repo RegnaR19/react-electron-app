@@ -5,18 +5,25 @@ import Avatar from './common/Avatar';
 import { Divider, Grid } from '@mantine/core';
 import WritePostContainer from './WritePostContainer';
 import PostElementsContainer from './PostElementsContainer';
+import AccountMenu from './AccountMenu';
 
-const MainProfile = () => {
+type Props = {
+   profile: any
+}
+
+const MainProfile: React.FC<Props> = (props) => {
 
    return (
       <>
+
+         <AccountMenu profile={props.profile} />
          <HeaderImg />
          <Divider my="sm" />
          <Grid>
-            <Grid.Col span="content"><Avatar /></Grid.Col>
+            <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>
             <Grid.Col span="content">
                <ProfileInfo name="Вадим" age="27" professional="реактивист"
-                  city="Альменево" />
+                  city="Альменево" profile={props.profile} />
             </Grid.Col>
          </Grid>
          <Divider my="sm" />

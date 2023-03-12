@@ -10,7 +10,6 @@ const TestPage = () => {
          <h2>Данное приложение скомпилировано на движке Electron,
             на котором созданы следующие приложения:</h2>
          <Image src="./electron.jpg" />
-         <AutoUpdate />
          <DrawerOpen />
       </>
    );

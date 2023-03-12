@@ -1,13 +1,12 @@
 import { forwardRef } from 'react';
-import { IconChevronRight, IconExternalLink } from '@tabler/icons-react';
+import { IconChevronRight } from '@tabler/icons-react';
 import { Group, Avatar, Text, Menu, UnstyledButton } from '@mantine/core';
-import avatar from "./../../assets/avatar.jpg";
 
 interface UserButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-   image: string;
    name: string;
    email: string;
    icon?: React.ReactNode;
+   image: any
 }
 
 const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
@@ -36,7 +35,7 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
                </Text>
 
                <Text color="dimmed" size="xs">
-                  {email}
+                  ID: {email}
                </Text>
             </div>
 
@@ -46,15 +45,15 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
    )
 );
 
-const AccountMenu = () => {
+const AccountMenu = (props: any) => {
    return (
       <Group position="center">
          <Menu withArrow>
             <Menu.Target>
                <UserButton
-                  image={avatar}
-                  name="Vadim Khakimyanov"
-                  email="nar200@yandex.ru"
+                  name={props.profile.fullName}
+                  email={props.profile.userId}
+                  image={props.profile.photos.small}
                />
             </Menu.Target>
          </Menu>

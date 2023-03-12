@@ -24,7 +24,7 @@ if (!app.requestSingleInstanceLock()) {
 // Remove electron security warnings
 // This warning only shows in development mode
 // Read more on https://www.electronjs.org/docs/latest/tutorial/security
-process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'false'
 
 let win: BrowserWindow | null = null
 // Here, you can also use other preload
@@ -74,23 +74,6 @@ async function createWindow() {
 app.whenReady().then(() => {
    createWindow()
    autoUpdater.checkForUpdatesAndNotify()
-})
-
-autoUpdater.on("update-available", () => {
-   
-})
-
-autoUpdater.on("update-not-available", () => {
-   
-})
-autoUpdater.on("checking-for-update", () => {
-   
-})
-autoUpdater.on("download-progress", (progressTrack) => {
-   // log.info("\n\ndownload-progress")
-})
-autoUpdater.on("update-downloaded", (info) => {
-   
 })
 
 autoUpdater.autoDownload = true

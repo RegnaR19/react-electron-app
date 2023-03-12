@@ -1,11 +1,13 @@
+import { Image } from "@mantine/core";
+
 // информация о профиле
-const ProfileInfo = (props:any) => {
+const ProfileInfo = (props: any) => {
    return (
       <>
-         <div>Имя: {props.name}</div>
-         <div>Возраст: {props.age}</div>
-         <div>Профессия: {props.professional}</div>
-         <div>Место жительства: {props.city}</div>
+         <div>ID: {props.profile.userId}</div>
+         <div>Имя: {props.profile.fullName}</div>
+         <div>Профессия: {props.profile.lookingForAJobDescription}</div>
+         <div>Статус: {props.profile.aboutMe}</div>
       </>
    )
 }

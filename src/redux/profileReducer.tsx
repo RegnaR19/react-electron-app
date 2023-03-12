@@ -13,7 +13,8 @@ let initialState = {
       { id: 2, post: "Абстракция", message: "Картинка-абстракция", likescount: 1000, img: abstract },
       { id: 3, post: "Сочи", message: "Сочи", likescount: 5000, img: sochi },
    ],
-   newPostText: 'dattebayo naruto'
+   newPostText: '',
+   profile: { photos: {} }
 }
 
 const profileReducer = (state = initialState, action: any) => {
@@ -48,7 +49,7 @@ const profileReducer = (state = initialState, action: any) => {
          return stateCopy
       }
       case SET_USER_PROFILE: {
-         return { ...state, x: action.x }
+         return { ...state, profile: action.profile }
       }
       default:
          return state
@@ -56,19 +57,15 @@ const profileReducer = (state = initialState, action: any) => {
 }
 
 export const addPostCreator = () => {
-   return {
-      type: ADD_POST
-   }
+   return { type: ADD_POST }
 }
 
 export const updateNewPostTextCreator = (text: any) => {
-   return {
-      type: UPDATE_NEW_POST_TEXT, text: text
-   }
+   return { type: UPDATE_NEW_POST_TEXT, text }
 }
 
-export const setUserProfile = (x: any) => {
-   return { type: SET_USER_PROFILE, x }
+export const setUserProfile = (profile: any) => {
+   return { type: SET_USER_PROFILE, profile }
 }
 
 export default profileReducer

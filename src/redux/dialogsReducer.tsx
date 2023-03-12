@@ -33,7 +33,7 @@ const dialogsReducer = (state = initialState, action: any) => {
          }
          else if (body != '') {
             stateCopy.messages = [...state.messages]
-            stateCopy.messages.push({ id: 45, message: body })
+            stateCopy.messages.push({ id: 4, message: body })
             stateCopy.newMessageBody = ''
          }
          return stateCopy

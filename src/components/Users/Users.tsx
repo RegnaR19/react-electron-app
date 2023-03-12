@@ -10,7 +10,7 @@ type Props = {
    onPageChanged: any
 }
 
-const Users: React.FC<Props> = ({ ...props }) => {
+const Users: React.FC<Props> = (props) => {
 
    let usersElements = props.users.map((e: any) =>
       <UsersPage id2={e.id} name={e.name}
@@ -36,7 +36,6 @@ const Users: React.FC<Props> = ({ ...props }) => {
             </span>
          })}
          {usersElements}
-
       </>
    )
 }
