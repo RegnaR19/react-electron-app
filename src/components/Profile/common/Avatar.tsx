@@ -1,16 +1,17 @@
 // аватар профиля
-import { Button, Group, Image, Skeleton } from '@mantine/core';
+import { Avatar, Button, Group, Image, Skeleton } from '@mantine/core';
 import { useState } from 'react';
 import s from './Avatar.module.css'
 
-const Avatar = (props: any) => {
+const AvatarMain = (props: any) => {
 
    const [visible, setVisible] = useState(false);
+   let avatar = props.profile.photos.small
 
    return (
       <>
          <Skeleton height={100} mb="md" radius="lg" visible={visible}>
-            <Image src={props.profile.photos.small} className={s.avatar} />
+            <Avatar src={avatar} className={s.avatar} size={100} />
          </Skeleton>
          <Group>
             <Button variant="light" onClick={() => setVisible((v) => !v)}>Скрыть</Button>
@@ -19,4 +20,4 @@ const Avatar = (props: any) => {
    );
 }
 
-export default Avatar;
+export default AvatarMain;

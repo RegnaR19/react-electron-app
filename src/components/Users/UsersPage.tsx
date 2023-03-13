@@ -1,20 +1,20 @@
 import { forwardRef } from 'react';
 import { Group, Avatar, Text, Menu, UnstyledButton } from '@mantine/core';
 import { NavLink } from 'react-router-dom';
+import s from './Users.module.css'
 
 interface UserButtonProps extends React.ComponentPropsWithoutRef<'button'> {
    img: string;
    name: string;
    icon?: React.ReactNode;
    id2: string,
-   city: any,
    status: any,
    follow?: any,
    unfollow?: any
 }
 
 const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
-   ({ img, name, icon, id2, city, status, follow, ...others }: UserButtonProps, ref) => (
+   ({ img, name, icon, id2, status, follow, ...others }: UserButtonProps, ref) => (
       <UnstyledButton
          ref={ref}
          sx={(theme) => ({
@@ -38,7 +38,7 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
                   {name}
                </Text>
                <Text size="sm" weight={200}>
-                  ID: {id2}, {city}
+                  ID: {id2}
                </Text>
 
                <Text color="dimmed" size="xs">
@@ -54,14 +54,13 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
 type Props = {
    id2?: any,
    name: any,
-   city: any,
    status: any,
    img: any
 }
 
-const UsersPage: React.FC<Props> = ({ id2, name, city, status, img }) => {
+const UsersPage: React.FC<Props> = ({ id2, name, status, img }) => {
    return (
-      <NavLink to={'/profile/' + id2}>
+      <NavLink to={'/profile/' + id2} className={s.link}>
          <Group position="center">
             <Menu withArrow>
                <Menu.Target>
@@ -69,7 +68,6 @@ const UsersPage: React.FC<Props> = ({ id2, name, city, status, img }) => {
                      img={img}
                      id2={id2}
                      name={name}
-                     city={city}
                      status={status}
                   />
                </Menu.Target>

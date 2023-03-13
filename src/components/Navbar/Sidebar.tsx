@@ -1,29 +1,28 @@
 // страница header
-import { Image } from '@mantine/core';
-import react from "../../assets/react.png";
-import { Grid } from '@mantine/core';
-import s from './Sidebar.module.css';
-import { IconAnalyze, IconCirclesFilled, IconCircuitBulb, IconInnerShadowTopLeft } from '@tabler/icons-react';
-import AutoUpdate from '../Forms/AutoUpdate';
+import { Button, Grid, Group } from '@mantine/core'
+import s from './Sidebar.module.css'
+import { IconInnerShadowTopLeft } from '@tabler/icons-react'
+import AutoUpdate from '../Forms/AutoUpdate'
+import { NavLink } from 'react-router-dom'
 
-export default function Sidebar() {
+export default function Sidebar(props: any) {
    return (
       <>
          <Grid justify="center" align="center">
             <Grid.Col>
-               <Image src={react} className={s.logo} />
-            </Grid.Col>
+               {props.isAuth ? 'Вы вошли как: ' + props.login
+                  : <NavLink to="login">
+                     <Group position="center">
+                        <Button variant="gradient" gradient={{ from: 'teal', to: 'blue', deg: 60 }}>
+                           Вход в аккаунт</Button>
+                     </Group>
+                  </NavLink>
+               }
 
-            <center>
-               <b>Тест анимаций</b>
-               <IconInnerShadowTopLeft size={80} className={s.preloader} /><br />
-               <IconAnalyze size={80} className={s.preloader} /><br />
-               <IconCircuitBulb size={80} className={s.preloader} /><br />
-            </center>
+            </Grid.Col>
+            <IconInnerShadowTopLeft size={80} className={s.preloader} />
+            <AutoUpdate />
          </Grid>
-         
-         <AutoUpdate />
-         
       </>
    );
 }

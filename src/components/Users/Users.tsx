@@ -14,7 +14,7 @@ const Users: React.FC<Props> = (props) => {
 
    let usersElements = props.users.map((e: any) =>
       <UsersPage id2={e.id} name={e.name}
-         status={e.status} city={e.city} img={e.img} />)
+         status={e.status} img={e.photos.small} />)
 
    let pagesSize = props.pageSize
    let totalUsersCount = props.totalUsersCount

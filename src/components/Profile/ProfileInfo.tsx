@@ -1,13 +1,22 @@
-import { Image } from "@mantine/core";
 
 // информация о профиле
 const ProfileInfo = (props: any) => {
+
+   let ID = props.profile.userId
+   let fullName = props.profile.fullName
+   let looking = props.profile.lookingForAJobDescription
+   let status = props.profile.aboutMe
+
+   if (looking === null) { looking = "не указано" }
+
+   if (status === null) { status = "не указан" }
+
    return (
       <>
-         <div>ID: {props.profile.userId}</div>
-         <div>Имя: {props.profile.fullName}</div>
-         <div>Профессия: {props.profile.lookingForAJobDescription}</div>
-         <div>Статус: {props.profile.aboutMe}</div>
+            <div>ID: {ID}</div>
+            <div>Имя: {fullName}</div>
+            <div>Профессия: {looking}</div>
+            <div>Статус: {status}</div>
       </>
    )
 }

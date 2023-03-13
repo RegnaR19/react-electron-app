@@ -22,8 +22,7 @@ const MainProfile: React.FC<Props> = (props) => {
          <Grid>
             <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>
             <Grid.Col span="content">
-               <ProfileInfo name="Вадим" age="27" professional="реактивист"
-                  city="Альменево" profile={props.profile} />
+               <ProfileInfo profile={props.profile} />
             </Grid.Col>
          </Grid>
          <Divider my="sm" />

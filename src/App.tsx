@@ -6,9 +6,7 @@ import NewsPage from "./components/News/NewsPage";
 import MusicPage from "./components/Music/MusicPage";
 import SettingsPage from "./components/Settings/SettingsPage";
 import TestPage from "./components/Settings/TestPage";
-import Sidebar from "./components/Navbar/Sidebar";
 import VideoPage from "./components/Video/VideoPage";
-import AccountMenu from "./components/Profile/AccountMenu";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import { useState } from "react";
@@ -16,7 +14,7 @@ import { Button, MantineProvider } from "@mantine/core";
 import s from "./App.module.css"
 import { IconArrowsMaximize } from "@tabler/icons-react";
 import MainProfileContainer from "./components/Profile/MainProfileContainer";
-import AutoUpdate from "./components/Forms/AutoUpdate";
+import SidebarContainer from "./components/Navbar/SidebarContainer";
 
 const App = () => {
    const [style, setStyle] = useState(s.layout)
@@ -47,11 +45,10 @@ const App = () => {
                <div className={s.col1}>
                   <Navigation />
                </div>
-               <div className={s.col3}><Sidebar /></div>
+               <div className={s.col3}><SidebarContainer /></div>
                <div className={style2}>
                   <Routes>
-                     <Route path="/" element={<MainProfileContainer />} />
-                     <Route path="profile/*" element={<MainProfileContainer />} />
+                     <Route path="profile/:userId?" element={<MainProfileContainer />} />
                      <Route path="messages" element={<DialogsContainer />} />
                      <Route path="users" element={<UsersContainer />} />
                      <Route path="news" element={<NewsPage />} />
