@@ -2,7 +2,7 @@
 import { Button, Grid, Group } from '@mantine/core'
 import s from './Sidebar.module.css'
 import { IconInnerShadowTopLeft } from '@tabler/icons-react'
-import AutoUpdate from '../Forms/AutoUpdate'
+import AutoUpdate3 from '../Forms/AutoUpdate3'
 import { NavLink } from 'react-router-dom'
 
 export default function Sidebar(props: any) {
@@ -21,7 +21,7 @@ export default function Sidebar(props: any) {
 
             </Grid.Col>
             <IconInnerShadowTopLeft size={80} className={s.preloader} />
-            <AutoUpdate />
+            <AutoUpdate3 />
          </Grid>
       </>
    );
