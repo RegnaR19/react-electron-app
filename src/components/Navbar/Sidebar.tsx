@@ -9,7 +9,7 @@ export default function Sidebar(props: any) {
    return (
       <>
          <Grid justify="center" align="center">
-            <Grid.Col>
+            {/* <Grid.Col>
                {props.isAuth ? 'Вы вошли как: ' + props.login
                   : <NavLink to="login">
                      <Group position="center">
@@ -19,7 +19,7 @@ export default function Sidebar(props: any) {
                   </NavLink>
                }
 
-            </Grid.Col>
+            </Grid.Col> */}
             <IconInnerShadowTopLeft size={80} className={s.preloader} />
             <AutoUpdate3 />
          </Grid>
