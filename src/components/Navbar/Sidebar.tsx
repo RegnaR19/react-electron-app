@@ -1,9 +1,9 @@
 // страница header
-import { Button, Grid, Group } from '@mantine/core'
+import { Grid } from '@mantine/core'
 import s from './Sidebar.module.css'
 import { IconInnerShadowTopLeft } from '@tabler/icons-react'
 import AutoUpdate3 from '../Forms/AutoUpdate3'
-import { NavLink } from 'react-router-dom'
+import Indent10 from '../Forms/Indent';
 
 export default function Sidebar(props: any) {
    return (
@@ -20,9 +20,10 @@ export default function Sidebar(props: any) {
                }
 
             </Grid.Col> */}
-            <IconInnerShadowTopLeft size={80} className={s.preloader} />
+            <IconInnerShadowTopLeft size={100} className={s.preloader} />
             <AutoUpdate3 />
          </Grid>
+         <Indent10 />
       </>
    );
 }

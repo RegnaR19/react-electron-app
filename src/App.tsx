@@ -48,6 +48,7 @@ const App = () => {
                <div className={s.col3}><SidebarContainer /></div>
                <div className={style2}>
                   <Routes>
+                     <Route path="/" element={<NewsPage />} />
                      <Route path="profile/:userId?" element={<MainProfileContainer />} />
                      <Route path="messages" element={<DialogsContainer />} />
                      <Route path="users" element={<UsersContainer />} />
