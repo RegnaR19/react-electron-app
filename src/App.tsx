@@ -30,7 +30,7 @@ const App = () => {
    return (
       <MantineProvider>
          <ThemeProvider>
-            <div className={style}>
+            <header className={style}>
                <div className={s.col1_noborder}>
                   <img src="./electron-vite.svg" className={s.logo} />
                </div>
@@ -40,13 +40,13 @@ const App = () => {
                      Изменить размер
                   </Button>
                </div>
-            </div>
+            </header>
             <div className={style}>
-               <div className={s.col1}>
+               <nav className={s.col1}>
                   <Navigation />
-               </div>
-               <div className={s.col3}><SidebarContainer /></div>
-               <div className={style2}>
+               </nav>
+               <aside className={s.col3}><SidebarContainer /></aside>
+               <main className={style2}>
                   <Routes>
                      <Route path="/" element={<NewsPage />} />
                      <Route path="profile/:userId?" element={<MainProfileContainer />} />
@@ -58,15 +58,15 @@ const App = () => {
                      <Route path="test" element={<TestPage />} />
                      <Route path="video" element={<VideoPage />} />
                   </Routes>
-               </div>
+               </main>
             </div>
-            <div className={style}>
+            <footer className={style}>
                <div className={s.col1_noborder}></div>
                <div className={s.col3_noborder}></div>
                <div className={style2}>
                   <div className={s.header}><FooterOne /></div>
                </div>
-            </div>
+            </footer>
          </ThemeProvider>
       </MantineProvider>
    );

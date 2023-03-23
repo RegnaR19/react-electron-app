@@ -19,7 +19,7 @@ class MainProfileContainer extends React.Component<Props> {
 
    componentDidMount() {
       let userId = this.props.router.params.userId
-      if (!userId) { userId = 2 }
+      if (!userId) { userId = 28131 }
       axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
          .then((response: any) => {
             this.props.setUserProfile(response.data)
