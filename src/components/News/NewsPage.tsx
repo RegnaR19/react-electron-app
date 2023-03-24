@@ -1,18 +1,32 @@
 // основная страница новостей
-import NewsCard from './NewsCard';
-import { Alert } from '@mantine/core';
-import { IconAlertCircle } from '@tabler/icons-react';
-import Indent10 from '../Forms/Indent';
+import { Timeline, Text } from '@mantine/core';
+import { IconGitBranch, IconGitPullRequest, IconGitCommit, IconMessageDots } from '@tabler/icons-react';
 
 const NewsPage = () => {
    return (
       <>
-         Страница новостей
-         <NewsCard width='200px' height='200px'>
-            Ну типа привет
-         </NewsCard>
+         <Timeline active={1} bulletSize={24} lineWidth={2}>
+            <Timeline.Item bullet={<IconGitBranch size={12} />} title="Новая версия">
+               <Text color="dimmed" size="sm">Выпуск версии 1.0.3</Text>
+               <Text size="xs" mt={4}>26 марта 2023 г.</Text>
+            </Timeline.Item>
+            <Timeline.Item bullet={<IconGitBranch size={12} />} title="Новая версия">
+               <Text color="dimmed" size="sm">Выпуск версии 1.0.2</Text>
+               <Text size="xs" mt={4}>12 марта 2023 г.</Text>
+            </Timeline.Item>
+
+            <Timeline.Item bullet={<IconGitCommit size={12} />} title="Новая версия">
+               <Text color="dimmed" size="sm">Выпуск версии 1.0.1 со включенным автообновлением</Text>
+               <Text size="xs" mt={4}>6 марта 2023 г.</Text>
+            </Timeline.Item>
+
+            <Timeline.Item title="Новая версия" bullet={<IconGitPullRequest size={12} />} lineVariant="dashed">
+               <Text color="dimmed" size="sm">Релиз 1.0.0</Text>
+               <Text size="xs" mt={4}>6 марта 2023 г.</Text>
+            </Timeline.Item>
+         </Timeline>
       </>
-   );
+   )
 }
 
 export default NewsPage;
