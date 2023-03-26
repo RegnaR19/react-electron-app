@@ -2,8 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount } from "../../redux/usersReducer";
 import Users from "./Users";
-import axios from 'axios'
-import { getUsers } from "@/api/api";
+import { usersAPI } from "@/api/api";
 
 type Props = {
    users: any,
@@ -18,17 +17,17 @@ type Props = {
 class UsersContainer extends React.Component<Props> {
 
    componentDidMount() {
-      getUsers(this.props.currentPage).then((response: any) => {
-         this.props.setUsers(response.data.items)
-         this.props.setTotalUsersCount(response.data.totalCount)
+      usersAPI.getUsers(this.props.currentPage).then((data: any) => {
+         this.props.setUsers(data.items)
+         this.props.setTotalUsersCount(data.totalCount)
       })
    }
 
    onPageChanged = (pageNumber: any) => {
       this.props.setCurrentPage(pageNumber)
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}`)
-         .then((response: any) => {
-            this.props.setUsers(response.data.items)
+      usersAPI.getUsers(pageNumber)
+         .then((data: any) => {
+            this.props.setUsers(data.items)
          })
    }
 

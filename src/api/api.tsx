@@ -1,6 +1,14 @@
 import axios from "axios";
 
-export const getUsers = (currentPage: any) => {
-    return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}`)
+const instance = axios.create({
+    baseURL: 'https://social-network.samuraijs.com/api/1.0/'
+})
 
+export const usersAPI = {
+    getUsers(currentPage: any) {
+        return instance.get(`users?page=${currentPage}`)
+            .then(response => {
+                return response.data
+            })
+    }
 }

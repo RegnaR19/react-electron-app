@@ -17,12 +17,12 @@ import MainProfileContainer from "./components/Profile/MainProfileContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
 
 const App = () => {
-   const [style, setStyle] = useState(s.layout)
+   const [style, setStyle] = useState(s.layout1)
    const changeStyle = () => {
       setStyle(s.layout1)
    }
 
-   const [style2, setStyle2] = useState(s.col2)
+   const [style2, setStyle2] = useState(s.col2_wide)
    const changeStyle2 = () => {
       setStyle2(s.col2_wide)
    }

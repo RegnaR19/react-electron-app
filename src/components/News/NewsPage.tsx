@@ -1,10 +1,11 @@
 // основная страница новостей
 import { Timeline, Text } from '@mantine/core';
-import { IconGitBranch, IconGitPullRequest, IconGitCommit, IconMessageDots } from '@tabler/icons-react';
+import { IconGitBranch, IconGitPullRequest, IconGitCommit } from '@tabler/icons-react';
 
 const NewsPage = () => {
    return (
       <>
+         <h2>Новости</h2>
          <Timeline active={1} bulletSize={24} lineWidth={2}>
             <Timeline.Item bullet={<IconGitBranch size={12} />} title="Новая версия">
                <Text color="dimmed" size="sm">Выпуск версии 1.0.3</Text>
