@@ -13,7 +13,7 @@ type Props = {
 const Users: React.FC<Props> = (props) => {
 
    let usersElements = props.users.map((e: any) =>
-      <UsersPage id2={e.id} name={e.name}
+      <UsersPage id2={e.id} key={e.id} name={e.name}
          status={e.status} img={e.photos.small} />)
 
    let pagesSize = props.pageSize

@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount } from "../../redux/usersReducer";
+import { follow, unfollow, setUsers, setCurrentPage, getUsers } from "../../redux/usersReducer";
 import Users from "./Users";
-import { usersAPI } from "@/api/api";
 
 type Props = {
    users: any,
@@ -11,24 +10,18 @@ type Props = {
    totalUsersCount: number,
    currentPage: number,
    setCurrentPage: any,
-   setTotalUsersCount: any
+   setTotalUsersCount: any,
+   getUsers: any
 }
 
 class UsersContainer extends React.Component<Props> {
 
    componentDidMount() {
-      usersAPI.getUsers(this.props.currentPage).then((data: any) => {
-         this.props.setUsers(data.items)
-         this.props.setTotalUsersCount(data.totalCount)
-      })
+      this.props.getUsers(this.props.currentPage, this.props.pageSize)
    }
 
    onPageChanged = (pageNumber: any) => {
-      this.props.setCurrentPage(pageNumber)
-      usersAPI.getUsers(pageNumber)
-         .then((data: any) => {
-            this.props.setUsers(data.items)
-         })
+      this.props.getUsers(pageNumber, this.props.setUsers)
    }
 
    render() {
@@ -53,4 +46,6 @@ let mapStateToProps = (state: any) => {
 }
 
 
-export default connect(mapStateToProps, { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount })(UsersContainer)
+export default connect(mapStateToProps, {
+   follow, unfollow, setCurrentPage, getUsers
+})(UsersContainer)

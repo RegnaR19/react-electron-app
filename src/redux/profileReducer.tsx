@@ -1,3 +1,4 @@
+import { usersAPI } from "@/api/api";
 import paris from "../assets/p1.jpg";
 import abstract from "../assets/p2.jpg";
 import sochi from "../assets/p3.jpg";
@@ -66,6 +67,12 @@ export const updateNewPostTextCreator = (text: any) => {
 
 export const setUserProfile = (profile: any) => {
    return { type: SET_USER_PROFILE, profile }
+}
+
+export const getUserProfile = (userId: any) => (dispatch: any) => {
+   return usersAPI.getProfile(userId).then((response: any) => {
+      dispatch(setUserProfile(response.data))
+   })
 }
 
 export default profileReducer
