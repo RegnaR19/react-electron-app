@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Sidebar from './Sidebar';
 import { getAuthUserData } from '@/redux/authReducer';
+import { compose } from 'redux';
 
 type Props = {
    getAuthUserData: any
@@ -28,4 +29,7 @@ let mapStateToProps = (state: any) => {
 }
 
 
-export default connect(mapStateToProps, { getAuthUserData })(SidebarContainer)
+export default compose(
+   connect(mapStateToProps, { getAuthUserData })
+)
+   (SidebarContainer) 

@@ -15,6 +15,7 @@ import s from "./App.module.css"
 import { IconArrowsMaximize } from "@tabler/icons-react";
 import MainProfileContainer from "./components/Profile/MainProfileContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
+import Login from "./components/Profile/Login";
 
 const App = () => {
    const [style, setStyle] = useState(s.layout)
@@ -57,6 +58,7 @@ const App = () => {
                      <Route path="settings" element={<SettingsPage />} />
                      <Route path="test" element={<TestPage />} />
                      <Route path="video" element={<VideoPage />} />
+                     <Route path="login" element={<Login />} />
                   </Routes>
                </main>
             </div>

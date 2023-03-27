@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { compose } from "redux";
 import PostElements from "./PostElements";
 
 let mapStateToProps = (state: any) => {
@@ -7,6 +8,7 @@ let mapStateToProps = (state: any) => {
     }
 }
 
-const PostElementsContainer = connect(mapStateToProps)(PostElements)
-
-export default PostElementsContainer;
+export default compose(
+    connect(mapStateToProps)
+)
+    (PostElements);

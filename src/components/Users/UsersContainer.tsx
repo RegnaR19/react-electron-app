@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { follow, unfollow, setUsers, setCurrentPage, getUsers } from "../../redux/usersReducer";
 import Users from "./Users";
 
@@ -10,7 +11,6 @@ type Props = {
    totalUsersCount: number,
    currentPage: number,
    setCurrentPage: any,
-   setTotalUsersCount: any,
    getUsers: any
 }
 
@@ -46,6 +46,7 @@ let mapStateToProps = (state: any) => {
 }
 
 
-export default connect(mapStateToProps, {
-   follow, unfollow, setCurrentPage, getUsers
-})(UsersContainer)
+
+export default compose(
+   connect(mapStateToProps, { follow, unfollow, setCurrentPage, setUsers, getUsers })
+)(UsersContainer)

@@ -7,6 +7,7 @@ import {
    useNavigate,
    useParams,
 } from "react-router-dom";
+import { compose } from 'redux';
 
 type Props = {
    setUserProfile: any,
@@ -48,8 +49,10 @@ function withRouter(Component: any) {
          />
       );
    }
-
    return ComponentWithRouterProp;
 }
 
-export default connect(mapStateToProps, { getUserProfile })(withRouter(MainProfileContainer))
+export default compose(
+   withRouter,
+   connect(mapStateToProps, { getUserProfile }))
+   (MainProfileContainer)

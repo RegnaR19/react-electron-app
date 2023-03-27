@@ -1,5 +1,6 @@
 // страница написания постов
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { addPostCreator, updateNewPostTextCreator } from "../../redux/profileReducer";
 import WritePost from "./WritePost";
 
@@ -20,7 +21,4 @@ let mapDispatchToProps = (dispatch: any) => {
    }
 }
 
-const WritePostContainer = connect(mapStateToProps, mapDispatchToProps)(WritePost)
-
-
-export default WritePostContainer;
+export default compose(connect(mapStateToProps, mapDispatchToProps))(WritePost);
