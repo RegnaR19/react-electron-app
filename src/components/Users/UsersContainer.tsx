@@ -1,3 +1,4 @@
+import { authRedirect } from "@/hoc/authRedirect";
 import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -49,4 +50,5 @@ let mapStateToProps = (state: any) => {
 
 export default compose(
    connect(mapStateToProps, { follow, unfollow, setCurrentPage, setUsers, getUsers })
+   // authRedirect
 )(UsersContainer)

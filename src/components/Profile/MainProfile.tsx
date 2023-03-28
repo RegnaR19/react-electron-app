@@ -3,9 +3,10 @@ import ProfileInfo from './ProfileInfo';
 import HeaderImg from './common/HeaderImg';
 import Avatar from './common/Avatar';
 import { Divider, Grid } from '@mantine/core';
-import WritePostContainer from './WritePostContainer';
-import PostElementsContainer from './PostElementsContainer';
+import WritePostContainer from './Topic/WritePostContainer';
+import PostElementsContainer from './Topic/PostElementsContainer';
 import AccountMenu from './AccountMenu';
+import ProfileStatus from './ProfileStatus';
 
 type Props = {
    profile: any
@@ -17,11 +18,13 @@ const MainProfile: React.FC<Props> = (props) => {
       <>
 
          <AccountMenu profile={props.profile} />
-         <HeaderImg />
+         {/* <HeaderImg /> */}
          <Divider my="sm" />
          <Grid>
             <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>
             <Grid.Col span="content">
+               <ProfileStatus status="Нажми здесь для изменения статуса" />
+               <hr />
                <ProfileInfo profile={props.profile} />
             </Grid.Col>
          </Grid>

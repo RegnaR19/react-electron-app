@@ -1,7 +1,7 @@
 // страница написания постов
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { addPostCreator, updateNewPostTextCreator } from "../../redux/profileReducer";
+import { addPostCreator, updateNewPostTextCreator } from "../../../redux/profileReducer";
 import WritePost from "./WritePost";
 
 let mapStateToProps = (state: any) => {
