@@ -4,37 +4,41 @@ import React from "react";
 import Indent10 from "../Forms/Indent";
 
 type Props = {
-   status: any
+   status: any,
+   updateStatus: any
 }
-
-
 
 class ProfileStatus extends React.Component<Props> {
 
    state = {
-      editMode: false
+      editMode: false,
+      status: this.props.status
    }
 
    activateEditMode = () => {
       this.setState({ editMode: !this.state.editMode })
+      this.props.updateStatus(this.state.status)
+   }
+
+   onStatusChange = (e: any) => {
+      this.setState({
+         status: e.currentTarget.value
+      })
    }
 
    render() {
       return (
          <>
             {!this.state.editMode &&
-               <div onClick={this.activateEditMode}><b>{this.props.status}</b></div>
+               <div onClick={this.activateEditMode}><b>{this.props.status || "Привет"}</b></div>
             }
 
             {this.state.editMode &&
                <div>
-                  <Input icon={<IconAt />} onBlur={this.activateEditMode}
+                  <Input icon={<IconAt />} onChange={this.onStatusChange} onBlur={this.activateEditMode}
                      placeholder="Напишите ваш статус" autoFocus={true}
-                     radius="md" size="sm" value={this.props.status} />
-                  <Indent10 />
-                  <Button color="pink">
-                     Сохранить статус
-                  </Button>
+                     radius="md" size="sm" value={this.state.status}
+                     />
                </div>
             }
          </>

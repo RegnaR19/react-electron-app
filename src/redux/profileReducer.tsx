@@ -17,7 +17,7 @@ let initialState = {
    ],
    newPostText: '',
    profile: { photos: {} },
-   status: ""
+   status: ''
 }
 
 const profileReducer = (state = initialState, action: any) => {
@@ -87,6 +87,14 @@ export const getUserProfile = (userId: any) => (dispatch: any) => {
 export const getUserStatus = (userId: any) => (dispatch: any) => {
    return profileAPI.getStatus(userId).then((response: any) => {
       dispatch(setStatus(response.data))
+   })
+}
+
+export const updateStatus = (status: any) => (dispatch: any) => {
+   return profileAPI.updateStatus(status).then((response: any) => {
+      if (response.data.resultCode === 0) {
+         dispatch(setStatus(status))
+      }
    })
 }
 

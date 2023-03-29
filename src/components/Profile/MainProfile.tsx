@@ -9,7 +9,9 @@ import AccountMenu from './AccountMenu';
 import ProfileStatus from './ProfileStatus';
 
 type Props = {
-   profile: any
+   profile: any,
+   status: any,
+   updateStatus: any
 }
 
 const MainProfile: React.FC<Props> = (props) => {
@@ -23,7 +25,7 @@ const MainProfile: React.FC<Props> = (props) => {
          <Grid>
             <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>
             <Grid.Col span="content">
-               <ProfileStatus status="Нажми здесь для изменения статуса" />
+               <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
                <hr />
                <ProfileInfo profile={props.profile} />
             </Grid.Col>
