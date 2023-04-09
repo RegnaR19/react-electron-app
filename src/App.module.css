@@ -24,6 +24,7 @@
 
 .col1_noborder {
    width: 180px;
+   height: inherit;
    float: left;
 }
 

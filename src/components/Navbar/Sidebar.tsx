@@ -7,6 +7,8 @@ import Indent10 from '../Forms/Indent';
 import { NavLink } from 'react-router-dom';
 
 export default function Sidebar(props: any) {
+
+
    return (
       <>
          <Grid justify="center" align="center">
@@ -21,7 +23,6 @@ export default function Sidebar(props: any) {
                }
 
             </Grid.Col>
-            <IconInnerShadowTopLeft size={100} className={s.preloader} />
             <AutoUpdate3 />
          </Grid>
          <Indent10 />

@@ -1,33 +1,34 @@
 import { Button, Checkbox, Input, PasswordInput } from "@mantine/core";
-import { IconAt, IconCircleKey } from "@tabler/icons-react";
 import Indent10 from "../Forms/Indent";
 import { Field, reduxForm } from "redux-form";
 
-const LoginForm = () => {
+const LoginForm = (props: any) => {
    return (
       <>
-         <form>
-            <Field component={"input"} placeholder="Email" />
+         <form onSubmit={props.handleSubmit}>
+            <Field placeholder="Email" name="email" component={"input"} />
             <Indent10 />
-            <PasswordInput icon={<IconCircleKey />} placeholder="Пароль" autoComplete="off" />
+            <Field placeholder="Пароль" name="password" component={"input"} autoComplete="off" />
             <Indent10 />
-            <Checkbox label="Запомнить меня" />
+            <Field name="rememberMe" component={"input"} type="checkbox" /> Запомнить меня
             <Indent10 />
-            <Button variant="outline">Войти</Button>
+            <button>Войти</button>
          </form>
       </>
    )
 }
 
-const ReduxLoginForm = reduxForm({
-   form: 'login'
-})(LoginForm)
+const ReduxLoginForm = reduxForm({ form: 'login' })(LoginForm)
+
+const onSubmit = (formData: any) => {
+   console.log(formData)
+}
 
 const Login = () => {
    return (
       <>
          <h2>Страница входа</h2>
-         <ReduxLoginForm />
+         <ReduxLoginForm onSubmit={onSubmit} />
       </>
    );
 }
