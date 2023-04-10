@@ -1,4 +1,8 @@
 /* стили */
+html {
+   background-image: url(./assets/back.jpg);
+}
+
 
 .header,
 .footer {
@@ -72,21 +76,24 @@
    padding: 0.5em;
    will-change: filter;
    transition: filter 300ms;
- }
- .logo:hover {
+}
+
+.logo:hover {
    filter: drop-shadow(0 0 2em #646cffaa);
- }
- @keyframes logo-spin {
+}
+
+@keyframes logo-spin {
    from {
-     transform: rotate(0deg);
+      transform: rotate(0deg);
    }
+
    to {
-     transform: rotate(360deg);
+      transform: rotate(360deg);
    }
- }
- 
- @media (prefers-reduced-motion: no-preference) {
+}
+
+@media (prefers-reduced-motion: no-preference) {
    .logo {
-     animation: logo-spin infinite 15s linear;
+      animation: logo-spin infinite 15s linear;
    }
- }
+}

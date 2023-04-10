@@ -3,8 +3,8 @@ import { Blockquote } from '@mantine/core';
 const Quote = () => {
     return (
         <>
-            <Blockquote cite="– Чингисхан">
-            Лучше быть последним среди волков, чем первым среди шакалов.
+            <Blockquote cite="– Торфинн Торссон">
+            Я словно волк — всегда осторожный и в меру голодный.
             </Blockquote>
         </>
     );

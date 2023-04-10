@@ -5,6 +5,7 @@ import { IconInnerShadowTopLeft } from '@tabler/icons-react'
 import AutoUpdate3 from '../Forms/AutoUpdate3'
 import Indent10 from '../Forms/Indent';
 import { NavLink } from 'react-router-dom';
+import DrawerOpen from '../Forms/DrawerOpen';
 
 export default function Sidebar(props: any) {
 
@@ -23,6 +24,11 @@ export default function Sidebar(props: any) {
                }
 
             </Grid.Col>
+
+            <Grid.Col>
+               <DrawerOpen />
+            </Grid.Col>
+
             <AutoUpdate3 />
          </Grid>
          <Indent10 />

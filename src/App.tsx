@@ -17,6 +17,7 @@ import SidebarContainer from "./components/Navbar/SidebarContainer";
 import Login from "./components/Profile/Login";
 import HeaderOne from "./components/Navbar/Header";
 import { useColorScheme } from '@mantine/hooks';
+import './App.scss'
 
 const App = () => {
    const [style, setStyle] = useState(s.layout)

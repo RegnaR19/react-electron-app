@@ -1,18 +1,19 @@
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Messages from './Messages/MessagesLink';
-import { Button, Grid, Textarea } from '@mantine/core';
-import { IconPencilPlus } from '@tabler/icons-react';
+import { Grid } from '@mantine/core';
+import { Field, reduxForm } from 'redux-form';
 
 type Props = {
    state?: any,
    updateNewMessageBody: any,
    sendMessage: any,
    dialogsPage: any,
-   newMessageBody: any
+   newMessageBody: any,
+   handleSubmit?: any
 }
 
-const Dialogs: React.FC<Props> = ({ ...props }) => {
+const Dialogs = (props: any) => {
 
    let dialogsElements =
       props.dialogsPage.dialogs.map((e: any) => <DialogItem id={e.id} key={e.id} name={e.name} />)
@@ -33,6 +34,8 @@ const Dialogs: React.FC<Props> = ({ ...props }) => {
 
    return (
       <>
+         Форма диалога
+
          <Grid grow>
             <Grid.Col span={5} className={s.border}><b>Имена</b></Grid.Col>
             <Grid.Col span={7} className={s.border}><b>Сообщения</b></Grid.Col>
@@ -42,20 +45,26 @@ const Dialogs: React.FC<Props> = ({ ...props }) => {
             </Grid.Col>
          </Grid>
          <div style={{ marginBottom: 20 }} />
-         <Textarea placeholder="Сообщение"
-            autosize
-            minRows={1}
-            size="md"
-            value={newMessageBody}
-            onChange={onNewMessageChange} />
-         <div style={{ marginBottom: 10 }} />
-         <Button variant="gradient" leftIcon={<IconPencilPlus />}
-            gradient={{ from: 'teal', to: 'lime', deg: 105 }}
-            onClick={onSendMessageClick}>
-            Отправить
-         </Button>
+         <ReduxMessageForm />
       </>
-   );
+   )
 }
+
+const DialogsForm = (props: any) => {
+
+   return (
+      <>
+         <form onSubmit={props.handleSubmit}>
+            <Field placeholder="Сообщение" name='message' component="textarea" />
+            <div style={{ marginBottom: 10 }} />
+            <button>
+               Отправить
+            </button>
+         </form>
+      </>
+   )
+}
+
+const ReduxMessageForm = reduxForm({ form: 'messages' })(DialogsForm)
 
 export default Dialogs;
