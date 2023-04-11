@@ -1,47 +1,47 @@
 // страница написания постов
-import { Button, Textarea } from "@mantine/core";
-import { IconPencilPlus } from "@tabler/icons-react";
+import Indent10 from "@/components/Forms/Indent";
+import { Field, reduxForm } from "redux-form";
 
 type Props = {
    newPostText?: any,
    addPost?: any,
-   updateNewPostText?: any
+   updateNewPostText?: any,
+   handleSubmit?: any,
+   title: any
 }
 
-const WritePost: React.FC<Props> = ({ ...props }) => {
+const WritePost = (props: any) => {
 
-   let newPostText = props.newPostText
-
-   let onPostChange = (e: any) => {
-      let text = e.target.value
-      props.updateNewPostText(text)
-   }
-
-   let addPost = () => {
-      props.addPost()
+   let addPost = (values: any) => {
+      props.addPost(values.newPostText, values.title)
    }
 
    return (
       <>
          <b>Опубликовать новую запись</b>
-         <div style={{ marginBottom: 10 }} />
-         <Textarea
-            placeholder="Дуров, верни стену!"
-            autosize size="md"
-            minRows={2}
-            onChange={onPostChange}
-            value={newPostText}
-         />
-         <div style={{ marginBottom: 10 }} />
-
-         <Button onClick={addPost} variant="gradient"
-            leftIcon={<IconPencilPlus />}
-            gradient={{ from: 'indigo', to: 'cyan' }}>
-            Опубликовать
-         </Button>
-         <div style={{ marginBottom: 10 }} />
+         <ReduxWriteForm onSubmit={addPost} />
       </>
    )
 }
+
+const WritePostForm = (props: any) => {
+
+   return (
+      <>
+         <form onSubmit={props.handleSubmit}>
+            <Field placeholder="Заголовок" name="title" component="input" />
+            <Field placeholder="Дуров, верни стену!" name="newPostText" component="textarea" />
+            <Indent10 />
+            <button>
+               Опубликовать
+            </button>
+            <Indent10 />
+         </form>
+      </>
+   )
+}
+
+const ReduxWriteForm = reduxForm({ form: 'posts' })(WritePostForm)
+
 
 export default WritePost;

@@ -21,21 +21,13 @@ const Dialogs = (props: any) => {
    let messagesElements =
       props.dialogsPage.messages.map((e: any) => <Messages id={e.id} key={e.id} message={e.message} />)
 
-   let newMessageBody = props.newMessageBody
-
-   let onSendMessageClick = () => {
-      props.sendMessage()
-   }
-
-   let onNewMessageChange = (e: any) => {
-      let body = e.target.value
-      props.updateNewMessageBody(body)
+   let addNewMessage = (values: any) => {
+      props.sendMessage(values.message)
    }
 
    return (
       <>
          Форма диалога
-
          <Grid grow>
             <Grid.Col span={5} className={s.border}><b>Имена</b></Grid.Col>
             <Grid.Col span={7} className={s.border}><b>Сообщения</b></Grid.Col>
@@ -45,13 +37,12 @@ const Dialogs = (props: any) => {
             </Grid.Col>
          </Grid>
          <div style={{ marginBottom: 20 }} />
-         <ReduxMessageForm />
+         <ReduxMessageForm onSubmit={addNewMessage} />
       </>
    )
 }
 
 const DialogsForm = (props: any) => {
-
    return (
       <>
          <form onSubmit={props.handleSubmit}>

@@ -5,7 +5,6 @@ import sochi from "../assets/p3.jpg";
 import sochi2 from "../assets/p4.jpeg";
 
 const ADD_POST = 'ADD_POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 
@@ -15,7 +14,6 @@ let initialState = {
       { id: 2, post: "Абстракция", message: "Картинка-абстракция", likescount: 1000, img: abstract },
       { id: 3, post: "Сочи", message: "Сочи", likescount: 5000, img: sochi },
    ],
-   newPostText: '',
    profile: { photos: {} },
    status: ''
 }
@@ -26,30 +24,30 @@ const profileReducer = (state = initialState, action: any) => {
 
       case ADD_POST: {
          let stateCopy = { ...state }
-         let text = state.newPostText
          let newPost = {
             id: 4,
-            post: "Новый пост",
-            message: text,
-            likescount: 40,
+            post: action.title,
+            message: action.newPostText,
+            likescount: 999,
             img: sochi2
          }
-         if (text != '') {
-            stateCopy.posts = [...state.posts]
-            stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ''
-         }
-         else if (text === '') {
-            let a = 'Вы ничего не ввели!'
-            alert(a)
-         }
-         return stateCopy
-      }
 
-      case UPDATE_NEW_POST_TEXT: {
-         let stateCopy = { ...state }
-         stateCopy.newPostText = action.text
-         return stateCopy
+         if (newPost.message === undefined) {
+            alert('Вы ничего не ввели в сообщении!')
+            break
+         }
+         else if (newPost.post === undefined) {
+            alert('Вы ничего не ввели в заголовке!')
+            break
+         }
+         else if (newPost.message != '') {
+            stateCopy.posts = action.newPost
+         }
+
+         return {
+            ...state,
+            posts: [...state.posts, newPost]
+         }
       }
       case SET_USER_PROFILE: {
          return { ...state, profile: action.profile }
@@ -62,12 +60,8 @@ const profileReducer = (state = initialState, action: any) => {
    }
 }
 
-export const addPostCreator = () => {
-   return { type: ADD_POST }
-}
-
-export const updateNewPostTextCreator = (text: any) => {
-   return { type: UPDATE_NEW_POST_TEXT, text }
+export const addPostCreator = (newPostText: any, title: any) => {
+   return { type: ADD_POST, newPostText, title }
 }
 
 export const setUserProfile = (profile: any) => {

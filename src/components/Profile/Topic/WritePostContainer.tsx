@@ -1,22 +1,20 @@
 // страница написания постов
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { addPostCreator, updateNewPostTextCreator } from "../../../redux/profileReducer";
+import { addPostCreator } from "../../../redux/profileReducer";
 import WritePost from "./WritePost";
 
 let mapStateToProps = (state: any) => {
    return {
-      newPostText: state.profilePage.newPostText
+      newPostText: state.profilePage.newPostText,
+      addTitle: state.profilePage.title
    }
 }
 
 let mapDispatchToProps = (dispatch: any) => {
    return {
-      updateNewPostText: (text: any) => {
-         dispatch(updateNewPostTextCreator(text))
-      },
-      addPost: () => {
-         dispatch(addPostCreator())
+      addPost: (newPostText: any, title: any) => {
+         dispatch(addPostCreator(newPostText, title))
       }
    }
 }
