@@ -10,7 +10,7 @@ const Login = () => {
    }
 
    type Employee = {
-      message?: any
+      email?: any
    }
 
    return (
