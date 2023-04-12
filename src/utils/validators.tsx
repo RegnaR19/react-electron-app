@@ -10,7 +10,7 @@ const errorField = () => {
       autoClose: 3000,
       title: "Надо заполнить это поле!",
       message: 'Вы не заполнили поле.',
-      color: 'green',
+      color: 'red',
       icon: <IconX />,
       className: 'my-notification-class',
       loading: true,
@@ -24,8 +24,11 @@ const errorField = () => {
 }
 
 export const required = (value: any) => {
-   if (value) return undefined
-   return errorField
+   if (value) {
+      errorField
+      console.log(value)
+   }
+   else if (value === undefined) { errorField }
 }
 
 export const maxLengthCreator = (maxLength: any) => (value: any) => {

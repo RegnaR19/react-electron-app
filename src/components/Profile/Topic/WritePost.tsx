@@ -1,6 +1,7 @@
 // страница написания постов
+import { titleInput } from "@/components/Common/FormsControls";
 import Indent10 from "@/components/Forms/Indent";
-import { maxLengthCreator, required } from "@/utils/validators";
+import { Button, Input, Textarea } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { IconBrandXbox } from "@tabler/icons-react";
 import { Form, Field } from 'react-final-form'
@@ -13,30 +14,14 @@ type Props = {
    title: any
 }
 
-const WritePost = (props: any) => {
+const WritePost: React.FC<Props> = ({ ...props }) => {
 
-   let addPost = (values: any) => {
-      props.addPost(values.newPostText, values.title)
-   }
-
-   return (
-      <>
-         <b>Опубликовать новую запись</b>
-         <ReduxWriteForm onSubmit={} />
-      </>
-   )
-}
-
-const WritePostForm = (props: any) => {
-
-   const errorNoty = () => {
+   const successForm = () => {
       notifications.show({
          id: 'hello-there',
          withCloseButton: false,
-         onClose: () => console.log('unmounted'),
-         onOpen: () => console.log('mounted'),
-         autoClose: 10000,
-         title: "Вы сделали доброе дело! 10G за новый пост!",
+         autoClose: 5000,
+         title: "10G за новый пост!",
          message: 'Вы разместили новый пост.',
          color: 'green',
          icon: <IconBrandXbox />,
@@ -51,26 +36,55 @@ const WritePostForm = (props: any) => {
       })
    }
 
-   const maxLength10 = maxLengthCreator(10)
-   const onSubmit = async values => {
-      await sleep(300)
-      window.alert(JSON.stringify(values, 0, 2))
+   let addPost = (values: any) => {
+      props.addPost(values.newPostText, values.title)
+      successForm()
+   }
+
+   type Employee = {
+      title?: any
+      newPostText?: any
    }
 
    return (
       <>
+         <h4>Опубликовать новую запись</h4>
          <Form onSubmit={addPost}
-            render={({ handleSubmit }) => (
+            validate={(values: any) => {
+               const errors: Employee = {}
+               if (!values.title) {
+                  errors.title = 'Необходимо заполнить'
+               }
+               if (!values.newPostText) {
+                  errors.newPostText = 'Необходимо заполнить'
+               }
+               return errors
+            }}
+            render={({ handleSubmit, values, submitting }) => (
                <form onSubmit={handleSubmit}>
-                  <Field placeholder="Заголовок" name="title" component="input"
-                     validate={required} />
-                  <Field placeholder="Дуров, верни стену!" name="newPostText" component="textarea"
-                     validate={required} />
+                  <Field name="title" component={titleInput}>
+                     {({ input, meta }) => (
+                        <div>
+                           <Input {...input} type="text" placeholder="Заголовок" />
+                           {meta.error && meta.touched && <span>{meta.error}</span>}
+                        </div>
+                     )}
+                  </Field>
                   <Indent10 />
-                  <button onClick={errorNoty}>
+                  <Field name="newPostText" component="textarea">
+                     {({ input, meta }) => (
+                        <div>
+                           <Textarea {...input} placeholder="Дуров, верни стену!" />
+                           {meta.error && meta.touched && <span>{meta.error}</span>}
+                        </div>
+                     )}
+                  </Field>
+                  <Indent10 />
+                  <Button type="submit" disabled={submitting}>
                      Опубликовать
-                  </button>
+                  </Button>
                   <Indent10 />
+                  <pre>{JSON.stringify(values, null, 2)}</pre>
                </form>
             )
             }
