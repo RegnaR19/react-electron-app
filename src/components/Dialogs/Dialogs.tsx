@@ -2,16 +2,7 @@ import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Messages from './Messages/MessagesLink';
 import { Grid } from '@mantine/core';
-import { Field, reduxForm } from 'redux-form';
-
-type Props = {
-   state?: any,
-   updateNewMessageBody: any,
-   sendMessage: any,
-   dialogsPage: any,
-   newMessageBody: any,
-   handleSubmit?: any
-}
+import DialogsForm from './Messages/DialogsForm';
 
 const Dialogs = (props: any) => {
 
@@ -37,25 +28,10 @@ const Dialogs = (props: any) => {
             </Grid.Col>
          </Grid>
          <div style={{ marginBottom: 20 }} />
-         <ReduxMessageForm onSubmit={addNewMessage} />
+
+         <DialogsForm addNewMessage={addNewMessage} />
       </>
    )
 }
 
-const DialogsForm = (props: any) => {
-   return (
-      <>
-         <form onSubmit={props.handleSubmit}>
-            <Field placeholder="Сообщение" name='message' component="textarea" />
-            <div style={{ marginBottom: 10 }} />
-            <button>
-               Отправить
-            </button>
-         </form>
-      </>
-   )
-}
-
-const ReduxMessageForm = reduxForm({ form: 'messages' })(DialogsForm)
-
-export default Dialogs;
+export default Dialogs

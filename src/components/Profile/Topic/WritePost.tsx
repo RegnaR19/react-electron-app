@@ -36,7 +36,7 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
       })
    }
 
-   let addPost = (values: any) => {
+   const addPost = (values: any) => {
       props.addPost(values.newPostText, values.title)
       successForm()
    }
@@ -53,10 +53,10 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
             validate={(values: any) => {
                const errors: Employee = {}
                if (!values.title) {
-                  errors.title = 'Необходимо заполнить'
+                  errors.title = 'Необходимо заполнить поле'
                }
                if (!values.newPostText) {
-                  errors.newPostText = 'Необходимо заполнить'
+                  errors.newPostText = 'Необходимо заполнить поле'
                }
                return errors
             }}
@@ -84,6 +84,7 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
                      Опубликовать
                   </Button>
                   <Indent10 />
+
                   <pre>{JSON.stringify(values, null, 2)}</pre>
                </form>
             )
