@@ -1,6 +1,9 @@
 // страница написания постов
 import Indent10 from "@/components/Forms/Indent";
-import { Field, reduxForm } from "redux-form";
+import { maxLengthCreator, required } from "@/utils/validators";
+import { notifications } from "@mantine/notifications";
+import { IconBrandXbox } from "@tabler/icons-react";
+import { Form, Field } from 'react-final-form'
 
 type Props = {
    newPostText?: any,
@@ -19,29 +22,61 @@ const WritePost = (props: any) => {
    return (
       <>
          <b>Опубликовать новую запись</b>
-         <ReduxWriteForm onSubmit={addPost} />
+         <ReduxWriteForm onSubmit={} />
       </>
    )
 }
 
 const WritePostForm = (props: any) => {
 
+   const errorNoty = () => {
+      notifications.show({
+         id: 'hello-there',
+         withCloseButton: false,
+         onClose: () => console.log('unmounted'),
+         onOpen: () => console.log('mounted'),
+         autoClose: 10000,
+         title: "Вы сделали доброе дело! 10G за новый пост!",
+         message: 'Вы разместили новый пост.',
+         color: 'green',
+         icon: <IconBrandXbox />,
+         className: 'my-notification-class',
+         loading: false,
+         styles: (theme) => ({
+            root: {
+               backgroundColor: theme.colors.dark[5],
+               '&::before': { backgroundColor: theme.white },
+            }
+         }),
+      })
+   }
+
+   const maxLength10 = maxLengthCreator(10)
+   const onSubmit = async values => {
+      await sleep(300)
+      window.alert(JSON.stringify(values, 0, 2))
+   }
+
    return (
       <>
-         <form onSubmit={props.handleSubmit}>
-            <Field placeholder="Заголовок" name="title" component="input" />
-            <Field placeholder="Дуров, верни стену!" name="newPostText" component="textarea" />
-            <Indent10 />
-            <button>
-               Опубликовать
-            </button>
-            <Indent10 />
-         </form>
+         <Form onSubmit={addPost}
+            render={({ handleSubmit }) => (
+               <form onSubmit={handleSubmit}>
+                  <Field placeholder="Заголовок" name="title" component="input"
+                     validate={required} />
+                  <Field placeholder="Дуров, верни стену!" name="newPostText" component="textarea"
+                     validate={required} />
+                  <Indent10 />
+                  <button onClick={errorNoty}>
+                     Опубликовать
+                  </button>
+                  <Indent10 />
+               </form>
+            )
+            }
+         />
       </>
    )
 }
-
-const ReduxWriteForm = reduxForm({ form: 'posts' })(WritePostForm)
-
 
 export default WritePost;

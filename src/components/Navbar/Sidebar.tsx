@@ -1,11 +1,10 @@
 // страница header
 import { Button, Grid, Group } from '@mantine/core'
-import s from './Sidebar.module.css'
-import { IconInnerShadowTopLeft } from '@tabler/icons-react'
 import AutoUpdate3 from '../Forms/AutoUpdate3'
 import Indent10 from '../Forms/Indent';
 import { NavLink } from 'react-router-dom';
 import DrawerOpen from '../Forms/DrawerOpen';
+import DrawerOpen2 from '../Forms/DrawerOpen2';
 
 export default function Sidebar(props: any) {
 
@@ -22,11 +21,11 @@ export default function Sidebar(props: any) {
                      </Group>
                   </NavLink>
                }
-
             </Grid.Col>
 
             <Grid.Col>
                <DrawerOpen />
+               <DrawerOpen2 />
             </Grid.Col>
 
             <AutoUpdate3 />

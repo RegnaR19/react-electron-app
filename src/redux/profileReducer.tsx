@@ -23,25 +23,12 @@ const profileReducer = (state = initialState, action: any) => {
    switch (action.type) {
 
       case ADD_POST: {
-         let stateCopy = { ...state }
          let newPost = {
             id: 4,
             post: action.title,
             message: action.newPostText,
             likescount: 999,
             img: sochi2
-         }
-
-         if (newPost.message === undefined) {
-            alert('Вы ничего не ввели в сообщении!')
-            break
-         }
-         else if (newPost.post === undefined) {
-            alert('Вы ничего не ввели в заголовке!')
-            break
-         }
-         else if (newPost.message != '') {
-            stateCopy.posts = action.newPost
          }
 
          return {
