@@ -17,7 +17,6 @@ import MainProfileContainer from "./components/Profile/MainProfileContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
 import Login from "./components/Profile/Login";
 import HeaderOne from "./components/Navbar/Header";
-import { useColorScheme } from '@mantine/hooks';
 import './App.scss'
 
 const App = () => {
@@ -33,7 +32,7 @@ const App = () => {
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
-         <Notifications />
+         <Notifications position="bottom-center" containerWidth={350} />
          <header className={style}>
             <div className={s.col1_noborder}>
                <HeaderOne />

@@ -2,7 +2,7 @@
 import { NavLink } from 'react-router-dom';
 import { NavLink as NavMantine } from '@mantine/core';
 import {
-   IconHome2, IconSettings,
+   IconSettings,
    IconAt, IconActivity, IconCircleOff, IconBadge4k, IconUsers, IconAddressBook, IconNews
 } from '@tabler/icons-react';
 import s from './Navigation.module.css'

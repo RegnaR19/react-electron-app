@@ -1,6 +1,7 @@
+import s from "./FormsControls.module.css"
 
-export const titleInput = (props: any) => {
-    return (
-        <input {...props} />
-    )
+export const titleInput = ({ input, meta, ...props }) => {
+   return (
+      <input {...input} {...props} className={s.form} />
+   )
 }

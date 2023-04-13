@@ -1,6 +1,7 @@
 // основная страница новостей
-import { Timeline, Text } from '@mantine/core';
+import { Timeline, Text, Image } from '@mantine/core';
 import { IconGitBranch, IconGitPullRequest, IconGitCommit } from '@tabler/icons-react';
+import Indent10 from '../Forms/Indent';
 
 const NewsPage = () => {
    return (
@@ -24,8 +25,10 @@ const NewsPage = () => {
             <Timeline.Item title="Новая версия" bullet={<IconGitPullRequest size={12} />} lineVariant="dashed">
                <Text color="dimmed" size="sm">Релиз 1.0.0</Text>
                <Text size="xs" mt={4}>6 марта 2023 г.</Text>
-            </Timeline.Item>
+            </Timeline.Item>              
          </Timeline>
+         <Indent10 />
+         <Image src="/src/assets/dance.gif" />
       </>
    )
 }

@@ -20,7 +20,7 @@ const MainProfile: React.FC<Props> = (props) => {
       <>
 
          <AccountMenu profile={props.profile} />
-         {/* <HeaderImg /> */}
+         <HeaderImg />
          <Divider my="sm" />
          <Grid>
             <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>

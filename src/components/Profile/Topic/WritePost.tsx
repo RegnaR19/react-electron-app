@@ -5,20 +5,19 @@ import { Button, Input, Textarea } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { IconBrandXbox } from "@tabler/icons-react";
 import { Form, Field } from 'react-final-form'
+import s from "../../Common/FormsControls.module.css"
 
 type Props = {
    newPostText?: any,
    addPost?: any,
    updateNewPostText?: any,
-   handleSubmit?: any,
-   title: any
+   handleSubmit?: any
 }
 
 const WritePost: React.FC<Props> = ({ ...props }) => {
 
    const successForm = () => {
       notifications.show({
-         id: 'hello-there',
          withCloseButton: false,
          autoClose: 5000,
          title: "10G за новый пост!",
@@ -53,18 +52,18 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
             validate={(values: any) => {
                const errors: Employee = {}
                if (!values.title) {
-                  errors.title = 'Необходимо заполнить поле'
+                  errors.title = 'Необходимо заполнить заголовок'
                }
                if (!values.newPostText) {
-                  errors.newPostText = 'Необходимо заполнить поле'
+                  errors.newPostText = 'Необходимо заполнить сообщение'
                }
                return errors
             }}
             render={({ handleSubmit, values, submitting }) => (
-               <form onSubmit={handleSubmit}>
-                  <Field name="title" component={titleInput}>
+               <form onSubmit={handleSubmit}> 
+                  <Field name="title" component="input">
                      {({ input, meta }) => (
-                        <div>
+                        <div className={s.form}>
                            <Input {...input} type="text" placeholder="Заголовок" />
                            {meta.error && meta.touched && <span>{meta.error}</span>}
                         </div>
@@ -73,7 +72,7 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
                   <Indent10 />
                   <Field name="newPostText" component="textarea">
                      {({ input, meta }) => (
-                        <div>
+                        <div className={s.form}>
                            <Textarea {...input} placeholder="Дуров, верни стену!" />
                            {meta.error && meta.touched && <span>{meta.error}</span>}
                         </div>

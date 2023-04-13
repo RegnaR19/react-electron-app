@@ -1,7 +1,4 @@
-import s from './Dialogs.module.css';
-import DialogItem from '../DialogItem/DialogItem';
-import Messages from './MessagesLink';
-import { Button, Grid, Textarea } from '@mantine/core';
+import { Button, Textarea } from '@mantine/core';
 import { Field, Form } from 'react-final-form';
 import Indent10 from '../../Forms/Indent';
 
