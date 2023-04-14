@@ -60,7 +60,7 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
                return errors
             }}
             render={({ handleSubmit, values, submitting }) => (
-               <form onSubmit={handleSubmit}> 
+               <form onSubmit={handleSubmit}>
                   <Field name="title" component="input">
                      {({ input, meta }) => (
                         <div className={s.form}>

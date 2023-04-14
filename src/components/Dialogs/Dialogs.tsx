@@ -16,7 +16,6 @@ const Dialogs = (props: any) => {
 
    const successForm = () => {
       notifications.show({
-         id: 'message',
          withCloseButton: false,
          autoClose: 5000,
          title: "30G за размещение сообщения!",

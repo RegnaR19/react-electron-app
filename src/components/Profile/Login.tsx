@@ -3,8 +3,11 @@ import Indent10 from "../Forms/Indent";
 import { Button, Checkbox, Input } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { IconBrandXbox } from "@tabler/icons-react";
+import { connect } from "react-redux";
+import { login, logout } from "@/redux/authReducer";
+import { Navigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props: any) => {
 
    const successForm = () => {
       notifications.show({
@@ -12,7 +15,7 @@ const Login = () => {
          withCloseButton: false,
          autoClose: 5000,
          title: "20G за нажатие кнопки!",
-         message: 'Но данная функция пока не работает.',
+         message: 'Но данная функция пока что не работает.',
          color: 'red',
          icon: <IconBrandXbox />,
          className: 'my-notification-class',
@@ -31,11 +34,18 @@ const Login = () => {
       password?: any
    }
 
+   const onSubmit = (formData: any) => {
+      props.login(formData.email, formData.password, formData.rememberMe)
+      if (props.isAuth) {
+         <Navigate to="/profile" />
+      }
+      successForm()
+   }
+
    return (
       <>
          <h2>Страница входа</h2>
-
-         <Form onSubmit={successForm}
+         <Form onSubmit={onSubmit}
             validate={(values: any) => {
                const errors: Employee = {}
                if (!values.email) {
@@ -86,4 +96,10 @@ const Login = () => {
    );
 }
 
-export default Login;
+let mapStateToProps = (state: any) => {
+   return {
+      isAuth: state.auth.isAuth
+   }
+}
+
+export default connect(mapStateToProps, { login, logout })(Login);

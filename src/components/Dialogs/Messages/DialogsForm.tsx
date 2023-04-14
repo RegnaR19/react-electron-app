@@ -13,32 +13,34 @@ const DialogsForm: React.FC<Props> = (props) => {
    }
 
    return (
-      <Form onSubmit={props.addNewMessage}
-         validate={(values: any) => {
-            const errors: Employee = {}
-            if (!values.message) {
-               errors.message = 'Необходимо заполнить поле'
-            }
-            return errors
-         }}
-         render={({ handleSubmit, values, submitting }) => (
-            <form onSubmit={handleSubmit}>
-               <Field placeholder="Сообщение" name='message' component="textarea">
-                  {({ input, meta }) => (
-                     <div>
-                        <Textarea {...input} placeholder="Текст сообщения" />
-                        {meta.error && meta.touched && <span>{meta.error}</span>}
-                     </div>
-                  )}
-               </Field>
-               <Indent10 />
-               <Button type="submit" disabled={submitting}>
-                  Отправить
-               </Button>
-               <pre>{JSON.stringify(values, null, 2)}</pre>
-            </form>
-         )}
-      />
+      <>
+         <Form onSubmit={props.addNewMessage}
+            validate={(values: any) => {
+               const errors: Employee = {}
+               if (!values.message) {
+                  errors.message = 'Необходимо заполнить поле'
+               }
+               return errors
+            }}
+            render={({ handleSubmit, values, submitting }) => (
+               <form onSubmit={handleSubmit}>
+                  <Field placeholder="Сообщение" name='message' component="textarea">
+                     {({ input, meta }) => (
+                        <div>
+                           <Textarea {...input} placeholder="Текст сообщения" />
+                           {meta.error && meta.touched && <span>{meta.error}</span>}
+                        </div>
+                     )}
+                  </Field>
+                  <Indent10 />
+                  <Button type="submit" disabled={submitting}>
+                     Отправить
+                  </Button>
+                  <pre>{JSON.stringify(values, null, 2)}</pre>
+               </form>
+            )}
+         />
+      </>
    )
 }
 

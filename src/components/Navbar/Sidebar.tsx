@@ -8,12 +8,11 @@ import DrawerOpen2 from '../Forms/DrawerOpen2';
 
 export default function Sidebar(props: any) {
 
-
    return (
       <>
          <Grid justify="center" align="center">
             <Grid.Col>
-               {props.isAuth ? 'Вы вошли как: ' + props.login
+               {props.isAuth ? <div>Вы вошли как: {props.login} <Button onClick={props.logout}>[ Выход ]</Button></div>
                   : <NavLink to="login">
                      <Group position="center">
                         <Button variant="gradient" gradient={{ from: 'teal', to: 'blue', deg: 60 }}>
@@ -29,7 +28,7 @@ export default function Sidebar(props: any) {
             </Grid.Col>
 
             <AutoUpdate3 />
-         </Grid>
+         </Grid >
          <Indent10 />
       </>
    );

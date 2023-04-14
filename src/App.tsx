@@ -10,7 +10,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import { useState } from "react";
 import { Button, ColorScheme, ColorSchemeProvider, MantineProvider } from "@mantine/core";
-import { Notifications, notifications } from "@mantine/notifications";
+import { Notifications } from "@mantine/notifications";
 import s from "./App.module.css"
 import { IconArrowsMaximize } from "@tabler/icons-react";
 import MainProfileContainer from "./components/Profile/MainProfileContainer";
