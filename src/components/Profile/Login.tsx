@@ -2,24 +2,27 @@ import { Field, Form } from "react-final-form";
 import Indent10 from "../Forms/Indent";
 import { Button, Checkbox, Input } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
-import { IconBrandXbox } from "@tabler/icons-react";
+import { IconCircleCheck } from "@tabler/icons-react";
 import { connect } from "react-redux";
-import { login, logout } from "@/redux/authReducer";
-import { Navigate } from "react-router-dom";
+import { login } from "@/redux/authReducer";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props: any) => {
 
+   const navigate = useNavigate();
+
    const successForm = () => {
+      navigate("/profile")
       notifications.show({
          id: 'login',
          withCloseButton: false,
          autoClose: 5000,
-         title: "20G за нажатие кнопки!",
-         message: 'Но данная функция пока что не работает.',
-         color: 'red',
-         icon: <IconBrandXbox />,
+         title: "50G за успешный вход!",
+         message: 'Спасибо за тест данной функции.',
+         color: 'green',
+         icon: <IconCircleCheck />,
          className: 'my-notification-class',
-         loading: true,
+         loading: false,
          styles: (theme) => ({
             root: {
                backgroundColor: theme.colors.dark[5],
@@ -34,12 +37,11 @@ const Login = (props: any) => {
       password?: any
    }
 
-   const onSubmit = (formData: any) => {
+   const onSubmit = (formData: any, isAuth: any) => {
       props.login(formData.email, formData.password, formData.rememberMe)
-      if (props.isAuth) {
-         <Navigate to="/profile" />
+      if (!isAuth) {
+         successForm()
       }
-      successForm()
    }
 
    return (
@@ -67,7 +69,7 @@ const Login = (props: any) => {
                      )}
                   </Field>
                   <Indent10 />
-                  <Field name='password' component="input" autoComplete="off">
+                  <Field name='password' component="input" autoComplete="off" type="password">
                      {({ input, meta }) => (
                         <div>
                            <Input {...input} placeholder="Пароль" />
@@ -96,10 +98,4 @@ const Login = (props: any) => {
    );
 }
 
-let mapStateToProps = (state: any) => {
-   return {
-      isAuth: state.auth.isAuth
-   }
-}
-
-export default connect(mapStateToProps, { login, logout })(Login);
+export default connect(null, { login })(Login);
