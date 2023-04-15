@@ -1,7 +1,6 @@
-import { Button, Input } from "@mantine/core";
+import { Input } from "@mantine/core";
 import { IconAt, IconBrandXbox } from "@tabler/icons-react";
 import React from "react";
-import Indent10 from "../Forms/Indent";
 import { notifications } from "@mantine/notifications";
 
 type Props = {
@@ -21,17 +20,19 @@ class ProfileStatus extends React.Component<Props> {
          id: 'login',
          withCloseButton: false,
          autoClose: 5000,
-         title: "5G за изменение статуса!",
+         title: "25G за изменение статуса!",
          message: 'Функция заработает, когда будет произведен вход в аккаунт.',
-         color: 'gray',
+         color: 'dark',
          icon: <IconBrandXbox />,
          className: 'my-notification-class',
          loading: false,
          styles: (theme) => ({
             root: {
-               backgroundColor: theme.colors.dark[5],
+               backgroundColor: theme.colors.blue[5],
                '&::before': { backgroundColor: theme.white },
-            }
+            },
+            title: { color: theme.white },
+            description: { color: theme.white },
          }),
       })
    }

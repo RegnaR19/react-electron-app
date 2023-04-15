@@ -1,23 +1,12 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import MainProfile from './MainProfile';
-import { getUserProfile, getUserStatus, updateStatus } from "../../redux/profileReducer";
 import Login from './Login';
+import { compose } from 'redux';
 
-type Props = {
-   isAuth: any
+const LoginContainer = (props: any) => {
+   return (
+      <Login isAuth={props.isAuth} />
+   )
 }
-
-class LoginContainer extends React.Component<Props> {
-
-   render() {
-      return (
-         <Login isAuth={this.props.isAuth} />
-      )
-   }
-}
-
-
 
 let mapStateToProps = (state: any) => {
    return {
@@ -25,4 +14,4 @@ let mapStateToProps = (state: any) => {
    }
 }
 
-export default connect(mapStateToProps)(LoginContainer)
+export default compose(connect(mapStateToProps)(LoginContainer))

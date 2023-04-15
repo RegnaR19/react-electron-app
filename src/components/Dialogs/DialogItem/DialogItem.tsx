@@ -16,7 +16,7 @@ const DialogItem: React.FC<Props> = ({ id, name }) => {
       <div>
          <Button.Group orientation="vertical">
             <Button variant="default">
-               <NavLink to={path}>{id}, {name}</NavLink>
+               {id}. {name}
             </Button>
          </Button.Group>
       </div>

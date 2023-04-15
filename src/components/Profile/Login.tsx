@@ -6,8 +6,13 @@ import { IconCircleCheck } from "@tabler/icons-react";
 import { connect } from "react-redux";
 import { login } from "@/redux/authReducer";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-const Login = (props: any) => {
+type Props = {
+   isAuth: any
+}
+
+const Login: React.FC<Props> = (props: any) => {
 
    const navigate = useNavigate();
 
@@ -37,16 +42,18 @@ const Login = (props: any) => {
       password?: any
    }
 
-   const onSubmit = (formData: any, isAuth: any) => {
+   const onSubmit = (formData: any) => {
       props.login(formData.email, formData.password, formData.rememberMe)
-      if (!isAuth) {
-         successForm()
-      }
    }
+
+   useEffect(() => {
+      { props.isAuth ? successForm() : '' }
+   }, [props.isAuth]);
 
    return (
       <>
          <h2>Страница входа</h2>
+
          <Form onSubmit={onSubmit}
             validate={(values: any) => {
                const errors: Employee = {}
@@ -87,7 +94,7 @@ const Login = (props: any) => {
                      )}
                   </Field>
                   <Indent10 />
-                  <Button type="submit" disabled={submitting}>
+                  <Button type="submit" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} disabled={submitting}>
                      Войти
                   </Button>
                   <pre>{JSON.stringify(values, undefined, 2)}</pre>

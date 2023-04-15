@@ -26,9 +26,11 @@ const Dialogs = (props: any) => {
          loading: false,
          styles: (theme) => ({
             root: {
-               backgroundColor: theme.colors.dark[5],
+               backgroundColor: theme.colors.gray[4],
                '&::before': { backgroundColor: theme.white },
-            }
+            },
+            title: { color: theme.black },
+            description: { color: theme.black },
          }),
       })
    }
@@ -40,7 +42,6 @@ const Dialogs = (props: any) => {
 
    return (
       <>
-         Форма диалога
          <Grid grow>
             <Grid.Col span={5} className={s.border}><b>Имена</b></Grid.Col>
             <Grid.Col span={7} className={s.border}><b>Сообщения</b></Grid.Col>

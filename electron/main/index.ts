@@ -1,8 +1,7 @@
-import { app, BrowserWindow, shell, ipcMain } from 'electron'
+import { app, BrowserWindow, shell, ipcMain, Tray, Menu } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
 import { autoUpdater } from 'electron-updater'
-import remote from 'electron'
 
 process.env.DIST_ELECTRON = join(__dirname, '../')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
@@ -32,14 +31,15 @@ let win: BrowserWindow | null = null
 const preload = join(__dirname, '../preload/index.js')
 const url = process.env.VITE_DEV_SERVER_URL
 const indexHtml = join(process.env.DIST, 'index.html')
-
+let tray = null
 async function createWindow() {
 
    win = new BrowserWindow({
       icon: join(process.env.PUBLIC, 'favicon.ico'),
-      width: 1280,
-      height: 768,
+      width: 1920,
+      height: 1080,
       center: true,
+      frame: true,
       autoHideMenuBar: true,
       webPreferences: {
          preload,
@@ -74,7 +74,31 @@ async function createWindow() {
 
 app.whenReady().then(() => {
    createWindow()
+   tray = new Tray('./src/assets/icon.ico')
+   const contextMenu = Menu.buildFromTemplate([
+      {
+         label: 'Показать программу', click: function () {
+            win.show()
+            win.focus()
+         }
+      }
+      ,
+      {
+         label: 'Свернуть программу', click: function () {
+            win.hide();
+         }
+      },
+      {
+         label: 'Выход', click: function () {
+            win.destroy();
+            app.quit();
+         }
+      }
+   ])
+   tray.setToolTip('Title получается.')
+   tray.setContextMenu(contextMenu)
    autoUpdater.checkForUpdatesAndNotify()
+
 })
 
 autoUpdater.autoDownload = true

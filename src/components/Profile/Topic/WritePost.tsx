@@ -3,9 +3,10 @@ import { titleInput } from "@/components/Common/FormsControls";
 import Indent10 from "@/components/Forms/Indent";
 import { Button, Input, Textarea } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
-import { IconBrandXbox } from "@tabler/icons-react";
+import { IconBrandXbox, IconMoodSad } from "@tabler/icons-react";
 import { Form, Field } from 'react-final-form'
 import s from "../../Common/FormsControls.module.css"
+import UploadPhotoPost from "./UploadPhotoPost";
 
 type Props = {
    newPostText?: any,
@@ -28,9 +29,11 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
          loading: false,
          styles: (theme) => ({
             root: {
-               backgroundColor: theme.colors.dark[5],
+               backgroundColor: theme.colors.gray[1],
                '&::before': { backgroundColor: theme.white },
-            }
+            },
+            title: { color: theme.black },
+            description: { color: theme.black },
          }),
       })
    }
@@ -79,7 +82,9 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
                      )}
                   </Field>
                   <Indent10 />
-                  <Button type="submit" disabled={submitting}>
+                  <UploadPhotoPost />
+                  <Indent10 />
+                  <Button type="submit" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} disabled={submitting}>
                      Опубликовать
                   </Button>
                   <Indent10 />
