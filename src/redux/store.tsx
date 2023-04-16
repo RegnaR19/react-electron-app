@@ -14,8 +14,7 @@ let store = {
             { id: 1, message: "Hi" },
             { id: 2, message: "How are you? Im in Almenevo today" },
             { id: 3, message: "Hello" },
-         ],
-         newMessageBody: 'Ку'
+         ]
       },
       profilePage: {
          posts: [
@@ -23,7 +22,6 @@ let store = {
             { id: 2, post: "Chidori!", message: "НАРУТО!!!11!", likescount: 1000, img: avatar },
             { id: 3, post: "Rasengan!", message: "САСКЕ!!!11!", likescount: 5000, img: avatar },
          ],
-         newPostText: 'dattebayo naruto',
          profile: { photos: {} }
       }
    },
@@ -38,8 +36,6 @@ let store = {
 
    // делаем диспатч экшенов по типу
    dispatch(action: any) {
-      this._state.profilePage = profileReducer(this._state.profilePage, action)
-      this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
       this._callSubscriber(this._state)
    },
 
