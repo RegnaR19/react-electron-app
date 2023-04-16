@@ -37,9 +37,10 @@ async function createWindow() {
    win = new BrowserWindow({
       icon: join(process.env.PUBLIC, 'favicon.ico'),
       width: 1366,
-      height: 768,
+      height: 920,
       center: true,
       frame: true,
+      maximizable: true,
       autoHideMenuBar: true,
       webPreferences: {
          preload,
@@ -60,10 +61,21 @@ async function createWindow() {
       win.loadFile(indexHtml)
    }
 
+   win.webContents.setWindowOpenHandler(() => ({
+      action: 'allow',
+      overrideBrowserWindowOptions: { show: false },
+   }))
+
+   win.webContents.on('did-create-window', win =>
+      win.once('ready-to-show', () => win.maximize()),
+   )
+
+
    // Test actively push message to the Electron-Renderer
    win.webContents.on('did-finish-load', () => {
       win?.webContents.send('main-process-message', new Date().toLocaleString())
    })
+
 
    // Make all links open with the browser, not with the application
    win.webContents.setWindowOpenHandler(({ url }) => {

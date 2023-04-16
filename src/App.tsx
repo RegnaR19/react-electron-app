@@ -8,20 +8,21 @@ import TestPage from "./components/Settings/TestPage";
 import VideoPage from "./components/Video/VideoPage";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import s from "./App.module.css"
 import { IconArrowsMaximize } from "@tabler/icons-react";
 import MainProfileContainer from "./components/Profile/MainProfileContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
-import HeaderOne from "./components/Navbar/Header";
 import './App.scss'
 import LoginContainer from "./components/Profile/LoginContainer";
 import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
 import Indent10 from "./components/Forms/Indent";
+import { connect } from "react-redux";
+import { initApp } from "./redux/appReducer";
 
-const App = () => {
+const App = (props: any) => {
    const [style, setStyle] = useState(s.layout)
    const changeStyle = () => {
       setStyle(s.layout1)
@@ -31,6 +32,10 @@ const App = () => {
    const changeStyle2 = () => {
       setStyle2(s.col2_wide)
    }
+
+   useEffect(() => {
+      props.initApp();
+   }, [])
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
@@ -79,4 +84,10 @@ const App = () => {
    );
 }
 
-export default App
+let mapStateToProps = (state: any) => {
+   return {
+      init: state.app.init,
+   }
+}
+
+export default connect(mapStateToProps, { initApp })(App)

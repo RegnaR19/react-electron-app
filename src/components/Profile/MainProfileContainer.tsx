@@ -16,14 +16,15 @@ type Props = {
    getUserProfile: any,
    getUserStatus: any,
    status: any,
-   updateStatus: any
+   updateStatus: any,
+   loggerUserID: any
 }
 
 class MainProfileContainer extends React.Component<Props> {
 
    componentDidMount() {
       let userId = this.props.router.params.userId
-      if (!userId) { userId = 28352 }
+      if (!userId) { userId = this.props.loggerUserID }
       this.props.getUserProfile(userId)
       this.props.getUserStatus(userId)
    }
@@ -38,7 +39,9 @@ class MainProfileContainer extends React.Component<Props> {
 let mapStateToProps = (state: any) => {
    return {
       profile: state.profilePage.profile,
-      status: state.profilePage.status
+      status: state.profilePage.status,
+      isAuth: state.auth.isAuth,
+      loggerUserID: state.auth.userId
    }
 }
 

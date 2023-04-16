@@ -34,7 +34,7 @@ const AutoUpdate = () => {
             <Group position="center">
                 <Button onClick={() => setOpened(true)}
                     variant="gradient" gradient={{ from: 'teal', to: 'blue', deg: 60 }}>
-                    Обновление 1.0.2</Button>
+                    ✅ 1.0.2</Button>
             </Group>
             <Indent10 />
         </>

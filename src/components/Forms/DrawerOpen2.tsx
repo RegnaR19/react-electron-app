@@ -21,7 +21,7 @@ const DrawerOpen2 = () => {
          <Group position="center">
             <Button onClick={() => setOpened(true)}
                variant="gradient" gradient={{ from: 'gray', to: 'black' }}>
-               Боковое меню #2</Button>
+               #2</Button>
          </Group>
          <Indent10 />
       </>

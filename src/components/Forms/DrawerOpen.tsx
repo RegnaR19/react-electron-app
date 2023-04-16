@@ -33,7 +33,7 @@ const DrawerOpen = () => {
          <Group position="center">
             <Button onClick={() => setOpened(true)}
                variant="gradient" gradient={{ from: 'orange', to: 'red' }}>
-               Боковое меню</Button>
+               #1</Button>
          </Group>
          <Indent10 />
       </>
