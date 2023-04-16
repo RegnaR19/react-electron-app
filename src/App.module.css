@@ -23,14 +23,16 @@
 }
 
 .col1_noborder {
-   width: 180px;
-   height: inherit;
+   width: 190px;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
    float: left;
 }
 
 .col1 {
    float: left;
-   width: 180px;
+   width: 190px;
    border: 1px solid #424242;
    height: 100% !important;
 }
@@ -52,8 +54,7 @@
 }
 
 .col3_noborder {
-   width: 180px;
-   height: 94px;
+   width: 190px;
    float: right;
    display: flex;
    justify-content: center;
@@ -61,7 +62,7 @@
 }
 
 .col3 {
-   width: 180px;
+   width: 190px;
    float: right;
    border: 1px solid #424242;
    padding: 10px;

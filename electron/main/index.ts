@@ -36,8 +36,8 @@ async function createWindow() {
 
    win = new BrowserWindow({
       icon: join(process.env.PUBLIC, 'favicon.ico'),
-      width: 1920,
-      height: 1080,
+      width: 1366,
+      height: 768,
       center: true,
       frame: true,
       autoHideMenuBar: true,
@@ -84,7 +84,7 @@ app.whenReady().then(() => {
       }
       ,
       {
-         label: 'Свернуть программу', click: function () {
+         label: 'Скрыть программу', click: function () {
             win.hide();
          }
       },

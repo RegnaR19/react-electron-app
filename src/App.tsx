@@ -18,6 +18,8 @@ import SidebarContainer from "./components/Navbar/SidebarContainer";
 import HeaderOne from "./components/Navbar/Header";
 import './App.scss'
 import LoginContainer from "./components/Profile/LoginContainer";
+import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
+import Indent10 from "./components/Forms/Indent";
 
 const App = () => {
    const [style, setStyle] = useState(s.layout)
@@ -33,21 +35,23 @@ const App = () => {
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
          <Notifications position="bottom-center" containerWidth={350} />
+         <Indent10 />
          <header className={style}>
             <div className={s.col1_noborder}>
-               <HeaderOne />
+               {/* <HeaderOne /> */}
             </div>
-            <div className={s.col3_noborder}>
+            <div className={s.col3}>
                <Button variant="outline" size="sm" leftIcon={<IconArrowsMaximize size="1rem" />}
                   onClick={() => { changeStyle(); changeStyle2() }}>
-                  Изменить размер
+                  Расширить
                </Button>
+            </div>
+            <div className={style2}>
+               <HeaderTwoContainer />
             </div>
          </header>
          <div className={style}>
-            <nav className={s.col1}>
-               <Navigation />
-            </nav>
+            <nav className={s.col1}> <Navigation /> </nav>
             <aside className={s.col3}><SidebarContainer /></aside>
             <main className={style2}>
                <Routes>

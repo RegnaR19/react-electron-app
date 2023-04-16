@@ -8,6 +8,10 @@ const NewsPage = () => {
       <>
          <h2>Новости</h2>
          <Timeline active={1} bulletSize={24} lineWidth={2}>
+            <Timeline.Item bullet={<IconGitBranch size={12} />} title="Большое обновление">
+               <Text color="dimmed" size="sm">Выпуск версии 1.0.4</Text>
+               <Text size="xs" mt={4}>16 апреля 2023 г.</Text>
+            </Timeline.Item>
             <Timeline.Item bullet={<IconGitBranch size={12} />} title="Новая версия">
                <Text color="dimmed" size="sm">Выпуск версии 1.0.3</Text>
                <Text size="xs" mt={4}>26 марта 2023 г.</Text>
@@ -25,7 +29,7 @@ const NewsPage = () => {
             <Timeline.Item title="Новая версия" bullet={<IconGitPullRequest size={12} />} lineVariant="dashed">
                <Text color="dimmed" size="sm">Релиз 1.0.0</Text>
                <Text size="xs" mt={4}>6 марта 2023 г.</Text>
-            </Timeline.Item>              
+            </Timeline.Item>
          </Timeline>
          <Indent10 />
          <Image src="/src/assets/dance.gif" />

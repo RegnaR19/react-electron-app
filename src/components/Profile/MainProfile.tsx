@@ -27,7 +27,7 @@ const MainProfile: React.FC<Props> = (props) => {
             <Grid.Col span="content">
                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
                <hr />
-               <ProfileInfo profile={props.profile} />
+               <ProfileInfo profile={props.profile} status={props.status} />
             </Grid.Col>
          </Grid>
          <Divider my="sm" />

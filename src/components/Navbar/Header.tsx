@@ -9,7 +9,7 @@ export default function HeaderOne() {
       <>
          <Grid justify="center" align="center" className={s.header}>
             <Grid.Col span="content">
-               {/* <Image src={imageToAdd} className={s.logo} /> */}
+               123
             </Grid.Col>
          </Grid>
       </>

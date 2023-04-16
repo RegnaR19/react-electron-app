@@ -4,19 +4,16 @@ const ProfileInfo = (props: any) => {
 
    let ID = props.profile.userId
    let fullName = props.profile.fullName
-   let looking = props.profile.lookingForAJobDescription
-   let status = props.profile.aboutMe
 
-   if (looking === null) { looking = "не указано" }
+   if (props.status === null) { props.status = "не указано" }
 
-   if (status === null) { status = "не указан" }
+   // if (status === null) { status = "не указан" }
 
    return (
       <>
-            <div>ID: {ID}</div>
-            <div>Имя: {fullName}</div>
-            <div>Профессия: {looking}</div>
-            <div>Статус: {status}</div>
+         <div>ID: {ID}</div>
+         <div>Имя: {fullName}</div>
+         <div>Статус: {props.status}</div>
       </>
    )
 }
