@@ -44,6 +44,17 @@ export default defineConfig(({ command }) => {
             nodeIntegration: true,
          }),
       ],
+      build: {
+         rollupOptions: {
+            output: {
+               manualChunks(id) {
+                  if (id.includes('node_modules')) {
+                     return id.toString().split('node_modules/')[1].split('/')[0].toString();
+                  }
+               }
+            }
+         }
+      },
       server: !!process.env.VSCODE_DEBUG ? (() => {
          const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
          return {

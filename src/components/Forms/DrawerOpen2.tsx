@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Drawer, Button, Group, Image } from '@mantine/core';
 import Indent10 from './Indent';
+import rick from '../../assets/rick.jpg'
 
 const DrawerOpen2 = () => {
    const [opened, setOpened] = useState(false);
@@ -15,7 +16,7 @@ const DrawerOpen2 = () => {
             size="xs"
          >
             ывапдлоыфлдадцфжоуажцукжр
-            <Image src="/src/assets/rick.jpg" />
+            <Image src={rick} />
          </Drawer>
 
          <Group position="center">

@@ -2,6 +2,7 @@
 import { Timeline, Text, Image } from '@mantine/core';
 import { IconGitBranch, IconGitPullRequest, IconGitCommit } from '@tabler/icons-react';
 import Indent10 from '../Forms/Indent';
+import dance from '../../assets/dance.gif'
 
 const NewsPage = () => {
    return (
@@ -10,7 +11,7 @@ const NewsPage = () => {
          <Timeline active={1} bulletSize={24} lineWidth={2}>
             <Timeline.Item bullet={<IconGitBranch size={12} />} title="Большое обновление">
                <Text color="dimmed" size="sm">Выпуск версии 1.0.4</Text>
-               <Text size="xs" mt={4}>16 апреля 2023 г.</Text>
+               <Text size="xs" mt={4}>17 апреля 2023 г.</Text>
             </Timeline.Item>
             <Timeline.Item bullet={<IconGitBranch size={12} />} title="Новая версия">
                <Text color="dimmed" size="sm">Выпуск версии 1.0.3</Text>
@@ -32,7 +33,7 @@ const NewsPage = () => {
             </Timeline.Item>
          </Timeline>
          <Indent10 />
-         <Image src="/src/assets/dance.gif" />
+         <Image src={dance} />
       </>
    )
 }
