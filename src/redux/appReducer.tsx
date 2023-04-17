@@ -1,11 +1,9 @@
-import { authAPI } from "@/api/api"
 import { getAuthUserData } from "./authReducer"
 
 const SET_INIT = 'SET_INIT'
 
 let initialState = {
-   init: false,
-   isAuth: false
+   init: false
 }
 
 const appReducer = (state = initialState, action: any) => {

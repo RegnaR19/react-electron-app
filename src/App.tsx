@@ -10,9 +10,9 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import { useEffect, useState } from "react";
 import { Button, MantineProvider } from "@mantine/core";
-import { Notifications } from "@mantine/notifications";
+import { Notifications, notifications } from "@mantine/notifications";
 import s from "./App.module.css"
-import { IconArrowsMaximize } from "@tabler/icons-react";
+import { IconAdFilled, IconArrowsMaximize, IconX } from "@tabler/icons-react";
 import MainProfileContainer from "./components/Profile/MainProfileContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
 import './App.scss'
@@ -33,9 +33,35 @@ const App = (props: any) => {
       setStyle2(s.col2_wide)
    }
 
+   const error = () => {
+      notifications.show({
+         withCloseButton: true,
+         autoClose: 3000,
+         title: "",
+         message: 'Инициализация приложения',
+         color: 'blue',
+         icon: <IconAdFilled />,
+         className: 'my-notification-class',
+         loading: false,
+         styles: (theme) => ({
+            root: {
+               backgroundColor: theme.colors.dark[5],
+               '&::before': { backgroundColor: theme.white },
+            }
+         }),
+      })
+   }
+
+
+   const Initial = () => {
+      { props.init ? error() : error() }
+   }
+
    useEffect(() => {
       props.initApp();
+      Initial()
    }, [])
+
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>

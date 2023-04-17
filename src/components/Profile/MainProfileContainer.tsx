@@ -17,14 +17,23 @@ type Props = {
    getUserStatus: any,
    status: any,
    updateStatus: any,
-   loggerUserID: any
+   loggerUserID: any,
+   history: string,
+   push: string
 }
 
 class MainProfileContainer extends React.Component<Props> {
 
    componentDidMount() {
       let userId = this.props.router.params.userId
-      if (!userId) { userId = this.props.loggerUserID }
+      if (!userId) {
+         userId = this.props.loggerUserID
+         if (!userId) {
+            let a = [this.props.history]
+            a.push('login')
+         }
+      }
+
       this.props.getUserProfile(userId)
       this.props.getUserStatus(userId)
    }
