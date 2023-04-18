@@ -4,7 +4,7 @@ import s from './Header.module.css';
 import { notifications } from '@mantine/notifications';
 import { IconBrandXbox } from '@tabler/icons-react';
 
-export default function HeaderTwo(props: any) {
+const HeaderTwo = (props: any) => {
 
    const successForm = () => {
       notifications.show({
@@ -44,3 +44,5 @@ export default function HeaderTwo(props: any) {
       </>
    );
 }
+
+export default HeaderTwo

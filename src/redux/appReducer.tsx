@@ -26,12 +26,9 @@ export const initSuccess = () => {
    return { type: SET_INIT }
 }
 
-export const initApp = () => (dispatch: any) => {
-   let promise = dispatch(getAuthUserData())
-   Promise.all([promise])
-      .then(() => {
-         dispatch(initSuccess())
-      })
+export const initApp = () => async (dispatch: any) => {
+   await dispatch(getAuthUserData())
+   await dispatch(initSuccess())
 }
 
 export default appReducer

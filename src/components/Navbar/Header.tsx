@@ -1,10 +1,8 @@
 // страница header
-import { Image } from '@mantine/core';
-import imageToAdd from "../../assets/ps.png";
 import { Grid } from '@mantine/core';
 import s from './Header.module.css';
 
-export default function HeaderOne() {
+const HeaderOne = () => {
    return (
       <>
          <Grid justify="center" align="center" className={s.header}>
@@ -15,3 +13,5 @@ export default function HeaderOne() {
       </>
    );
 }
+
+export default HeaderOne

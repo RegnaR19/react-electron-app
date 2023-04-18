@@ -1,7 +1,7 @@
 import { Button, PasswordInput } from '@mantine/core';
 import Indent10 from '../Forms/Indent';
 
-function ChangePassword() {
+const ChangePassword = () => {
    return (
       <>
          <PasswordInput

@@ -33,44 +33,18 @@ const App = (props: any) => {
       setStyle2(s.col2_wide)
    }
 
-   const error = () => {
-      notifications.show({
-         withCloseButton: true,
-         autoClose: 3000,
-         title: "",
-         message: 'Инициализация приложения',
-         color: 'blue',
-         icon: <IconAdFilled />,
-         className: 'my-notification-class',
-         loading: false,
-         styles: (theme) => ({
-            root: {
-               backgroundColor: theme.colors.dark[5],
-               '&::before': { backgroundColor: theme.white },
-            }
-         }),
-      })
-   }
-
-
-   const Initial = () => {
-      { props.init ? error() : error() }
-   }
-
    useEffect(() => {
-      props.initApp();
-      Initial()
-   }, [])
-
+      props.initApp()
+   }, [props.initApp()])
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
          <Notifications position="bottom-center" containerWidth={350} />
          <Indent10 />
-         <header className={style}>
+         <header className={style}>  
             <div className={s.col1_noborder}>
                {/* <HeaderOne /> */}
-            </div>
+            </div> 
             <div className={s.col3}>
                <Button variant="outline" size="sm" leftIcon={<IconArrowsMaximize size="1rem" />}
                   onClick={() => { changeStyle(); changeStyle2() }}>

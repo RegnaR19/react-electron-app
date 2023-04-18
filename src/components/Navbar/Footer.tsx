@@ -2,7 +2,7 @@
 import { Grid, Col } from '@mantine/core';
 import Quote from '../Forms/Quote';
 
-export default function FooterOne() {
+const FooterOne = () => {
    return (
       <Grid justify="flex-start" align="center">
          <Grid.Col span="content">
@@ -11,3 +11,5 @@ export default function FooterOne() {
       </Grid>
    );
 }
+
+export default FooterOne

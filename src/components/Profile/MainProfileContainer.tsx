@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import MainProfile from './MainProfile';
 import { getUserProfile, getUserStatus, updateStatus } from "../../redux/profileReducer";
@@ -18,31 +18,32 @@ type Props = {
    status: any,
    updateStatus: any,
    loggerUserID: any,
-   history: string,
-   push: string
+   isAuth: any
 }
 
-class MainProfileContainer extends React.Component<Props> {
+const MainProfileContainer: React.FC<Props> = (props) => {
 
-   componentDidMount() {
-      let userId = this.props.router.params.userId
+   let { userId } = useParams();
+   let navigate = useNavigate();
+
+   useEffect(() => {
       if (!userId) {
-         userId = this.props.loggerUserID
+         userId = props.loggerUserID;
+         console.log(props.loggerUserID)
          if (!userId) {
-            let a = [this.props.history]
-            a.push('login')
+            navigate('/login')
          }
       }
 
-      this.props.getUserProfile(userId)
-      this.props.getUserStatus(userId)
-   }
+      if (userId) {
+         props.getUserProfile(userId);
+         props.getUserStatus(userId);
+      }
+   }, [])
 
-   render() {
-      return (
-         <MainProfile profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} />
-      )
-   }
+   return (
+      <MainProfile profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
+   )
 }
 
 let mapStateToProps = (state: any) => {

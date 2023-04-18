@@ -17,11 +17,10 @@ class ProfileStatus extends React.Component<Props> {
 
    successForm = () => {
       notifications.show({
-         id: 'login',
          withCloseButton: false,
          autoClose: 5000,
          title: "25G за изменение статуса!",
-         message: 'Функция заработает, когда будет произведен вход в аккаунт.',
+         message: 'Статус успешно изменен.',
          color: 'dark',
          icon: <IconBrandXbox />,
          className: 'my-notification-class',
@@ -38,9 +37,13 @@ class ProfileStatus extends React.Component<Props> {
    }
 
    activateEditMode = () => {
-      this.setState({ editMode: !this.state.editMode })
-      this.successForm()
+      this.setState(
+         { editMode: !this.state.editMode }
+      )
       this.props.updateStatus(this.state.status)
+      if (this.state.editMode) {
+         this.successForm()
+      }
    }
 
    onStatusChange = (e: any) => {

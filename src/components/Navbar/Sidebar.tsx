@@ -8,7 +8,7 @@ import AutoUpdate4 from '../Forms/AutoUpdate4';
 import AutoUpdate3 from '../Forms/AutoUpdate3';
 import AutoUpdate2 from '../Forms/AutoUpdate2';
 
-export default function Sidebar(props: any) {
+const Sidebar = (props: any) => {
 
    return (
       <>
@@ -38,3 +38,5 @@ export default function Sidebar(props: any) {
       </>
    );
 }
+
+export default Sidebar
