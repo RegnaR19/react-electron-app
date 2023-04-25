@@ -1,8 +1,7 @@
 // основная страница новостей
-import { Timeline, Text, Image } from '@mantine/core';
+import { Timeline, Text } from '@mantine/core';
 import { IconGitBranch, IconGitPullRequest, IconGitCommit } from '@tabler/icons-react';
 import Indent10 from '../Forms/Indent';
-import dance from '../../assets/dance.gif'
 
 const NewsPage = () => {
    return (
@@ -33,7 +32,6 @@ const NewsPage = () => {
             </Timeline.Item>
          </Timeline>
          <Indent10 />
-         <Image src={dance} />
       </>
    )
 }

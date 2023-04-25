@@ -23,15 +23,6 @@ import { connect } from "react-redux";
 import { initApp } from "./redux/appReducer";
 
 const App = (props: any) => {
-   const [style, setStyle] = useState(s.layout)
-   const changeStyle = () => {
-      setStyle(s.layout1)
-   }
-
-   const [style2, setStyle2] = useState(s.col2)
-   const changeStyle2 = () => {
-      setStyle2(s.col2_wide)
-   }
 
    useEffect(() => {
       props.initApp()
@@ -41,24 +32,21 @@ const App = (props: any) => {
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
          <Notifications position="bottom-center" containerWidth={350} />
          <Indent10 />
-         <header className={style}>  
+         <header className={s.layout}>  
             <div className={s.col1_noborder}>
                {/* <HeaderOne /> */}
             </div> 
             <div className={s.col3}>
-               <Button variant="outline" size="sm" leftIcon={<IconArrowsMaximize size="1rem" />}
-                  onClick={() => { changeStyle(); changeStyle2() }}>
-                  Расширить
-               </Button>
+               тут ничего нет
             </div>
-            <div className={style2}>
+            <div className={s.col2}>
                <HeaderTwoContainer />
             </div>
          </header>
-         <div className={style}>
+         <div className={s.layout}>
             <nav className={s.col1}> <Navigation /> </nav>
             <aside className={s.col3}><SidebarContainer /></aside>
-            <main className={style2}>
+            <main className={s.col2}>
                <Routes>
                   <Route path="/" element={<NewsPage />} />
                   <Route path="profile/:userId?" element={<MainProfileContainer />} />
@@ -73,10 +61,10 @@ const App = (props: any) => {
                </Routes>
             </main>
          </div>
-         <footer className={style}>
+         <footer className={s.layout}>
             <div className={s.col1_noborder}></div>
             <div className={s.col3_noborder}></div>
-            <div className={style2}>
+            <div className={s.col2}>
                <div className={s.header}><FooterOne /></div>
             </div>
          </footer>

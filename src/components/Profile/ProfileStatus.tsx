@@ -1,6 +1,6 @@
 import { Input } from "@mantine/core";
 import { IconAt, IconBrandXbox } from "@tabler/icons-react";
-import React from "react";
+import { useEffect, useState } from "react";
 import { notifications } from "@mantine/notifications";
 
 type Props = {
@@ -8,19 +8,21 @@ type Props = {
    updateStatus: any
 }
 
-class ProfileStatus extends React.Component<Props> {
+const ProfileStatus: React.FC<Props> = (props) => {
 
-   state = {
-      editMode: false,
-      status: this.props.status
-   }
+   useEffect(() => {
+      props.status
+   }, [])
 
-   successForm = () => {
+   const [editMode, setEditMode] = useState(false)
+   const [status, setStatus] = useState(props.status)
+
+   let successForm = () => {
       notifications.show({
          withCloseButton: false,
          autoClose: 5000,
          title: "25G за изменение статуса!",
-         message: 'Статус успешно изменен.',
+         message: `Новый статус: ${status}`,
          color: 'dark',
          icon: <IconBrandXbox />,
          className: 'my-notification-class',
@@ -36,42 +38,38 @@ class ProfileStatus extends React.Component<Props> {
       })
    }
 
-   activateEditMode = () => {
-      this.setState(
-         { editMode: !this.state.editMode }
-      )
-      this.props.updateStatus(this.state.status)
-      if (this.state.editMode) {
-         this.successForm()
-      }
+   const activateEditMode = () => {
+      setEditMode(true)
    }
 
-   onStatusChange = (e: any) => {
-      this.setState({
-         status: e.currentTarget.value
-      })
+   const deactivateEditMode = () => {
+      setEditMode(false)
+      props.updateStatus(status)
+      successForm()
    }
 
-   render() {
-      return (
-         <>
-            {!this.state.editMode &&
-               <div onClick={this.activateEditMode}><b>{this.props.status || "статус не указан"}</b> (нажмите для изменения статуса)</div>
-            }
-
-            {this.state.editMode &&
-               <div>
-                  <Input icon={<IconAt />} onChange={this.onStatusChange} onBlur={this.activateEditMode}
-                     placeholder="Изменение статуса" autoFocus={true}
-                     radius="md" size="sm" value={this.state.status}
-                  />
-
-               </div>
-            }
-
-         </>
-      );
+   const onStatusChange = (e: any) => {
+      setStatus(e.currentTarget.value)
    }
+
+   return (
+      <>
+         {!editMode &&
+            <div onClick={activateEditMode}><b>{props.status || "статус не указан"}</b> (нажмите для изменения статуса)</div>
+         }
+
+         {editMode &&
+            <div>
+               <Input icon={<IconAt />} onChange={onStatusChange} onBlur={deactivateEditMode}
+                  placeholder="Изменение статуса" autoFocus={true}
+                  radius="md" size="sm" value={status}
+               />
+
+            </div>
+         }
+
+      </>
+   );
 }
 
 export default ProfileStatus;

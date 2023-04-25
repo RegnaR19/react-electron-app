@@ -7,8 +7,6 @@ const ProfileInfo = (props: any) => {
 
    if (props.status === null) { props.status = "не указано" }
 
-   // if (status === null) { status = "не указан" }
-
    return (
       <>
          <div>ID: {ID}</div>
