@@ -10,12 +10,15 @@ type Props = {
 
 const ProfileStatus: React.FC<Props> = (props) => {
 
-   useEffect(() => {
-      props.status
-   }, [])
+   let propsStatus = props.status
 
    const [editMode, setEditMode] = useState(false)
-   const [status, setStatus] = useState(props.status)
+   const [status, setStatus] = useState(propsStatus)
+
+   useEffect(() => {
+      setStatus(propsStatus)
+   }, [propsStatus])
+
 
    let successForm = () => {
       notifications.show({
@@ -55,7 +58,7 @@ const ProfileStatus: React.FC<Props> = (props) => {
    return (
       <>
          {!editMode &&
-            <div onClick={activateEditMode}><b>{props.status || "статус не указан"}</b> (нажмите для изменения статуса)</div>
+            <div onClick={activateEditMode}><b>{propsStatus || "статус не указан"}</b> (нажмите для изменения статуса)</div>
          }
 
          {editMode &&
@@ -64,7 +67,6 @@ const ProfileStatus: React.FC<Props> = (props) => {
                   placeholder="Изменение статуса" autoFocus={true}
                   radius="md" size="sm" value={status}
                />
-
             </div>
          }
 

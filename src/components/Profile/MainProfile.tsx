@@ -19,14 +19,12 @@ const MainProfile: React.FC<Props> = (props) => {
    return (
       <>
 
-         <AccountMenu profile={props.profile} />
+         {/* <AccountMenu profile={props.profile} /> */}
          {/* <HeaderImg /> */}
-         <Divider my="sm" />
          <Grid>
             <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>
             <Grid.Col span="content">
                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
-               <hr />
                <ProfileInfo profile={props.profile} status={props.status} />
             </Grid.Col>
          </Grid>

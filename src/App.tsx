@@ -9,7 +9,7 @@ import VideoPage from "./components/Video/VideoPage";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import { useEffect, useState } from "react";
-import { Button, MantineProvider } from "@mantine/core";
+import { Button, Grid, MantineProvider } from "@mantine/core";
 import { Notifications, notifications } from "@mantine/notifications";
 import s from "./App.module.css"
 import { IconAdFilled, IconArrowsMaximize, IconX } from "@tabler/icons-react";
@@ -21,23 +21,23 @@ import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
 import Indent10 from "./components/Forms/Indent";
 import { connect } from "react-redux";
 import { initApp } from "./redux/appReducer";
+import DrawerOpen from "./components/Forms/DrawerOpen";
+import DrawerOpen2 from "./components/Forms/DrawerOpen2";
 
 const App = (props: any) => {
 
    useEffect(() => {
-      props.initApp()
-   }, [props.initApp()])
+      props.initApp
+   }, [props.initApp, props.init])
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
          <Notifications position="bottom-center" containerWidth={350} />
          <Indent10 />
-         <header className={s.layout}>  
+         <Indent10 />
+         <header className={s.layout}>
             <div className={s.col1_noborder}>
                {/* <HeaderOne /> */}
-            </div> 
-            <div className={s.col3}>
-               тут ничего нет
             </div>
             <div className={s.col2}>
                <HeaderTwoContainer />

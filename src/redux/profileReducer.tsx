@@ -1,8 +1,8 @@
 import { profileAPI, usersAPI } from "@/api/api";
-import paris from "../assets/p1.jpg";
-import abstract from "../assets/p2.jpg";
-import sochi from "../assets/p3.jpg";
-import sochi2 from "../assets/p4.jpeg";
+import cyber from "../assets/cyber.jpg";
+import dota from "../assets/dota2.jpg";
+import fable from "../assets/fable.png";
+import newPostImage from "../assets/new.jpg";
 
 const ADD_POST = 'ADD_POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -10,9 +10,9 @@ const SET_STATUS = 'SET_STATUS'
 
 let initialState = {
    posts: [
-      { id: 1, post: "Париж", message: "Виды на Париж", likescount: 300, img: paris },
-      { id: 2, post: "Абстракция", message: "Картинка-абстракция", likescount: 1000, img: abstract },
-      { id: 3, post: "Сочи", message: "Сочи", likescount: 5000, img: sochi },
+      { id: 1, post: "Cyberpunk 2077", message: "Сюжет Cyberpunk 2077 рассказывает о герое/героине Ви из города Найт-Сити — опасной и мультикультурной клоаке будущего с могущественными корпорациями, уличными бандами, насилием, имплантами и сексом. Пытаясь сорвать куш и примкнуть к преступной элите города, Ви и его друг Джеки Уэллс решаются на опасное дело. Естественно, задание вылезет им боком и приведет к головокружительным приключениям, смертям и новым знакомствам. Во время безумного хоровода зрелищных событий, которые позже оказываются лишь прологом, Ви встречает обезбашенную личность из прошлого, рок-музыканта и террориста Джонни Сильверхенда (Киану Ривз). И вот тут у главного героя начинаются реальные проблемы.", likescount: 300, img: cyber },
+      { id: 2, post: "Dota 2", message: "Dota 2 — компьютерная многопользовательская командная игра жанра стратегия в реальном времени с элементами компьютерной ролевой игры, реализация известной карты DotA для игры Warcraft III в отдельном клиенте. В игре участвуют две команды по пять человек. Одна команда играет за светлую сторону, другая — за темную.", likescount: 1000, img: dota },
+      { id: 3, post: "Fable", message: "Fable - своего рода симулятор героя, пушествующего по городам и селам мира Альбион. Жизнь нашего персонажа, за которым мы следим чуть ли не с младенческого возраста, - постоянный выбор между черным и белым, между добром и злом.", likescount: 5000, img: fable },
    ],
    profile: { photos: {} },
    status: ''
@@ -27,8 +27,8 @@ const profileReducer = (state = initialState, action: any) => {
             id: 4,
             post: action.title,
             message: action.newPostText,
-            likescount: 999,
-            img: sochi2
+            likescount: 0,
+            img: newPostImage
          }
 
          return {

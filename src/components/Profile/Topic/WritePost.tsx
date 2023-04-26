@@ -1,9 +1,8 @@
 // страница написания постов
-import { titleInput } from "@/components/Common/FormsControls";
 import Indent10 from "@/components/Forms/Indent";
-import { Button, Input, Textarea } from "@mantine/core";
+import { Button, Grid, Input, Textarea } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
-import { IconBrandXbox, IconMoodSad } from "@tabler/icons-react";
+import { IconBrandXbox } from "@tabler/icons-react";
 import { Form, Field } from 'react-final-form'
 import s from "../../Common/FormsControls.module.css"
 import UploadPhotoPost from "./UploadPhotoPost";
@@ -62,7 +61,7 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
                }
                return errors
             }}
-            render={({ handleSubmit, values, submitting }) => (
+            render={({ handleSubmit, submitting }) => (
                <form onSubmit={handleSubmit}>
                   <Field name="title" component="input">
                      {({ input, meta }) => (
@@ -82,14 +81,16 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
                      )}
                   </Field>
                   <Indent10 />
-                  <UploadPhotoPost />
-                  <Indent10 />
-                  <Button type="submit" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} disabled={submitting}>
-                     Опубликовать
-                  </Button>
+                  <Grid justify="right" align="center">
+                     <Grid.Col span="auto"><UploadPhotoPost /></Grid.Col>
+                     <Grid.Col span="content">
+                        <Button type="submit" variant="gradient" gradient={{ from: 'red', to: 'yellow', deg: 60 }} disabled={submitting}>
+                           Опубликовать
+                        </Button>
+                     </Grid.Col>
+                  </Grid>
                   <Indent10 />
 
-                  <pre>{JSON.stringify(values, null, 2)}</pre>
                </form>
             )
             }
