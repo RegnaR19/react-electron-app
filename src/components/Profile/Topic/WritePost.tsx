@@ -49,7 +49,7 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
 
    return (
       <>
-         <h4>Опубликовать новую запись</h4>
+         <h3>Новая запись</h3>
          <Form onSubmit={addPost}
             validate={(values: any) => {
                const errors: Employee = {}

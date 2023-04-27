@@ -12,6 +12,7 @@ const PostElements: React.FC<Props> = ({ ...props }) => {
 
    return (
       <>
+         <h3>Все записи</h3>
          {postElements}
       </>
    )

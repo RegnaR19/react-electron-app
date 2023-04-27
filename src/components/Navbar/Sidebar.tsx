@@ -12,8 +12,9 @@ const Sidebar = (props: any) => {
       <>
          <Grid justify="center" align="center">
             <Grid.Col>
-               <AutoUpdate2 /><Divider my="sm" />
-               <AutoUpdate3 /><Divider my="sm" />
+               <center><h3>История</h3></center>
+               <AutoUpdate2 /><Indent10 />
+               <AutoUpdate3 /><Indent10 />
                <AutoUpdate4 />
             </Grid.Col>
          </Grid >

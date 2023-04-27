@@ -17,27 +17,31 @@ const TestPage = () => {
 
    return (
       <>
-         <div
-            style={{
-               maxWidth: rem(200),
-               position: 'relative',
-               display: 'flex',
-               justifyContent: 'center',
-               margin: 'auto',
-            }}
-         >
-            <Button onClick={() => setOpened(true)}>Transition (переход)</Button>
-            <Transition mounted={opened} transition={scaleY} duration={200} timingFunction="ease">
-               {(styles) => (
-                  <Paper
-                     shadow="md"
-                     style={{ ...styles, position: 'absolute', top: 0, left: 0, right: 0, height: rem(120) }}
-                     ref={clickOutsideRef}
-                  >
-                     Dropdown
-                  </Paper>
-               )}
-            </Transition>
+         <div className="col2-app">
+            <h3>Тестовая страница</h3>
+
+            <div
+               style={{
+                  maxWidth: rem(200),
+                  position: 'relative',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  margin: 'auto',
+               }}
+            >
+               <Button onClick={() => setOpened(true)}>Transition (переход)</Button>
+               <Transition mounted={opened} transition={scaleY} duration={200} timingFunction="ease">
+                  {(styles) => (
+                     <Paper
+                        shadow="md"
+                        style={{ ...styles, position: 'absolute', top: 0, left: 0, right: 0, height: rem(120) }}
+                        ref={clickOutsideRef}
+                     >
+                        Dropdown
+                     </Paper>
+                  )}
+               </Transition>
+            </div>
          </div>
       </>
    )

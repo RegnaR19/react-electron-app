@@ -9,7 +9,7 @@ import VideoPage from "./components/Video/VideoPage";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import { useEffect, useState } from "react";
-import { Button, Grid, MantineProvider } from "@mantine/core";
+import { Button, Grid, Image, MantineProvider } from "@mantine/core";
 import { Notifications, notifications } from "@mantine/notifications";
 import s from "./App.module.css"
 import { IconAdFilled, IconArrowsMaximize, IconX } from "@tabler/icons-react";
@@ -32,16 +32,16 @@ const App = (props: any) => {
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
-         <Notifications position="bottom-center" containerWidth={350} />
-         <Indent10 />
-         <Indent10 />
-         <header className={s.layout}>
-            <div className={s.col1_noborder}>
-               {/* <HeaderOne /> */}
-            </div>
-            <div className={s.col2}>
-               <HeaderTwoContainer />
-            </div>
+         <Notifications position="bottom-right" containerWidth={350} />
+         <header className={s.layout2}>
+            <Grid align="center">
+               <Grid.Col span="content">
+                  <Image src="../src/assets/ps.png" width={80} />
+               </Grid.Col>
+               <Grid.Col span="auto" offset={7}>
+                  <HeaderTwoContainer />
+               </Grid.Col>
+            </Grid >
          </header>
          <div className={s.layout}>
             <nav className={s.col1}> <Navigation /> </nav>

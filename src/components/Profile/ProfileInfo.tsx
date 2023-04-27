@@ -4,8 +4,11 @@ const ProfileInfo = (props: any) => {
 
    let ID = props.profile.userId
    let fullName = props.profile.fullName
+   let status = props.status
 
-   if (props.status === null) { props.status = "не указано" }
+   if (status === null) {
+      status = "не указано"
+   }
 
    return (
       <>

@@ -7,11 +7,16 @@ import Indent10 from "../Forms/Indent";
 const SettingsPage = () => {
    return (
       <>
-         <Text size="sm">Фото профиля</Text>
-         <Indent10 />
-         <UploadAvatar />
-         <Indent10 />
-         <ChangePassword />
+
+         <div className="col2-app">
+            <h3>Настройки</h3>
+
+            <Text size="sm">Фото профиля</Text>
+            <Indent10 />
+            <UploadAvatar />
+            <Indent10 />
+            <ChangePassword />
+         </div>
       </>
    );
 }

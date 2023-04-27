@@ -37,11 +37,11 @@ const HeaderTwo = (props: any) => {
                      {props.isAuth ? <div>Вы вошли как {props.login} &nbsp; <Button onClick={props.logout} onClickCapture={successForm}
                         variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>Выход</Button></div>
                         : <>
-                           <Grid.Col span="auto">Вход не выполнен</Grid.Col>
-                           <Grid.Col span="auto">< NavLink to="login">
-                              <Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>
-                                 Войти в аккаунт</Button>
-                           </NavLink>
+                           <Grid.Col span="auto">Вход не выполнен &nbsp;
+                              <NavLink to="login">
+                                 <Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>
+                                    Войти в аккаунт</Button>
+                              </NavLink>
                            </Grid.Col>
                         </>
                      }

@@ -27,15 +27,19 @@ const Users: React.FC<Props> = (props) => {
 
    return (
       <>
-         На странице: {pagesSize} и юзеров: {totalUsersCount}<br />
-         Кол-во страниц: {pagesCount}<br />
-         {pages.map((e: any) => {
-            return <span className={props.currentPage === e ? s.selectedPage : ""}
-               onClick={() => { props.onPageChanged(e) }}>
-               {e}
-            </span>
-         })}
-         {usersElements}
+         <div className="col2-app">
+            <h3>Пользователи</h3>
+
+            На странице: {pagesSize} и юзеров: {totalUsersCount}<br />
+            Кол-во страниц: {pagesCount}<br />
+            {pages.map((e: any) => {
+               return <span className={props.currentPage === e ? s.selectedPage : ""}
+                  onClick={() => { props.onPageChanged(e) }}>
+                  {e}
+               </span>
+            })}
+            {usersElements}
+         </div>
       </>
    )
 }

@@ -42,17 +42,21 @@ const Dialogs = (props: any) => {
 
    return (
       <>
-         <Grid grow>
-            <Grid.Col span={5} className={s.border}><b>Имена</b></Grid.Col>
-            <Grid.Col span={7} className={s.border}><b>Сообщения</b></Grid.Col>
-            <Grid.Col span={5} className={s.border}>{dialogsElements}</Grid.Col>
-            <Grid.Col span={7} className={s.border}>
-               {messagesElements}
-            </Grid.Col>
-         </Grid>
-         <div style={{ marginBottom: 20 }} />
+         <div className='col2-app'>
+            <h3>Сообщения</h3>
 
-         <DialogsForm addNewMessage={addNewMessage} />
+            <Grid grow>
+               <Grid.Col span={5} className={s.border}><b>Имена</b></Grid.Col>
+               <Grid.Col span={7} className={s.border}><b>Сообщения</b></Grid.Col>
+               <Grid.Col span={5} className={s.border}>{dialogsElements}</Grid.Col>
+               <Grid.Col span={7} className={s.border}>
+                  {messagesElements}
+               </Grid.Col>
+            </Grid>
+            <div style={{ marginBottom: 20 }} />
+
+            <DialogsForm addNewMessage={addNewMessage} />
+         </div>
       </>
    )
 }

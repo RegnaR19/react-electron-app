@@ -30,9 +30,11 @@ const Login: React.FC<Props> = (props: any) => {
          loading: false,
          styles: (theme) => ({
             root: {
-               backgroundColor: theme.colors.dark[5],
+               backgroundColor: theme.colors.gray[4],
                '&::before': { backgroundColor: theme.white },
-            }
+            },
+            title: { color: theme.black },
+            description: { color: theme.black },
          }),
       })
    }
@@ -52,55 +54,57 @@ const Login: React.FC<Props> = (props: any) => {
 
    return (
       <>
-         <h2>Страница входа</h2>
+         <div className="col2-app">
+            <h2>Страница входа</h2>
 
-         <Form onSubmit={onSubmit}
-            validate={(values: any) => {
-               const errors: Employee = {}
-               if (!values.email) {
-                  errors.email = 'Необходимо заполнить Email'
-               }
-               if (!values.password) {
-                  errors.password = 'Необходимо заполнить пароль'
-               }
-               return errors
-            }}
-            render={({ handleSubmit, values, submitting }) => (
-               <form onSubmit={handleSubmit}>
-                  <Field name='email' component="input">
-                     {({ input, meta }) => (
-                        <div>
-                           <Input {...input} placeholder="Email" />
-                           {meta.error && meta.touched && <span>{meta.error}</span>}
-                        </div>
-                     )}
-                  </Field>
-                  <Indent10 />
-                  <Field name='password' component="input" autoComplete="off" type="password">
-                     {({ input, meta }) => (
-                        <div>
-                           <Input {...input} placeholder="Пароль" />
-                           {meta.error && meta.touched && <span>{meta.error}</span>}
-                        </div>
-                     )}
-                  </Field>
-                  <Indent10 />
-                  <Field name='rememberMe' component="input" type="checkbox">
-                     {({ input, meta }) => (
-                        <div>
-                           <Checkbox {...input} label="Запомнить меня" />
-                           {meta.error && meta.touched && <span>{meta.error}</span>}
-                        </div>
-                     )}
-                  </Field>
-                  <Indent10 />
-                  <Button type="submit" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} disabled={submitting}>
-                     Войти
-                  </Button>
-                  <pre>{JSON.stringify(values, undefined, 2)}</pre>
-               </form>
-            )}
-         />
+            <Form onSubmit={onSubmit}
+               validate={(values: any) => {
+                  const errors: Employee = {}
+                  if (!values.email) {
+                     errors.email = 'Необходимо заполнить Email'
+                  }
+                  if (!values.password) {
+                     errors.password = 'Необходимо заполнить пароль'
+                  }
+                  return errors
+               }}
+               render={({ handleSubmit, values, submitting }) => (
+                  <form onSubmit={handleSubmit}>
+                     <Field name='email' component="input">
+                        {({ input, meta }) => (
+                           <div>
+                              <Input {...input} placeholder="Email" />
+                              {meta.error && meta.touched && <span>{meta.error}</span>}
+                           </div>
+                        )}
+                     </Field>
+                     <Indent10 />
+                     <Field name='password' component="input" autoComplete="off" type="password">
+                        {({ input, meta }) => (
+                           <div>
+                              <Input {...input} placeholder="Пароль" />
+                              {meta.error && meta.touched && <span>{meta.error}</span>}
+                           </div>
+                        )}
+                     </Field>
+                     <Indent10 />
+                     <Field name='rememberMe' component="input" type="checkbox">
+                        {({ input, meta }) => (
+                           <div>
+                              <Checkbox {...input} label="Запомнить меня" />
+                              {meta.error && meta.touched && <span>{meta.error}</span>}
+                           </div>
+                        )}
+                     </Field>
+                     <Indent10 />
+                     <Button type="submit" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} disabled={submitting}>
+                        Войти
+                     </Button>
+                     <pre>{JSON.stringify(values, undefined, 2)}</pre>
+                  </form>
+               )}
+            />
+         </div>
       </>
    );
 }
