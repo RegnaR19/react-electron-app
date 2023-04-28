@@ -36,7 +36,7 @@ const App = (props: any) => {
          <header className={s.layout2}>
             <Grid align="center">
                <Grid.Col span="content">
-                  <Image src="../src/assets/ps.png" width={80} />
+                  <Image src="../src/assets/ps.png" width={60} />
                </Grid.Col>
                <Grid.Col span="auto" offset={7}>
                   <HeaderTwoContainer />

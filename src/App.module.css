@@ -21,7 +21,7 @@
    margin-right: auto;
    width: 1000px;
    padding: 10px;
-   background: #3c434f;
+   background: #303841;
    margin-bottom: 10px;
    margin-top: 10px;
    border: 1px solid #424242;
@@ -32,7 +32,7 @@
    float: left;
    width: 190px;
    border: 1px solid #424242;
-   background: #3c434f;
+   background: #303841;
    height: 100% !important;
    border-radius: 10px;
 }
@@ -42,7 +42,7 @@
    width: 190px;
    float: right;
    border: 1px solid #424242;
-   background: #0b0b0b;
+   background: #303841;
    padding: 10px;
    border-radius: 10px;
 }
