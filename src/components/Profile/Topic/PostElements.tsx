@@ -5,6 +5,7 @@ type Props = {
 }
 
 const PostElements: React.FC<Props> = ({ ...props }) => {
+
    let postElements =
       [...props.dialogsPage.posts].reverse().map((p: any) =>
          <Cards id={p.id} key={p.id} header={p.post} message={p.message}

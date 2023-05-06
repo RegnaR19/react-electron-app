@@ -1,50 +1,48 @@
 // экспериментальная страница
-import { useState } from 'react';
-import { Transition, Paper, Button, rem } from '@mantine/core';
-import { useClickOutside } from '@mantine/hooks';
-
-const scaleY = {
-   in: { opacity: 1, transform: 'scaleY(1)' },
-   out: { opacity: 0, transform: 'scaleY(0)' },
-   common: { transformOrigin: 'top' },
-   transitionProperty: 'transform, opacity',
-};
+import { useSpring, animated } from '@react-spring/web'
 
 const TestPage = () => {
 
-   const [opened, setOpened] = useState(false);
-   const clickOutsideRef = useClickOutside(() => setOpened(false));
+   const [springs, api] = useSpring(() => ({
+      from: {
+         x: 0,
+         opacity: 0,
+      },
+      to: {
+         x: 100,
+         opacity: 1,
+      },
+   }))
+
+   const handleClick = () => {
+      api.start({
+         from: {
+            x: 0,
+            opacity: 0,
+         },
+         to: {
+            x: 100,
+            opacity: 1,
+         },
+      })
+   }
 
    return (
       <>
          <div className="col2-app">
             <h3>Тестовая страница</h3>
-
-            <div
+            <animated.div
+               onClick={handleClick}
                style={{
-                  maxWidth: rem(200),
-                  position: 'relative',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  margin: 'auto',
+                  width: 180,
+                  height: 180,
+                  background: '#ff6d6d',
+                  ...springs,
                }}
-            >
-               <Button onClick={() => setOpened(true)}>Transition (переход)</Button>
-               <Transition mounted={opened} transition={scaleY} duration={200} timingFunction="ease">
-                  {(styles) => (
-                     <Paper
-                        shadow="md"
-                        style={{ ...styles, position: 'absolute', top: 0, left: 0, right: 0, height: rem(120) }}
-                        ref={clickOutsideRef}
-                     >
-                        Dropdown
-                     </Paper>
-                  )}
-               </Transition>
-            </div>
+            />rdtegdfgdsfg
          </div>
       </>
    )
 }
 
-export default TestPage;
+export default TestPage
