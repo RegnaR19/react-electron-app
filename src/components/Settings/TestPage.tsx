@@ -6,12 +6,15 @@ const TestPage = () => {
    const [springs, api] = useSpring(() => ({
       from: {
          x: 0,
-         opacity: 0,
+         opacity: 1,
       },
       to: {
          x: 100,
          opacity: 1,
       },
+      mass: 1111,
+      loop: true,
+      reverse: true
    }))
 
    const handleClick = () => {
