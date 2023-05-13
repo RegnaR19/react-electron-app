@@ -36,7 +36,6 @@ const DialogsForm: React.FC<Props> = (props) => {
                   <Button type="submit" disabled={submitting} variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>
                      Отправить
                   </Button>
-                  <pre>{JSON.stringify(values, null, 2)}</pre>
                </form>
             )}
          />

@@ -9,3 +9,8 @@
    flex-wrap: wrap;
    height: max-content;
 }
+
+.login {
+   font-size: 30px;
+   font-weight: 300;
+}

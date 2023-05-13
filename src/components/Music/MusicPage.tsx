@@ -6,7 +6,7 @@ const MusicPage = () => {
    return (
       <>
          <div className="col2-app">
-            <h3>Музыка</h3>
+            <div className='big-title'>Музыка</div>
 
             <iframe style={{ border: 0, width: '100%', height: 180 }}
                width="100%" height="180"

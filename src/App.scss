@@ -7,10 +7,21 @@ body {
 
 .col2-app {
    background-color: #303841;
-   width: 600px;
-   margin: 0 200px 15px 200px;
-   padding: 15px;
+   width: 650px;
+   margin: 0 210px 15px 210px;
+   padding: 20px;
    justify-content: center;
    border: 1px solid #424242;
    border-radius: 10px;
+}
+
+.big-text {
+   font-size: 30px;
+   font-weight: 300;
+}
+
+.big-title {
+   font-size: 30px;
+   font-weight: 300;
+   margin-bottom: 20px;
 }

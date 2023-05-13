@@ -34,13 +34,13 @@ const HeaderTwo = (props: any) => {
             <Grid.Col span="content">
                <Grid justify="center" align="center">
                   <Grid.Col>
-                     {props.isAuth ? <div>Вы вошли как {props.login} &nbsp; <Button onClick={props.logout} onClickCapture={successForm}
+                     {props.isAuth ? <div className={s.login}>Привет, {props.login} &nbsp; <Button onClick={props.logout} onClickCapture={successForm}
                         variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>Выход</Button></div>
                         : <>
-                           <Grid.Col span="auto">Вход не выполнен &nbsp;
+                           <Grid.Col span="auto" className={s.login}>Вход не выполнен &nbsp;
                               <NavLink to="login">
                                  <Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>
-                                    Войти в аккаунт</Button>
+                                    Войти</Button>
                               </NavLink>
                            </Grid.Col>
                         </>

@@ -1,8 +1,7 @@
 import React from "react";
-import s from './Users.module.css'
+import { Group, Pagination } from '@mantine/core';
 
 type Props = {
-   users: any,
    pageSize: number,
    totalUsersCount: number,
    currentPage: number,
@@ -11,27 +10,28 @@ type Props = {
 
 const Paginator: React.FC<Props> = (props) => {
 
-   let pagesSize = props.pageSize
-   let totalUsersCount = props.totalUsersCount
    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-
-   let pages = []
-   for (let i = 1; i <= pagesCount; i++) {
-      pages.push(i)
-   }
 
    return (
       <>
-         На странице: {pagesSize} и юзеров: {totalUsersCount}<br />
-         Кол-во страниц: {pagesCount}<br />
-         {pages.map((e: any) => {
-            return <span className={props.currentPage === e ? s.selectedPage : ""}
-               onClick={() => { props.onPageChanged(e) }}>
-               {e}
-            </span>
-         })}
+         <Pagination.Root total={pagesCount} value={props.currentPage} onChange={props.onPageChanged} styles={(theme) => ({
+            control: {
+               '&[data-active]': {
+                  backgroundImage: theme.fn.gradient({ from: '#0c8599', to: '91c800' }),
+               },
+            },
+         })}>
+            <Group spacing={5}>
+               <Pagination.First />
+               <Pagination.Previous />
+               <Pagination.Items />
+               <Pagination.Next />
+               <Pagination.Last />
+            </Group>
+         </Pagination.Root>
       </>
    )
 }
+
 
 export default Paginator

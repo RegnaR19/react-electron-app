@@ -11,11 +11,7 @@ type Props = {
 }
 
 const Cards: React.FC<Props> = ({ id, header, message, likescount, img }) => {
-
-
-
    return (
-
       <><Card shadow="sm" p="lg" radius="md" withBorder className={s.item}>
          <Group position="apart" mb="xs">
             <Text weight={500} size="xl">{header}</Text>
@@ -40,7 +36,7 @@ const Cards: React.FC<Props> = ({ id, header, message, likescount, img }) => {
          <Card.Section className={s.item}>
             <Image className={s.item} src={img} />
          </Card.Section>
-      </Card><Indent10 /></>
+      </Card><Indent10 /><br /></>
    )
 }
 

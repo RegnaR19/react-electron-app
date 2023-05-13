@@ -7,9 +7,14 @@ const NewsPage = () => {
    return (
       <>
          <div className='col2-app'>
-            <h2>Новостная лента</h2>
+            <div className='big-title'>Новостная лента</div>
             <Timeline active={1} bulletSize={24} lineWidth={2}>
-               <Timeline.Item bullet={<IconGitBranch size={12} />} title="Большое обновление">
+               
+               <Timeline.Item bullet={<IconGitBranch size={12} />} title="Спустя месяц отдыха и домашней работы">
+                  <Text color="dimmed" size="sm">Выпуск версии 1.0.5</Text>
+                  <Text size="xs" mt={4}>14 мая 2023 г.</Text>
+               </Timeline.Item>
+               <Timeline.Item bullet={<IconGitCommit size={12} />} title="Большое обновление">
                   <Text color="dimmed" size="sm">Выпуск версии 1.0.4</Text>
                   <Text size="xs" mt={4}>17 апреля 2023 г.</Text>
                </Timeline.Item>

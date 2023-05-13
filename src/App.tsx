@@ -8,21 +8,18 @@ import TestPage from "./components/Settings/TestPage";
 import VideoPage from "./components/Video/VideoPage";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import { useEffect, useState } from "react";
-import { Button, Grid, Image, MantineProvider } from "@mantine/core";
-import { Notifications, notifications } from "@mantine/notifications";
+import { useEffect } from "react";
+import { Grid, Image, MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 import s from "./App.module.css"
-import { IconAdFilled, IconArrowsMaximize, IconX } from "@tabler/icons-react";
 import MainProfileContainer from "./components/Profile/MainProfileContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
 import './App.scss'
 import LoginContainer from "./components/Profile/LoginContainer";
 import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
-import Indent10 from "./components/Forms/Indent";
 import { connect } from "react-redux";
 import { initApp } from "./redux/appReducer";
-import DrawerOpen from "./components/Forms/DrawerOpen";
-import DrawerOpen2 from "./components/Forms/DrawerOpen2";
+import Sidebar2 from "./components/Navbar/Sidebar2";
 
 const App = (props: any) => {
 
@@ -45,8 +42,11 @@ const App = (props: any) => {
          </header>
          <div className={s.layout}>
             <nav className={s.col1}> <Navigation /> </nav>
-            <aside className={s.col3}><SidebarContainer /></aside>
-            <main className={s.col2}>
+            <aside className={s.col3}>
+               <div className={s.sidebar}><SidebarContainer /></div>
+               <div className={s.sidebar}><Sidebar2 /></div>
+            </aside>
+            <main>
                <Routes>
                   <Route path="/" element={<MainProfileContainer />} />
                   <Route path="profile/:userId?" element={<MainProfileContainer />} />
@@ -60,15 +60,15 @@ const App = (props: any) => {
                   <Route path="login" element={<LoginContainer />} />
                </Routes>
             </main>
-         </div>
+         </div >
          <footer className={s.layout}>
             <div className={s.col1_noborder}></div>
             <div className={s.col3_noborder}></div>
-            <div className={s.col2}>
+            <div>
                <div className={s.header}><FooterOne /></div>
             </div>
          </footer>
-      </MantineProvider>
+      </MantineProvider >
    );
 }
 

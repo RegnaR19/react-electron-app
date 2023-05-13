@@ -43,7 +43,7 @@ const Dialogs = (props: any) => {
    return (
       <>
          <div className='col2-app'>
-            <h3>Сообщения</h3>
+            <div className='big-title'>Сообщения</div>
 
             <Grid grow>
                <Grid.Col span={5} className={s.border}><b>Имена</b></Grid.Col>

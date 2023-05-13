@@ -43,7 +43,7 @@ const ProfileStatus: React.FC<Props> = (props) => {
 
    const [springs] = useSpring(() => ({
       from: {
-         opacity: 0.2,
+         opacity: 0.4,
          scale: 1,
       },
       to: {

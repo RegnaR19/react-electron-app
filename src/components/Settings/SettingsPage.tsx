@@ -9,7 +9,7 @@ const SettingsPage = () => {
       <>
 
          <div className="col2-app">
-            <h3>Настройки</h3>
+            <div className='big-title'>Настройки</div>
 
             <Text size="sm">Фото профиля</Text>
             <Indent10 />

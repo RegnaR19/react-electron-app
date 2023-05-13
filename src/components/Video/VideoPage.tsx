@@ -4,7 +4,7 @@ const VideoPage = () => {
    return (
       <>
          <div className="col2-app">
-            <h3>Видео</h3>
+            <div className='big-title'>Видео</div>
 
             <iframe
                src="https://www.youtube.com/embed/dlFA0Zq1k2A"

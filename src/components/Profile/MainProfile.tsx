@@ -22,7 +22,7 @@ const MainProfile: React.FC<Props> = (props) => {
          <div className='col2-app'>
             {/* <AccountMenu profile={props.profile} /> */}
             {/* <HeaderImg /> */}
-            <h3>{props.profile.fullName}</h3>
+            <div className='big-text'>{props.profile.fullName}</div>
 
             <Grid>
                <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>
