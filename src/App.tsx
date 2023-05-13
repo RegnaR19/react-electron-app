@@ -48,7 +48,7 @@ const App = (props: any) => {
             <aside className={s.col3}><SidebarContainer /></aside>
             <main className={s.col2}>
                <Routes>
-                  <Route path="/" element={<NewsPage />} />
+                  <Route path="/" element={<MainProfileContainer />} />
                   <Route path="profile/:userId?" element={<MainProfileContainer />} />
                   <Route path="messages" element={<DialogsContainer />} />
                   <Route path="users" element={<UsersContainer />} />

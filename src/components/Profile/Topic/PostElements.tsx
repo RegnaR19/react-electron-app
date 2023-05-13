@@ -1,10 +1,27 @@
 import Cards from "./WallCards";
+import { useInView, useSpring, animated } from '@react-spring/web'
 
 type Props = {
    dialogsPage: any
 }
 
 const PostElements: React.FC<Props> = ({ ...props }) => {
+
+   const [ref, style] = useInView(
+      () => ({
+         from: {
+            opacity: 0,
+            y: 50,
+         },
+         to: {
+            opacity: 1,
+            y: 0,
+         },
+      }),
+      {
+         rootMargin: '-40% 0%',
+      }
+   )
 
    let postElements =
       [...props.dialogsPage.posts].reverse().map((p: any) =>
@@ -14,7 +31,9 @@ const PostElements: React.FC<Props> = ({ ...props }) => {
    return (
       <>
          <h3>Все записи</h3>
-         {postElements}
+         <animated.div ref={ref} style={style}>
+            {postElements}
+         </animated.div>
       </>
    )
 }

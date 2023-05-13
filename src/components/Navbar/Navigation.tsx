@@ -11,16 +11,6 @@ const Navigation = () => {
    return (
       <>
          <div className={s.link}>
-            <NavLink to="news">
-               <NavMantine
-                  icon={<IconNews size={18} stroke={1.5} />}
-                  description='' label="Новости" />
-            </NavLink>
-            <NavLink to="users">
-               <NavMantine
-                  icon={<IconUsers size={18} stroke={1.5} />}
-                  description='' label="Пользователи" />
-            </NavLink>
             <NavLink to="profile">
                <NavMantine
                   icon={<IconAddressBook size={18} stroke={1.5} />}
@@ -30,6 +20,16 @@ const Navigation = () => {
                <NavMantine
                   icon={<IconAt size={18} stroke={1.5} />}
                   description='' label="Сообщения" />
+            </NavLink>
+            <NavLink to="news">
+               <NavMantine
+                  icon={<IconNews size={18} stroke={1.5} />}
+                  description='' label="Новости" />
+            </NavLink>
+            <NavLink to="users">
+               <NavMantine
+                  icon={<IconUsers size={18} stroke={1.5} />}
+                  description='' label="Пользователи" />
             </NavLink>
             <NavLink to="music">
                <NavMantine

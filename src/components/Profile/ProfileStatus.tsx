@@ -2,6 +2,7 @@ import { Input } from "@mantine/core";
 import { IconAt, IconBrandXbox } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { notifications } from "@mantine/notifications";
+import { useInView, useSpring, animated } from '@react-spring/web'
 
 type Props = {
    status: any,
@@ -18,7 +19,6 @@ const ProfileStatus: React.FC<Props> = (props) => {
    useEffect(() => {
       setStatus(propsStatus)
    }, [propsStatus])
-
 
    let successForm = () => {
       notifications.show({
@@ -41,6 +41,21 @@ const ProfileStatus: React.FC<Props> = (props) => {
       })
    }
 
+   const [springs] = useSpring(() => ({
+      from: {
+         opacity: 0.2,
+         scale: 1,
+      },
+      to: {
+         opacity: 1,
+         scale: 1,
+      },
+      config: { duration: 1000, mass: 100, tension: 100, friction: 100 },
+      loop: {
+         reverse: true
+      }
+   }))
+
    const activateEditMode = () => {
       setEditMode(true)
    }
@@ -57,19 +72,19 @@ const ProfileStatus: React.FC<Props> = (props) => {
 
    return (
       <>
-         {!editMode &&
+         <animated.div style={springs}>{!editMode &&
             <div onClick={activateEditMode}><b>{propsStatus || "статус не указан"}</b> (нажмите для изменения статуса)</div>
          }
 
-         {editMode &&
-            <div>
-               <Input icon={<IconAt />} onChange={onStatusChange} onBlur={deactivateEditMode}
-                  placeholder="Изменение статуса" autoFocus={true}
-                  radius="md" size="sm" value={status}
-               />
-            </div>
-         }
-
+            {editMode &&
+               <div>
+                  <Input icon={<IconAt />} onChange={onStatusChange} onBlur={deactivateEditMode}
+                     placeholder="Изменение статуса" autoFocus={true}
+                     radius="md" size="sm" value={status}
+                  />
+               </div>
+            }
+         </animated.div>
       </>
    );
 }
