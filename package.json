@@ -1,6 +1,6 @@
 {
-   "name": "ViNext",
-   "version": "1.0.4",
+   "name": "via-next",
+   "version": "1.0.5",
    "main": "dist-electron/main/index.js",
    "description": "beta version",
    "private": false,

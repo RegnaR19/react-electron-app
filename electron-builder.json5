@@ -2,8 +2,8 @@
  * @see https://www.electron.build/configuration/configuration
  */
 {
-  appId: 'oneleaf',
-  productName: 'OneLeaf',
+  appId: 'via-next',
+  productName: 'ViaNext',
   asar: true,
   directories: {
     output: 'release/${version}'

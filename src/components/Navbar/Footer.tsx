@@ -1,12 +1,11 @@
 // страница footer
 import { Grid, Col } from '@mantine/core';
-import Quote from '../Forms/Quote';
 
 const FooterOne = () => {
    return (
       <Grid justify="flex-start" align="center">
          <Grid.Col span="content">
-            <Quote />
+            {/* <h1>R19</h1> */}
          </Grid.Col>
       </Grid>
    );

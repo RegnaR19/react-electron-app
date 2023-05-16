@@ -7,7 +7,7 @@ const HeaderOne = () => {
       <>
          <Grid justify="center" align="center" className={s.header}>
             <Grid.Col span="content">
-               123
+               <div className="big-title-program">VIA NEXT</div>
             </Grid.Col>
          </Grid>
       </>

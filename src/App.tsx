@@ -20,6 +20,7 @@ import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
 import { connect } from "react-redux";
 import { initApp } from "./redux/appReducer";
 import Sidebar2 from "./components/Navbar/Sidebar2";
+import Header from "./components/Navbar/Header";
 
 const App = (props: any) => {
 
@@ -33,7 +34,7 @@ const App = (props: any) => {
          <header className={s.layout2}>
             <Grid align="center">
                <Grid.Col span="content">
-                  <Image src="../src/assets/ps.png" width={60} />
+               <Header />
                </Grid.Col>
                <Grid.Col span="auto" offset={7}>
                   <HeaderTwoContainer />

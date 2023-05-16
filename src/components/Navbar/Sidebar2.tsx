@@ -9,7 +9,7 @@ const Sidebar2 = (props: any) => {
          <Grid justify="center" align="center">
             <Grid.Col>
                <center><div className='big-text'>Achievement system</div><Indent10 /> (будет реализовано в след. обновлениях)
-                  <br /><div className='big-text'><p>0 G</p></div>
+                  <br /><div className='achievement'><p>0 G</p></div>
 
                </center>
             </Grid.Col>

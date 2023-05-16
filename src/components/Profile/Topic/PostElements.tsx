@@ -19,7 +19,7 @@ const PostElements: React.FC<Props> = ({ ...props }) => {
          },
       }),
       {
-         rootMargin: '-40% 0%',
+         rootMargin: '-20% 0%',
       }
    )
 
