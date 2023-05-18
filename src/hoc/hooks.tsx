@@ -1,4 +1,6 @@
+import { notifications } from '@mantine/notifications'
 import { useSpring, animated } from '@react-spring/web'
+import { IconBrandXbox } from '@tabler/icons-react'
 
 export const [springs, api] = useSpring(() => ({
     from: {
@@ -23,3 +25,4 @@ export const handleClick = () => {
         },
     })
 }
+

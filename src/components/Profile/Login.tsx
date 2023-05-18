@@ -1,43 +1,18 @@
 import { Field, Form } from "react-final-form";
 import Indent10 from "../Forms/Indent";
 import { Button, Checkbox, Input } from "@mantine/core";
-import { notifications } from "@mantine/notifications";
-import { IconCircleCheck } from "@tabler/icons-react";
 import { connect } from "react-redux";
 import { login } from "@/redux/authReducer";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import s from "./../Common/FormsControls.module.css"
+import { successLogin } from "./LoginContainer";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
    isAuth: any
 }
 
 const Login: React.FC<Props> = (props: any) => {
-
-   const navigate = useNavigate();
-
-   const successForm = () => {
-      navigate("/profile")
-      notifications.show({
-         id: 'login',
-         withCloseButton: false,
-         autoClose: 5000,
-         title: "50G за успешный вход!",
-         message: 'Спасибо за тест данной функции.',
-         color: 'green',
-         icon: <IconCircleCheck />,
-         className: 'my-notification-class',
-         loading: false,
-         styles: (theme) => ({
-            root: {
-               backgroundColor: theme.colors.gray[4],
-               '&::before': { backgroundColor: theme.white },
-            },
-            title: { color: theme.black },
-            description: { color: theme.black },
-         }),
-      })
-   }
 
    type Employee = {
       email?: any
@@ -48,14 +23,20 @@ const Login: React.FC<Props> = (props: any) => {
       props.login(formData.email, formData.password, formData.rememberMe)
    }
 
+   const navigate = useNavigate();
+
    useEffect(() => {
-      { props.isAuth ? successForm() : '' }
+      { props.isAuth ? navigate("/profile") : '' }
+   }, [props.isAuth]);
+
+   useEffect(() => {
+      { props.isAuth ? successLogin() : '' }
    }, [props.isAuth]);
 
    return (
       <>
          <div className="col2-app">
-            <h2>Страница входа</h2>
+            <div className='big-title'>Вход в аккаунт</div>
 
             <Form onSubmit={onSubmit}
                validate={(values: any) => {
@@ -72,7 +53,7 @@ const Login: React.FC<Props> = (props: any) => {
                   <form onSubmit={handleSubmit}>
                      <Field name='email' component="input">
                         {({ input, meta }) => (
-                           <div>
+                           <div className={s.form}>
                               <Input {...input} placeholder="Email" />
                               {meta.error && meta.touched && <span>{meta.error}</span>}
                            </div>
@@ -81,7 +62,7 @@ const Login: React.FC<Props> = (props: any) => {
                      <Indent10 />
                      <Field name='password' component="input" autoComplete="off" type="password">
                         {({ input, meta }) => (
-                           <div>
+                           <div className={s.form}>
                               <Input {...input} placeholder="Пароль" />
                               {meta.error && meta.touched && <span>{meta.error}</span>}
                            </div>
@@ -100,7 +81,6 @@ const Login: React.FC<Props> = (props: any) => {
                      <Button type="submit" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} disabled={submitting}>
                         Войти
                      </Button>
-                     <pre>{JSON.stringify(values, undefined, 2)}</pre>
                   </form>
                )}
             />

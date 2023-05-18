@@ -5,9 +5,8 @@ import Avatar from './common/Avatar';
 import { Divider, Grid } from '@mantine/core';
 import WritePostContainer from './Topic/WritePostContainer';
 import PostElementsContainer from './Topic/PostElementsContainer';
-import AccountMenu from './AccountMenu';
 import ProfileStatus from './ProfileStatus';
-import Indent10 from '../Forms/Indent';
+import AccountMenu from './AccountMenu';
 
 type Props = {
    profile: any,
@@ -21,7 +20,7 @@ const MainProfile: React.FC<Props> = (props) => {
       <>
          <div className='col2-app'>
             {/* <AccountMenu profile={props.profile} /> */}
-            {/* <HeaderImg /> */}
+            <HeaderImg /> обложка
             <div className='big-text'>{props.profile.fullName}</div>
 
             <Grid>

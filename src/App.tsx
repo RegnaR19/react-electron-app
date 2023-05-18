@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from 'react'
 import FooterOne from "./components/Navbar/Footer";
-import Navigation from "./components/Navbar/Navigation";
 import NewsPage from "./components/News/NewsPage";
 import MusicPage from "./components/Music/MusicPage";
 import SettingsPage from "./components/Settings/SettingsPage";
 import TestPage from "./components/Settings/TestPage";
 import VideoPage from "./components/Video/VideoPage";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
+const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
 import { useEffect } from "react";
 import { Grid, Image, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
@@ -20,29 +20,23 @@ import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
 import { connect } from "react-redux";
 import { initApp } from "./redux/appReducer";
 import Sidebar2 from "./components/Navbar/Sidebar2";
-import Header from "./components/Navbar/Header";
+import UnderNav from "./components/Forms/UnderNav";
+import NavigationContainer from "./components/Navbar/NavigationContainer";
 
 const App = (props: any) => {
 
    useEffect(() => {
       props.initApp
-   }, [props.initApp, props.init])
+   }, [])
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
          <Notifications position="bottom-right" containerWidth={350} />
          <header className={s.layout2}>
-            <Grid align="center">
-               <Grid.Col span="content">
-               <Header />
-               </Grid.Col>
-               <Grid.Col span="auto" offset={7}>
-                  <HeaderTwoContainer />
-               </Grid.Col>
-            </Grid >
+            <HeaderTwoContainer />
          </header>
          <div className={s.layout}>
-            <nav className={s.col1}> <Navigation /> </nav>
+            <nav className={s.col1}> <NavigationContainer /> </nav>
             <aside className={s.col3}>
                <div className={s.sidebar}><SidebarContainer /></div>
                <div className={s.sidebar}><Sidebar2 /></div>
@@ -52,7 +46,10 @@ const App = (props: any) => {
                   <Route path="/" element={<MainProfileContainer />} />
                   <Route path="profile/:userId?" element={<MainProfileContainer />} />
                   <Route path="messages" element={<DialogsContainer />} />
-                  <Route path="users" element={<UsersContainer />} />
+                  <Route path="users" element={
+                     <Suspense fallback={<UnderNav />}>
+                        <UsersContainer />
+                     </Suspense>} />
                   <Route path="news" element={<NewsPage />} />
                   <Route path="music" element={<MusicPage />} />
                   <Route path="settings" element={<SettingsPage />} />

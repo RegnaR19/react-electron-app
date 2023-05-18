@@ -3,11 +3,13 @@ import { NavLink } from 'react-router-dom';
 import { NavLink as NavMantine } from '@mantine/core';
 import {
    IconSettings,
-   IconAt, IconActivity, IconCircleOff, IconBadge4k, IconUsers, IconAddressBook, IconNews
+   IconAt, IconActivity, IconCircleOff, IconBadge4k, IconUsers, IconAddressBook, IconNews, IconLogout
 } from '@tabler/icons-react';
 import s from './Navigation.module.css'
+import { successExit } from './NavigationContainer';
 
-const Navigation = () => {
+const Navigation = (props: any) => {
+
    return (
       <>
          <div className={s.link}>
@@ -51,6 +53,17 @@ const Navigation = () => {
                   icon={<IconCircleOff size={18} stroke={1.5} />}
                   description='Эксперименты' label="Тестовая" />
             </NavLink>
+            {props.isAuth ? <NavLink to="#" onClick={successExit} onClickCapture={props.logout}>
+               <NavMantine
+                  icon={<IconLogout size={18} stroke={1.5} />}
+                  description='' label="Выход" />
+            </NavLink> :
+               <NavLink to="login">
+                  <NavMantine
+                     icon={<IconCircleOff size={18} stroke={1.5} />}
+                     description='' label="Вход" />
+               </NavLink>
+            }
          </div>
       </>
    );

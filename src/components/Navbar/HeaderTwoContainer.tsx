@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getAuthUserData, logout } from '@/redux/authReducer';
 import { compose } from 'redux';
 import HeaderTwo from './HeaderTwo';
+import Navigation from './Navigation';
 
 type Props = {
    getAuthUserData: any
@@ -32,4 +33,4 @@ let mapStateToProps = (state: any) => {
 export default compose(
    connect(mapStateToProps, { getAuthUserData, logout })
 )
-   (HeaderTwoContainer) 
+   (HeaderTwoContainer)
