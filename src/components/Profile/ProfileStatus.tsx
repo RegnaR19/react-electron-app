@@ -26,17 +26,17 @@ const ProfileStatus: React.FC<Props> = (props) => {
          autoClose: 5000,
          title: "25G за изменение статуса!",
          message: `Новый статус: ${status}`,
-         color: 'dark',
+         color: 'black',
          icon: <IconBrandXbox />,
          className: 'my-notification-class',
          loading: false,
          styles: (theme) => ({
             root: {
-               backgroundColor: theme.colors.blue[5],
-               '&::before': { backgroundColor: theme.white },
+               backgroundColor: theme.colors.gray[1],
+               '&::before': { backgroundColor: theme.black },
             },
-            title: { color: theme.white },
-            description: { color: theme.white },
+            title: { color: theme.black },
+            description: { color: theme.black },
          }),
       })
    }

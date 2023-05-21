@@ -30,7 +30,7 @@ const PostElements: React.FC<Props> = ({ ...props }) => {
 
    return (
       <>
-         <div className='big-title'>Все записи</div>
+         <div className='big-title'>Все последние записи</div>
          <animated.div ref={ref} style={style}>
             {postElements}
          </animated.div>

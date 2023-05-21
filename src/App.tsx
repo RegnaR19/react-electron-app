@@ -8,6 +8,7 @@ import TestPage from "./components/Settings/TestPage";
 import VideoPage from "./components/Video/VideoPage";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
+const LoginContainer = lazy(() => import('./components/Profile/LoginContainer'));
 import { useEffect } from "react";
 import { Grid, Image, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
@@ -15,7 +16,6 @@ import s from "./App.module.css"
 import MainProfileContainer from "./components/Profile/MainProfileContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
 import './App.scss'
-import LoginContainer from "./components/Profile/LoginContainer";
 import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
 import { connect } from "react-redux";
 import { initApp } from "./redux/appReducer";
@@ -55,7 +55,10 @@ const App = (props: any) => {
                   <Route path="settings" element={<SettingsPage />} />
                   <Route path="test" element={<TestPage />} />
                   <Route path="video" element={<VideoPage />} />
-                  <Route path="login" element={<LoginContainer />} />
+                  <Route path="login" element={
+                     <Suspense fallback={<UnderNav />}>
+                        <LoginContainer />
+                     </Suspense>} />
                </Routes>
             </main>
          </div >
