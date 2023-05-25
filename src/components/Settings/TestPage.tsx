@@ -1,5 +1,4 @@
 // экспериментальная страница
-import { useSpring, animated } from '@react-spring/web'
 import { useEffect, useState } from 'react'
 
 const TestPage = () => {

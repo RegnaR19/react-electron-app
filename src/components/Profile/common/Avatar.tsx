@@ -1,23 +1,39 @@
 // аватар профиля
-import { Avatar, Button, Group, Image, Skeleton } from '@mantine/core';
-import { useState } from 'react';
+import { Avatar, Button, Grid, Group, Image, Skeleton } from '@mantine/core';
 import s from './Avatar.module.css'
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { compose } from 'redux';
+import UploadAvatar from '@/components/Profile/common/UploadAvatar';
 
 const AvatarMain = (props: any) => {
 
-   const [visible, setVisible] = useState(false);
    let avatar = props.profile.photos.small
 
    return (
       <>
-         <Skeleton height={100} mb="md" radius="lg" visible={visible}>
-            <Avatar src={avatar} className={s.avatar} size={100} />
-         </Skeleton>
-         <Group>
-            <Button variant="light" onClick={() => setVisible((v) => !v)}>Скрыть</Button>
-         </Group>
+         <Grid>
+            <Grid.Col span="content">
+               <Avatar src={avatar} className={s.avatar} size={100} />
+               <UploadAvatar />
+            </Grid.Col>
+         </Grid>
       </>
    );
 }
 
-export default AvatarMain;
+function withRouter(Component: any) {
+   function ComponentWithRouterProp(props: any) {
+      let location = useLocation();
+      let navigate = useNavigate();
+      let params = useParams();
+      return (
+         <Component
+            {...props}
+            router={{ location, navigate, params }}
+         />
+      );
+   }
+   return ComponentWithRouterProp;
+}
+
+export default compose(withRouter(AvatarMain));

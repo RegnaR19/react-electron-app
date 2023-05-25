@@ -25,7 +25,7 @@ const MainProfile: React.FC<Props> = (props) => {
 
             <Grid>
                <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>
-               <Grid.Col span="content">
+               <Grid.Col span="auto">
                   <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
                   <ProfileInfo profile={props.profile} status={props.status} />
                </Grid.Col>

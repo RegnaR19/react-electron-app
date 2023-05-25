@@ -1,24 +1,18 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import MainProfile from './MainProfile';
 import { getUserProfile, getUserStatus, updateStatus } from "../../redux/profileReducer";
-import {
-   useLocation,
-   useNavigate,
-   useParams,
-} from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { compose } from 'redux';
 
 type Props = {
-   setUserProfile: any,
+   userId: any;
    profile: any,
-   router: any,
    getUserProfile: any,
    getUserStatus: any,
    status: any,
    updateStatus: any,
-   loggerUserID: any,
-   isAuth: any
+   loggerUserID: any
 }
 
 const MainProfileContainer: React.FC<Props> = (props) => {
@@ -29,7 +23,6 @@ const MainProfileContainer: React.FC<Props> = (props) => {
    useEffect(() => {
       if (!userId) {
          userId = props.loggerUserID;
-         console.log(props.loggerUserID)
          if (!userId) {
             navigate('/login')
          }
@@ -39,7 +32,7 @@ const MainProfileContainer: React.FC<Props> = (props) => {
          props.getUserProfile(userId);
          props.getUserStatus(userId);
       }
-   }, [])
+   }, [userId])
 
    return (
       <MainProfile profile={props.profile} status={props.status} updateStatus={props.updateStatus} />

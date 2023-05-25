@@ -47,7 +47,7 @@ const App = (props: any) => {
                   <Route path="profile/:userId?" element={<MainProfileContainer />} />
                   <Route path="messages" element={<DialogsContainer />} />
                   <Route path="users" element={
-                     <Suspense fallback={<UnderNav />}>
+                     <Suspense fallback={' '}>
                         <UsersContainer />
                      </Suspense>} />
                   <Route path="news" element={<NewsPage />} />
@@ -56,7 +56,7 @@ const App = (props: any) => {
                   <Route path="test" element={<TestPage />} />
                   <Route path="video" element={<VideoPage />} />
                   <Route path="login" element={
-                     <Suspense fallback={<UnderNav />}>
+                     <Suspense fallback={' '}>
                         <LoginContainer />
                      </Suspense>} />
                </Routes>

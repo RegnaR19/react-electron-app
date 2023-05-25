@@ -7,6 +7,7 @@ import {
 } from '@tabler/icons-react';
 import s from './Navigation.module.css'
 import { successExit } from './NavigationContainer';
+import { useEffect } from 'react';
 
 const Navigation = (props: any) => {
 
@@ -53,7 +54,8 @@ const Navigation = (props: any) => {
                   icon={<IconCircleOff size={18} stroke={1.5} />}
                   description='Эксперименты' label="Тестовая" />
             </NavLink>
-            {props.isAuth ? <NavLink to="#" onClick={successExit} onClickCapture={props.logout}>
+
+            {props.isAuth ? <NavLink to='' onClick={successExit} onClickCapture={props.logout}>
                <NavMantine
                   icon={<IconLogout size={18} stroke={1.5} />}
                   description='' label="Выход" />
@@ -64,7 +66,7 @@ const Navigation = (props: any) => {
                      description='' label="Вход" />
                </NavLink>
             }
-         </div>
+         </div >
       </>
    );
 }

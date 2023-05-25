@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getAuthUserData, logout } from '@/redux/authReducer';
 import { compose } from 'redux';
@@ -10,17 +10,14 @@ type Props = {
    getAuthUserData: any
 }
 
-class NavigationContainer extends React.Component<Props> {
+const NavigationContainer: React.FC<Props> = (props) => {
+   useEffect(() => {
+      props.getAuthUserData
+   }, [props.getAuthUserData])
 
-   componentDidMount() {
-      this.props.getAuthUserData()
-   }
-
-   render() {
-      return (
-         <Navigation {...this.props} />
-      )
-   }
+   return (
+      <Navigation {...props} />
+   )
 }
 
 export const successExit = () => {
@@ -48,7 +45,7 @@ export const successExit = () => {
 let mapStateToProps = (state: any) => {
    return {
       isAuth: state.auth.isAuth,
-      login: state.auth.login
+      logout: state.auth.logout
    }
 }
 
