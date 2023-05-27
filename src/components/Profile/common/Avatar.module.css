@@ -2,3 +2,9 @@
    width: 100px !important;
    z-index: 9999 !important;
 }
+
+.leftSide {
+   position: fixed;
+   left: 25px;
+   top: 30%;
+}

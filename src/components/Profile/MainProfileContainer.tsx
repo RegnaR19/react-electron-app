@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect, useSelector } from 'react-redux';
 import MainProfile from './MainProfile';
-import { getUserProfile, getUserStatus, updateStatus } from "../../redux/profileReducer";
+import { getUserProfile, getUserStatus, savePhoto, updateStatus } from "../../redux/profileReducer";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { compose } from 'redux';
 
 type Props = {
+   savePhoto: any;
+   isAuth: any;
    userId: any;
    profile: any,
    getUserProfile: any,
@@ -21,21 +23,27 @@ const MainProfileContainer: React.FC<Props> = (props) => {
    let navigate = useNavigate();
 
    useEffect(() => {
-      if (!userId) {
-         userId = props.loggerUserID;
-         if (!userId) {
-            navigate('/login')
-         }
+
+      if (props.isAuth) {
+
       }
 
+      if (!userId) {
+         userId = props.loggerUserID;
+      }
       if (userId) {
          props.getUserProfile(userId);
          props.getUserStatus(userId);
       }
+
+      if (!userId) {
+         navigate('/login')
+      }
+
    }, [userId])
 
    return (
-      <MainProfile profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
+      <MainProfile profile={props.profile} status={props.status} updateStatus={props.updateStatus} savePhoto={props.savePhoto} />
    )
 }
 
@@ -65,5 +73,5 @@ function withRouter(Component: any) {
 
 export default compose(
    withRouter,
-   connect(mapStateToProps, { getUserProfile, getUserStatus, updateStatus }))
+   connect(mapStateToProps, { getUserProfile, getUserStatus, updateStatus, savePhoto }))
    (MainProfileContainer)

@@ -1,25 +1,19 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { getAuthUserData, logout } from '@/redux/authReducer';
 import { compose } from 'redux';
 import HeaderTwo from './HeaderTwo';
-import Navigation from './Navigation';
+import { Notification } from '@mantine/core';
+import s from './Header.module.css';
 
-type Props = {
-   getAuthUserData: any
-}
+const HeaderTwoContainer = (props: any) => {
 
-class HeaderTwoContainer extends React.Component<Props> {
-
-   componentDidMount() {
-      this.props.getAuthUserData()
-   }
-
-   render() {
-      return (
-         <HeaderTwo {...this.props} />
-      )
-   }
+   return (
+      <>
+         <HeaderTwo {...props} />
+         {/* <Notification color="teal" withCloseButton={false} className={s.leftSide}>
+            <pre>{JSON.stringify(props.isAuth, null, 2)}</pre>
+         </Notification> */}
+      </>
+   )
 }
 
 let mapStateToProps = (state: any) => {
@@ -31,6 +25,6 @@ let mapStateToProps = (state: any) => {
 
 
 export default compose(
-   connect(mapStateToProps, { getAuthUserData, logout })
+   connect(mapStateToProps)
 )
    (HeaderTwoContainer)

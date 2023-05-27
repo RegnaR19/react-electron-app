@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { FileButton, Button, Group, Text } from '@mantine/core';
 
-const UploadAvatar = ({}) => {
-
+const UploadAvatar = () => {
+   
    const [file, setFile] = useState<File | null>(null);
+
+   const selectedFile = () => {
+      setFile(null)
+   }
 
    return (
       <>
-            <FileButton onChange={setFile} accept="image/png,image/jpeg">
-               {(props) => <Button {...props} color="red">Загрузить</Button>}
-            </FileButton>
+         <FileButton onChange={setFile} accept="image/png,image/jpeg">
+            {(props) => <Button {...props} color="red">Загрузить</Button>}
+         </FileButton>
          {file && (
             <Text size="sm" mt="sm">
                {file.name}

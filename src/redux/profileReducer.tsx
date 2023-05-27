@@ -7,6 +7,7 @@ import newPostImage from "../assets/new.jpg";
 const ADD_POST = 'ADD_POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
+const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
 
 let initialState = {
    posts: [
@@ -42,22 +43,21 @@ const profileReducer = (state = initialState, action: any) => {
       case SET_STATUS: {
          return { ...state, status: action.status }
       }
+      case SAVE_PHOTO_SUCCESS: {
+         return {
+            ...state, profile: { ...state.profile, photos: action.photos }
+         }
+      }
+
       default:
          return state
    }
 }
 
-export const addPostCreator = (newPostText: any, title: any) => {
-   return { type: ADD_POST, newPostText, title }
-}
-
-export const setUserProfile = (profile: any) => {
-   return { type: SET_USER_PROFILE, profile }
-}
-
-export const setStatus = (status: any) => {
-   return { type: SET_STATUS, status }
-}
+export const addPostCreator = (newPostText: any, title: any) => ({ type: ADD_POST, newPostText, title })
+export const setUserProfile = (profile: any) => ({ type: SET_USER_PROFILE, profile })
+export const setStatus = (status: any) => ({ type: SET_STATUS, status })
+export const savePhotoSuccess = (photos: any) => ({ type: SAVE_PHOTO_SUCCESS, photos })
 
 export const getUserProfile = (userId: any) => (dispatch: any) => {
    return usersAPI.getProfile(userId).then((response: any) => {
@@ -75,6 +75,14 @@ export const updateStatus = (status: any) => (dispatch: any) => {
    return profileAPI.updateStatus(status).then((response: any) => {
       if (response.data.resultCode === 0) {
          dispatch(setStatus(status))
+      }
+   })
+}
+
+export const savePhoto = (file: any) => (dispatch: any) => {
+   return profileAPI.savePhoto(file).then((response: any) => {
+      if (response.data.resultCode === 0) {
+         dispatch(savePhotoSuccess(response.data.data.photos))
       }
    })
 }

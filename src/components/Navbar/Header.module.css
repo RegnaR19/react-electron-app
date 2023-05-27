@@ -14,3 +14,9 @@
    font-size: 30px;
    font-weight: 300;
 }
+
+.leftSide {
+   position: fixed;
+   left: 25px;
+   top: 30%;
+}

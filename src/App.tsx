@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import FooterOne from "./components/Navbar/Footer";
 import NewsPage from "./components/News/NewsPage";
 import MusicPage from "./components/Music/MusicPage";
@@ -9,8 +9,7 @@ import VideoPage from "./components/Video/VideoPage";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
 const LoginContainer = lazy(() => import('./components/Profile/LoginContainer'));
-import { useEffect } from "react";
-import { Grid, Image, MantineProvider } from "@mantine/core";
+import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import s from "./App.module.css"
 import MainProfileContainer from "./components/Profile/MainProfileContainer";
@@ -20,14 +19,13 @@ import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
 import { connect } from "react-redux";
 import { initApp } from "./redux/appReducer";
 import Sidebar2 from "./components/Navbar/Sidebar2";
-import UnderNav from "./components/Forms/UnderNav";
 import NavigationContainer from "./components/Navbar/NavigationContainer";
 
 const App = (props: any) => {
 
-   useEffect(() => {
-      props.initApp
-   }, [])
+   useMemo(() => {
+      
+   }, [props.initApp])
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
@@ -75,7 +73,7 @@ const App = (props: any) => {
 
 let mapStateToProps = (state: any) => {
    return {
-      init: state.app.init,
+      init: state.app.init
    }
 }
 

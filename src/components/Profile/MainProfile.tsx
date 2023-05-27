@@ -9,6 +9,7 @@ import ProfileStatus from './ProfileStatus';
 import AccountMenu from './AccountMenu';
 
 type Props = {
+   savePhoto: any;
    profile: any,
    status: any,
    updateStatus: any
@@ -24,7 +25,7 @@ const MainProfile: React.FC<Props> = (props) => {
             <div className='big-text'>{props.profile.fullName}</div>
 
             <Grid>
-               <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>
+               <Grid.Col span="content"><Avatar profile={props.profile} savePhoto={props.savePhoto} /></Grid.Col>
                <Grid.Col span="auto">
                   <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
                   <ProfileInfo profile={props.profile} status={props.status} />
