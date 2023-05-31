@@ -7,6 +7,8 @@ import WritePostContainer from './Topic/WritePostContainer';
 import PostElementsContainer from './Topic/PostElementsContainer';
 import ProfileStatus from './ProfileStatus';
 import AccountMenu from './AccountMenu';
+import Indent10 from '../Forms/Indent';
+import UploadAvatar from './common/UploadAvatar';
 
 type Props = {
    savePhoto: any;
@@ -23,9 +25,11 @@ const MainProfile: React.FC<Props> = (props) => {
             {/* <AccountMenu profile={props.profile} /> */}
             {/* <HeaderImg /> */}
             <div className='big-text'>{props.profile.fullName}</div>
-
+            <Indent10 />
+            <UploadAvatar savePhoto={props.savePhoto} />
+            <Indent10 />
             <Grid>
-               <Grid.Col span="content"><Avatar profile={props.profile} savePhoto={props.savePhoto} /></Grid.Col>
+               <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>
                <Grid.Col span="auto">
                   <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
                   <ProfileInfo profile={props.profile} status={props.status} />

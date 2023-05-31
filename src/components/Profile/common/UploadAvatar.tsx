@@ -1,24 +1,19 @@
-import { useState } from 'react';
-import { FileButton, Button, Group, Text } from '@mantine/core';
+import { FileInput } from '@mantine/core';
+import { useRef } from 'react';
 
-const UploadAvatar = () => {
-   
-   const [file, setFile] = useState<File | null>(null);
+const UploadAvatar = ({savePhoto}) => {
 
-   const selectedFile = () => {
-      setFile(null)
+   const onMainPhotoSelected = (e: any) => {
+      console.log(e)
+      let partName = e.target.files[0];
+      if (e.target.files.length) {
+         savePhoto(partName)
+      }
    }
 
    return (
       <>
-         <FileButton onChange={setFile} accept="image/png,image/jpeg">
-            {(props) => <Button {...props} color="red">Загрузить</Button>}
-         </FileButton>
-         {file && (
-            <Text size="sm" mt="sm">
-               {file.name}
-            </Text>
-         )}
+         <input type="file" onChange={onMainPhotoSelected} />
       </>
    );
 }

@@ -12,9 +12,9 @@ const ProfileInfo = (props: any) => {
 
    return (
       <>
-         <div>ID: {ID}</div>
-         <div>Имя: {fullName}</div>
-         <div>Статус: {props.status}</div>
+         <div><b>ID:</b> {ID}</div>
+         <div><b>Имя:</b> {fullName}</div>
+         <div><b>Статус:</b> {props.status}</div>
       </>
    )
 }

@@ -73,7 +73,7 @@ const ProfileStatus: React.FC<Props> = (props) => {
    return (
       <>
          <animated.div style={springs}>{!editMode &&
-            <div onClick={activateEditMode}><b>{propsStatus || "статус не указан"}</b> (нажмите для изменения статуса)</div>
+            <div onClick={activateEditMode}><b>{propsStatus || "статус не указан"}</b> (изменить)</div>
          }
 
             {editMode &&

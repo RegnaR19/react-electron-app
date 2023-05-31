@@ -1,6 +1,6 @@
 {
    "name": "via-next",
-   "version": "1.0.5",
+   "version": "1.0.6",
    "main": "dist-electron/main/index.js",
    "description": "beta version",
    "private": false,
@@ -57,6 +57,7 @@
       "@vitejs/plugin-react": "^3.1.0",
       "electron": "22.3.2",
       "electron-builder": "24.1.2",
+      "electron-devtools-installer": "^3.2.0",
       "react": "^18.2.0",
       "react-dom": "^18.2.0",
       "sass": "^1.58.3",
