@@ -12,9 +12,9 @@ const TestPage = () => {
    return (
       <>
          <div className="col2-app">
-            <p>You clicked {count} times</p>
+            <p>Вы кликнули {count} раз</p>
             <button onClick={() => setCount(count + 1)}>
-               Click me
+               Кликни
             </button>
          </div>
       </>

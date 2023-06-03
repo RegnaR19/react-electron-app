@@ -13,18 +13,18 @@ import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import s from "./App.module.css"
 import MainProfileContainer from "./components/Profile/MainProfileContainer";
-import SidebarContainer from "./components/Navbar/SidebarContainer";
 import './App.scss'
 import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
 import { connect } from "react-redux";
 import { initApp } from "./redux/appReducer";
 import Sidebar2 from "./components/Navbar/Sidebar2";
 import NavigationContainer from "./components/Navbar/NavigationContainer";
+import SidebarContainer from "./components/Navbar/SidebarContainer";
 
 const App = (props: any) => {
 
    useMemo(() => {
-      
+      props.initApp
    }, [props.initApp])
 
    return (

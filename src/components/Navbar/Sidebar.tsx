@@ -1,5 +1,5 @@
 // страница header
-import { Button, Divider, Grid, Group } from '@mantine/core'
+import { Grid } from '@mantine/core'
 import Indent10 from '../Forms/Indent';
 import AutoUpdate4 from '../Forms/AutoUpdate4';
 import AutoUpdate3 from '../Forms/AutoUpdate3';
@@ -7,7 +7,7 @@ import AutoUpdate2 from '../Forms/AutoUpdate2';
 import AutoUpdate5 from '../Forms/AutoUpdate5';
 import AutoUpdate6 from '../Forms/AutoUpdate6';
 
-const Sidebar = (props: any) => {
+const Sidebar = () => {
 
    return (
       <>

@@ -7,7 +7,6 @@ import {
 } from '@tabler/icons-react';
 import s from './Navigation.module.css'
 import { successExit } from './NavigationContainer';
-import { useEffect } from 'react';
 
 const Navigation = (props: any) => {
 

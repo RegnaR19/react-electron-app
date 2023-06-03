@@ -4,13 +4,6 @@ import { compose } from "redux";
 import { addPostCreator } from "../../../redux/profileReducer";
 import WritePost from "./WritePost";
 
-let mapStateToProps = (state: any) => {
-   return {
-      newPostText: state.profilePage.newPostText,
-      addTitle: state.profilePage.title
-   }
-}
-
 let mapDispatchToProps = (dispatch: any) => {
    return {
       addPost: (newPostText: any, title: any) => {
@@ -19,4 +12,4 @@ let mapDispatchToProps = (dispatch: any) => {
    }
 }
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(WritePost);
+export default compose(connect(null, mapDispatchToProps))(WritePost);

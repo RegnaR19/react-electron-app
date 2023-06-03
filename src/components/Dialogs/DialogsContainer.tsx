@@ -17,6 +17,4 @@ let mapDispatchToProps = (dispatch: any) => {
    }
 }
 
-export default compose(
-   connect(mapStateToProps, mapDispatchToProps)
-)(Dialogs)
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Dialogs)

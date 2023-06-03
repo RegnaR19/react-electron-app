@@ -24,10 +24,6 @@ const MainProfileContainer: React.FC<Props> = (props) => {
 
    useEffect(() => {
 
-      if (props.isAuth) {
-
-      }
-
       if (!userId) {
          userId = props.loggerUserID;
       }

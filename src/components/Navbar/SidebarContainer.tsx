@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
-import Sidebar from './Sidebar';
 import { getAuthUserData, logout } from '@/redux/authReducer';
 import { compose } from 'redux';
+import Sidebar from './Sidebar';
 
 type Props = {
-   getAuthUserData: any
+   getAuthUserData?: any
 }
 
-class SidebarContainer extends React.Component<Props> {
+const SidebarContainer: React.FC<Props> = (props) => {
 
-   componentDidMount() {
-      this.props.getAuthUserData()
-   }
+   useMemo(() => {
+      props.getAuthUserData()
+   }, [])
 
-   render() {
-      return (
-         <Sidebar {...this.props} />
-      )
-   }
+   return (
+      <>
+         <Sidebar />
+      </>
+   )
 }
 
 let mapStateToProps = (state: any) => {
@@ -29,7 +29,4 @@ let mapStateToProps = (state: any) => {
 }
 
 
-export default compose(
-   connect(mapStateToProps, { getAuthUserData, logout })
-)
-   (SidebarContainer) 
+export default compose(connect(mapStateToProps, { getAuthUserData, logout }))(SidebarContainer) 

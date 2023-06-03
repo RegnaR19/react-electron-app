@@ -6,15 +6,15 @@ type Props = {
    addNewMessage?: any
 }
 
-const DialogsForm: React.FC<Props> = (props) => {
+const DialogsForm: React.FC<Props> = ({ addNewMessage }) => {
 
    type Employee = {
-      message?: any
+      message?: string
    }
 
    return (
       <>
-         <Form onSubmit={props.addNewMessage}
+         <Form onSubmit={addNewMessage}
             validate={(values: any) => {
                const errors: Employee = {}
                if (!values.message) {
@@ -22,7 +22,7 @@ const DialogsForm: React.FC<Props> = (props) => {
                }
                return errors
             }}
-            render={({ handleSubmit, values, submitting }) => (
+            render={({ handleSubmit, submitting }) => (
                <form onSubmit={handleSubmit}>
                   <Field placeholder="Сообщение" name='message' component="textarea">
                      {({ input, meta }) => (

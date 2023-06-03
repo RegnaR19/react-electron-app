@@ -49,8 +49,4 @@ let mapStateToProps = (state: any) => {
    }
 }
 
-
-export default compose(
-   connect(mapStateToProps, { getAuthUserData, logout })
-)
-   (NavigationContainer)
+export default compose(connect(mapStateToProps, { getAuthUserData, logout }))(NavigationContainer)

@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import HeaderTwo from './HeaderTwo';
-import { Notification } from '@mantine/core';
-import s from './Header.module.css';
 
 const HeaderTwoContainer = (props: any) => {
 
@@ -24,7 +22,4 @@ let mapStateToProps = (state: any) => {
 }
 
 
-export default compose(
-   connect(mapStateToProps)
-)
-   (HeaderTwoContainer)
+export default compose(connect(mapStateToProps))(HeaderTwoContainer)

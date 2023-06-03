@@ -8,10 +8,7 @@ import s from "../../Common/FormsControls.module.css"
 import UploadPhotoPost from "./UploadPhotoPost";
 
 type Props = {
-   newPostText?: any,
-   addPost?: any,
-   updateNewPostText?: any,
-   handleSubmit?: any
+   addPost: any,
 }
 
 const WritePost: React.FC<Props> = ({ ...props }) => {

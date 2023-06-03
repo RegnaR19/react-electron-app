@@ -15,7 +15,6 @@ const DrawerOpen2 = () => {
             padding="xl"
             size="xs"
          >
-            ывапдлоыфлдадцфжоуажцукжр
             <Image src={rick} />
          </Drawer>
 

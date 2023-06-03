@@ -52,9 +52,9 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
 );
 
 type Props = {
-   id2?: any,
-   name: any,
-   status: any,
+   id2: string,
+   name: string,
+   status: string,
    img: any
 }
 

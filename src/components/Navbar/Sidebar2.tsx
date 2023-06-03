@@ -1,8 +1,8 @@
 // страница header
-import { Button, Divider, Grid, Group } from '@mantine/core'
+import { Grid } from '@mantine/core'
 import Indent10 from '../Forms/Indent';
 
-const Sidebar2 = (props: any) => {
+const Sidebar2 = () => {
 
    return (
       <>

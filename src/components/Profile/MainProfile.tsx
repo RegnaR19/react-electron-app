@@ -1,12 +1,10 @@
 // основная страница профиля, содержит все компоненты
 import ProfileInfo from './ProfileInfo';
-import HeaderImg from './common/HeaderImg';
 import Avatar from './common/Avatar';
-import { Divider, Grid } from '@mantine/core';
+import { Grid } from '@mantine/core';
 import WritePostContainer from './Topic/WritePostContainer';
 import PostElementsContainer from './Topic/PostElementsContainer';
 import ProfileStatus from './ProfileStatus';
-import AccountMenu from './AccountMenu';
 import Indent10 from '../Forms/Indent';
 import UploadAvatar from './common/UploadAvatar';
 

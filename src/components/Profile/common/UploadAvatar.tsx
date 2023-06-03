@@ -1,6 +1,3 @@
-import { FileInput } from '@mantine/core';
-import { useRef } from 'react';
-
 const UploadAvatar = ({savePhoto}) => {
 
    const onMainPhotoSelected = (e: any) => {

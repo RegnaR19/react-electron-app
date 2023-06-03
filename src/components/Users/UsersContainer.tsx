@@ -7,11 +7,10 @@ import Users from "./Users";
 type Props = {
    users: any,
    setUsers: any,
-   pageSize: any,
+   pageSize: number,
    totalUsersCount: number,
    currentPage: number,
-   setCurrentPage: any,
-   getUsers: any
+   getUsers: string
 }
 
 class UsersContainer extends React.Component<Props> {
