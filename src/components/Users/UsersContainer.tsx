@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { setUsers, setCurrentPage, getUsers } from "../../redux/usersReducer";
@@ -10,29 +10,28 @@ type Props = {
    pageSize: number,
    totalUsersCount: number,
    currentPage: number,
-   getUsers: string
+   getUsers: any
 }
 
-class UsersContainer extends React.Component<Props> {
+const UsersContainer: React.FC<Props> = (props) => {
 
-   componentDidMount() {
-      this.props.getUsers(this.props.currentPage, this.props.pageSize)
+   useEffect(() => {
+      props.getUsers(props.currentPage, props.pageSize)
+   }, [])
+
+
+   const onPageChanged = (pageNumber: any) => {
+      props.getUsers(pageNumber, props.setUsers)
    }
 
-   onPageChanged = (pageNumber: any) => {
-      this.props.getUsers(pageNumber, this.props.setUsers)
-   }
-
-   render() {
-      return <>
-         <Users totalUsersCount={this.props.totalUsersCount}
-            users={this.props.users}
-            pageSize={this.props.pageSize}
-            currentPage={this.props.currentPage}
-            onPageChanged={this.onPageChanged}
-         />
-      </>
-   }
+   return <>
+      <Users totalUsersCount={props.totalUsersCount}
+         users={props.users}
+         pageSize={props.pageSize}
+         currentPage={props.currentPage}
+         onPageChanged={onPageChanged}
+      />
+   </>
 }
 
 let mapStateToProps = (state: any) => {

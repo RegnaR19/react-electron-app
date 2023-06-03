@@ -36,8 +36,8 @@ const App = (props: any) => {
          <div className={s.layout}>
             <nav className={s.col1}> <NavigationContainer /> </nav>
             <aside className={s.col3}>
-               <div className={s.sidebar}><SidebarContainer /></div>
                <div className={s.sidebar}><Sidebar2 /></div>
+               <div className={s.sidebar}><SidebarContainer /></div>
             </aside>
             <main>
                <Routes>
