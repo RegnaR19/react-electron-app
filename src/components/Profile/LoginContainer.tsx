@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { notifications } from "@mantine/notifications";
 import { IconCircleCheck } from "@tabler/icons-react";
 import { useNavigate } from 'react-router-dom';
+import { AppStateType } from '@/redux/redux-store';
 
 export const successLogin = () => {
    notifications.show({
@@ -33,7 +34,7 @@ const LoginContainer = (props: any) => {
    )
 }
 
-let mapStateToProps = (state: any) => {
+let mapStateToProps = (state: AppStateType) => {
    return {
       isAuth: state.auth.isAuth
    }

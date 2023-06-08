@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense, useMemo } from 'react'
+import { lazy, Suspense, useEffect, useMemo } from 'react'
 import FooterOne from "./components/Navbar/Footer";
 import NewsPage from "./components/News/NewsPage";
 import MusicPage from "./components/Music/MusicPage";
@@ -20,12 +20,13 @@ import { initApp } from "./redux/appReducer";
 import Sidebar2 from "./components/Navbar/Sidebar2";
 import NavigationContainer from "./components/Navbar/NavigationContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
+import Home from "./components/Home/Home";
 
 const App = (props: any) => {
 
-   useMemo(() => {
-      props.initApp
-   }, [props.initApp])
+   useEffect(() => {
+      props.initApp()
+   }, [])
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
@@ -41,8 +42,9 @@ const App = (props: any) => {
             </aside>
             <main>
                <Routes>
-                  <Route path="/" element={<MainProfileContainer />} />
-                  <Route path="profile/:userId?" element={<MainProfileContainer />} />
+                  <Route path="/" element={<Home />} />
+                  <Route path="profile" element={<MainProfileContainer />} />
+                  <Route path="profile/:userId" element={<MainProfileContainer />} />
                   <Route path="messages" element={<DialogsContainer />} />
                   <Route path="users" element={
                      <Suspense fallback={' '}>
@@ -71,10 +73,4 @@ const App = (props: any) => {
    );
 }
 
-let mapStateToProps = (state: any) => {
-   return {
-      init: state.app.init
-   }
-}
-
-export default connect(mapStateToProps, { initApp })(App)
+export default connect(null, { initApp })(App)

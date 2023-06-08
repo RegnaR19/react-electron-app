@@ -4,12 +4,11 @@ const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const TOTAL_USERS_COUNT = 'TOTAL_USERS_COUNT'
 
-
 let initialState = {
    usersList: [],
-   pageSize: 20,
-   totalUsersCount: 0,
-   currentPage: 1
+   pageSize: 20 as number,
+   totalUsersCount: 0 as number,
+   currentPage: 1 as number
 }
 
 const usersReducer = (state = initialState, action: any) => {

@@ -1,18 +1,20 @@
 // страница header
 import { Grid, Group } from '@mantine/core';
 import s from './Header.module.css';
-import { useMemo } from 'react';
 
 const HeaderTwo = ({ login, isAuth }) => {
 
-   // useMemo(() => {
-   //    if (!isAuth) {
-   //       console.log('not auth')
-   //    }
-   //    if (isAuth) {
-   //       console.log('auth')
-   //    }
-   // }, [isAuth, login])
+   const Auth = () => {
+      if (isAuth) {
+         return <div className={s.login}>Привет, {login}</div>
+      }
+      else {
+         <Grid.Col className={s.login}>
+            Вход не выполнен
+         </Grid.Col>
+      }
+   }
+
 
    return (
       <>
@@ -24,13 +26,7 @@ const HeaderTwo = ({ login, isAuth }) => {
          <Grid className={s.header}>
             <Grid.Col span="content">
                <Group position="right">
-                  {isAuth
-                     ? <div className={s.login}>Привет, {login}</div>
-                     : <Grid.Col className={s.login}>
-                        Вход не выполнен
-                     </Grid.Col>
-
-                  }
+                  {Auth()}
                </Group>
             </Grid.Col>
          </Grid>

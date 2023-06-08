@@ -5,15 +5,9 @@ import { compose } from 'redux';
 import Navigation from './Navigation';
 import { notifications } from '@mantine/notifications';
 import { IconCircleCheck } from '@tabler/icons-react';
+import { AppStateType } from '@/redux/redux-store';
 
-type Props = {
-   getAuthUserData: any
-}
-
-const NavigationContainer: React.FC<Props> = (props) => {
-   useEffect(() => {
-      props.getAuthUserData
-   }, [props.getAuthUserData])
+const NavigationContainer = (props: any) => {
 
    return (
       <Navigation {...props} />
@@ -42,11 +36,11 @@ export const successExit = () => {
    })
 }
 
-let mapStateToProps = (state: any) => {
+let mapStateToProps = (state: AppStateType) => {
    return {
       isAuth: state.auth.isAuth,
       logout: state.auth.logout
    }
 }
 
-export default compose(connect(mapStateToProps, { getAuthUserData, logout }))(NavigationContainer)
+export default compose(connect(mapStateToProps, { logout }))(NavigationContainer)

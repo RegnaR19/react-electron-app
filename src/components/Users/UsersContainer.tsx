@@ -3,14 +3,15 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { setUsers, setCurrentPage, getUsers } from "../../redux/usersReducer";
 import Users from "./Users";
+import { AppStateType } from "@/redux/redux-store";
 
 type Props = {
-   users: any,
-   setUsers: any,
-   pageSize: number,
-   totalUsersCount: number,
-   currentPage: number,
-   getUsers: any
+   users: any
+   setUsers: any
+   pageSize: number
+   totalUsersCount: number
+   currentPage: number
+   getUsers: (pageNumber: number, pageSize: number) => void
 }
 
 const UsersContainer: React.FC<Props> = (props) => {
@@ -20,8 +21,8 @@ const UsersContainer: React.FC<Props> = (props) => {
    }, [])
 
 
-   const onPageChanged = (pageNumber: any) => {
-      props.getUsers(pageNumber, props.setUsers)
+   const onPageChanged = (pageNumber: number, setUsers: number) => {
+      props.getUsers(pageNumber, setUsers)
    }
 
    return <>
@@ -34,7 +35,7 @@ const UsersContainer: React.FC<Props> = (props) => {
    </>
 }
 
-let mapStateToProps = (state: any) => {
+let mapStateToProps = (state: AppStateType) => {
    return {
       users: state.usersPage.usersList,
       pageSize: state.usersPage.pageSize,

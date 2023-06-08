@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { sendMessageCreator } from '../../redux/dialogsReducer';
 import Dialogs from './Dialogs';
+import { AppStateType } from '@/redux/redux-store';
 
-let mapStateToProps = (state: any) => {
+let mapStateToProps = (state: AppStateType) => {
    return {
       dialogsPage: state.dialogsPage
    }

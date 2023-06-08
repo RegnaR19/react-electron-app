@@ -3,10 +3,12 @@ import { getAuthUserData } from "./authReducer"
 const SET_INIT = 'SET_INIT'
 
 let initialState = {
-   init: false
+   initialized: false as boolean
 }
 
-const appReducer = (state = initialState, action: any) => {
+export type InitialStateType = typeof initialState;
+
+const appReducer = (state = initialState, action: any): InitialStateType => {
 
    switch (action.type) {
 
@@ -22,9 +24,11 @@ const appReducer = (state = initialState, action: any) => {
    }
 }
 
-export const initSuccess = () => {
-   return { type: SET_INIT }
+type InitSuccessType = {
+   type: string
 }
+
+export const initSuccess = (): InitSuccessType => { return { type: SET_INIT } }
 
 export const initApp = () => async (dispatch: any) => {
    await dispatch(getAuthUserData())
