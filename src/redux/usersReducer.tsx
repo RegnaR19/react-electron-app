@@ -34,7 +34,7 @@ export const setUsers = (usersList: any) => { return { type: SET_USERS, usersLis
 export const setCurrentPage = (currentPage: any) => { return { type: SET_CURRENT_PAGE, currentPage } }
 export const setTotalUsersCount = (totalUsersCount: any) => { return { type: TOTAL_USERS_COUNT, totalUsersCount } }
 
-export const getUsers = (currentPage: any) => {
+export const getUsers = (currentPage: number ) => {
    return (dispatch: any) => {
       usersAPI.getUsers(currentPage).then((data: any) => {
          dispatch(setUsers(data.items))

@@ -13,6 +13,7 @@ type Props = {
    profile: any,
    status: any,
    updateStatus: any
+   isAuth: any
 }
 
 const MainProfile: React.FC<Props> = (props) => {

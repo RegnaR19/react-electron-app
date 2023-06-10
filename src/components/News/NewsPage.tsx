@@ -3,14 +3,8 @@ import { Timeline, Text } from '@mantine/core';
 import { IconGitBranch, IconGitPullRequest, IconGitCommit } from '@tabler/icons-react';
 import Indent10 from '../Forms/Indent';
 import PostElementsContainer from '../Profile/Topic/PostElementsContainer';
-import { useParams } from 'react-router-dom';
 
 const NewsPage = () => {
-
-
-   const { parampampam } = useParams()
-
-   console.log({ parampampam })
 
    return (
       <>

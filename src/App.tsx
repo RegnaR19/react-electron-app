@@ -9,10 +9,10 @@ import VideoPage from "./components/Video/VideoPage";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
 const LoginContainer = lazy(() => import('./components/Profile/LoginContainer'));
+const MainProfileContainer = lazy(() => import('./components/Profile/MainProfileContainer'));
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import s from "./App.module.css"
-import MainProfileContainer from "./components/Profile/MainProfileContainer";
 import './App.scss'
 import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
 import { connect } from "react-redux";
@@ -20,11 +20,10 @@ import { initApp } from "./redux/appReducer";
 import Sidebar2 from "./components/Navbar/Sidebar2";
 import NavigationContainer from "./components/Navbar/NavigationContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
-import Home from "./components/Home/Home";
 
 const App = (props: any) => {
 
-   useEffect(() => {
+   useMemo(() => {
       props.initApp()
    }, [])
 
@@ -42,8 +41,12 @@ const App = (props: any) => {
             </aside>
             <main>
                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="profile" element={<MainProfileContainer />} />
+                  <Route path="/" element={<MainProfileContainer />} />
+                  <Route path="profile" element={
+                     <Suspense fallback={' '}>
+                        <MainProfileContainer />
+                     </Suspense>
+                  } />
                   <Route path="profile/:userId" element={<MainProfileContainer />} />
                   <Route path="messages" element={<DialogsContainer />} />
                   <Route path="users" element={

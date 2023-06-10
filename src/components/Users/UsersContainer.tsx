@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { compose } from "redux";
-import { setUsers, setCurrentPage, getUsers } from "../../redux/usersReducer";
 import Users from "./Users";
-import { AppStateType } from "@/redux/redux-store";
+import { getUsers } from '@/redux/usersReducer';
+import { connect } from 'react-redux';
 
 type Props = {
-   users: any
-   setUsers: any
    pageSize: number
-   totalUsersCount: number
    currentPage: number
    getUsers: (pageNumber: number, pageSize: number) => void
 }
@@ -26,27 +21,9 @@ const UsersContainer: React.FC<Props> = (props) => {
    }
 
    return <>
-      <Users totalUsersCount={props.totalUsersCount}
-         users={props.users}
-         pageSize={props.pageSize}
-         currentPage={props.currentPage}
-         onPageChanged={onPageChanged}
-      />
+      <Users onPageChanged={onPageChanged} />
    </>
 }
 
-let mapStateToProps = (state: AppStateType) => {
-   return {
-      users: state.usersPage.usersList,
-      pageSize: state.usersPage.pageSize,
-      totalUsersCount: state.usersPage.totalUsersCount,
-      currentPage: state.usersPage.currentPage
-   }
-}
 
-
-
-export default compose(
-   connect(mapStateToProps, { setCurrentPage, setUsers, getUsers })
-   // authRedirect
-)(UsersContainer)
+export default connect(null, { getUsers })(UsersContainer)

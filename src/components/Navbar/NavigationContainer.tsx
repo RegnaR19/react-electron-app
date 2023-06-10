@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAuthUserData, logout } from '@/redux/authReducer';
+import { logout } from '@/redux/authReducer';
 import { compose } from 'redux';
 import Navigation from './Navigation';
 import { notifications } from '@mantine/notifications';

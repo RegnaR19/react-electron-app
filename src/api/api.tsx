@@ -6,28 +6,28 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-   getUsers(currentPage: any, count: any = 20) {
+   getUsers(currentPage: number, count: number = 20) {
       return instance.get(`users?page=${currentPage}&count=${count}`)
          .then(response => {
             return response.data
          })
    },
-   getProfile(userId: any) {
+   getProfile(userId: number) {
       return profileAPI.getProfile(userId)
    }
 }
 
 export const profileAPI = {
-   getProfile(userId: any) {
+   getProfile(userId: number) {
       return instance.get(`profile/` + userId)
    },
-   getStatus(userId: any) {
+   getStatus(userId: number) {
       return instance.get('profile/status/' + userId)
    },
-   updateStatus(status: any) {
+   updateStatus(status: string) {
       return instance.put('profile/status', { status: status })
    },
-   savePhoto(photoFile: any) {
+   savePhoto(photoFile: string) {
       let formData = new FormData()
       formData.append("image", photoFile)
       return instance.put('profile/photo', formData, {
@@ -42,7 +42,7 @@ export const authAPI = {
    me() {
       return instance.get(`auth/me`)
    },
-   login(email: any, password: any, rememberMe: any = false) {
+   login(email: string, password: string, rememberMe: boolean = false) {
       return instance.post(`auth/login`, { email, password, rememberMe })
    },
    logout() {
