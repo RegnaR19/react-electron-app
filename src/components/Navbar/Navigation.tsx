@@ -54,7 +54,7 @@ const Navigation = (props: any) => {
                   description='Эксперименты' label="Тестовая" />
             </NavLink>
 
-            {props.isAuth ? <NavLink to='' onClick={successExit} onClickCapture={props.logout}>
+            {props.isAuth ? <NavLink to='' onClick={() => { successExit(); }} onClickCapture={props.logout}>
                <NavMantine
                   icon={<IconLogout size={18} stroke={1.5} />}
                   description='' label="Выход" />

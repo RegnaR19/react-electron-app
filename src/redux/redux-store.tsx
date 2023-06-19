@@ -1,22 +1,34 @@
-import { applyMiddleware, combineReducers, legacy_createStore } from "redux";
+import { combineReducers } from "redux";
+import { configureStore, createImmutableStateInvariantMiddleware, getDefaultMiddleware } from '@reduxjs/toolkit'
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
-import thunkMiddleware from "redux-thunk"
 import appReducer from "./appReducer";
+import achievementReducer from './achievementReducer';
 
-let RootReducer = combineReducers({
+const rootReducer = combineReducers({
    profilePage: profileReducer,
    dialogsPage: dialogsReducer,
    usersPage: usersReducer,
    auth: authReducer,
-   app: appReducer
+   app: appReducer,
+   achievement: achievementReducer
 })
 
-type RootReducerType = typeof RootReducer
-export type AppStateType = ReturnType<RootReducerType>
+export type RootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = AppStore['dispatch']
 
-let store = legacy_createStore(RootReducer, applyMiddleware(thunkMiddleware));
 
-export default store
+
+export const setupStore = () => {
+   return configureStore({
+      reducer: rootReducer,
+      middleware: (getDefaultMiddleware) =>
+         getDefaultMiddleware().concat(),
+      devTools: process.env.NODE_ENV !== 'production'
+   })
+}
+
+export default setupStore

@@ -4,7 +4,7 @@ import { compose } from 'redux';
 import Navigation from './Navigation';
 import { notifications } from '@mantine/notifications';
 import { IconCircleCheck } from '@tabler/icons-react';
-import { AppStateType } from '@/redux/redux-store';
+import { RootState } from '@/redux/redux-store';
 
 const NavigationContainer = (props: any) => {
 
@@ -35,7 +35,7 @@ export const successExit = () => {
    })
 }
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: RootState) => {
    return {
       isAuth: state.auth.isAuth,
       logout: state.auth.logout

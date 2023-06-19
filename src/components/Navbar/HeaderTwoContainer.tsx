@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import HeaderTwo from './HeaderTwo';
-import { AppStateType } from '@/redux/redux-store';
+import { RootState } from '@/redux/redux-store';
+
 
 const HeaderTwoContainer = (props: any) => {
 
@@ -15,7 +16,7 @@ const HeaderTwoContainer = (props: any) => {
    )
 }
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: RootState) => {
    return {
       isAuth: state.auth.isAuth,
       login: state.auth.login

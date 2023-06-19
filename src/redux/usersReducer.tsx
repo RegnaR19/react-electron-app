@@ -4,12 +4,21 @@ const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const TOTAL_USERS_COUNT = 'TOTAL_USERS_COUNT'
 
-let initialState = {
+type Users = {
+   usersList: any
+   pageSize: any
+   totalUsersCount: number
+   currentPage: number
+}
+
+let initialState: Users = {
    usersList: [],
-   pageSize: 20 as number,
+   pageSize: 20,
    totalUsersCount: 0 as number,
    currentPage: 1 as number
 }
+
+export type InitialStateType = typeof initialState
 
 const usersReducer = (state = initialState, action: any) => {
 
@@ -34,7 +43,7 @@ export const setUsers = (usersList: any) => { return { type: SET_USERS, usersLis
 export const setCurrentPage = (currentPage: any) => { return { type: SET_CURRENT_PAGE, currentPage } }
 export const setTotalUsersCount = (totalUsersCount: any) => { return { type: TOTAL_USERS_COUNT, totalUsersCount } }
 
-export const getUsers = (currentPage: number ) => {
+export const getUsers = (currentPage: number) => {
    return (dispatch: any) => {
       usersAPI.getUsers(currentPage).then((data: any) => {
          dispatch(setUsers(data.items))

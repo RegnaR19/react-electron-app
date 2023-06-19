@@ -3,6 +3,8 @@ import { IconAt, IconBrandXbox } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { notifications } from "@mantine/notifications";
 import { useInView, useSpring, animated } from '@react-spring/web'
+import { useDispatch } from 'react-redux';
+import { statusAchievementAction } from '@/redux/achievementReducer';
 
 type Props = {
    status: any,
@@ -16,6 +18,12 @@ const ProfileStatus: React.FC<Props> = (props) => {
    const [editMode, setEditMode] = useState(false)
    const [status, setStatus] = useState(propsStatus)
 
+   const dispatch = useDispatch()
+
+   const addAchievement = () => {
+      dispatch(statusAchievementAction())
+   }
+
    useEffect(() => {
       setStatus(propsStatus)
    }, [propsStatus])
@@ -24,7 +32,7 @@ const ProfileStatus: React.FC<Props> = (props) => {
       notifications.show({
          withCloseButton: false,
          autoClose: 5000,
-         title: "25G за изменение статуса!",
+         title: "100G за изменение статуса!",
          message: `Новый статус: ${status}`,
          color: 'black',
          icon: <IconBrandXbox />,
@@ -64,6 +72,7 @@ const ProfileStatus: React.FC<Props> = (props) => {
       setEditMode(false)
       props.updateStatus(status)
       successForm()
+      addAchievement()
    }
 
    const onStatusChange = (e: any) => {

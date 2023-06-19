@@ -1,28 +1,6 @@
-import { notifications } from '@mantine/notifications'
-import { useSpring, animated } from '@react-spring/web'
-import { IconBrandXbox } from '@tabler/icons-react'
+import { AppDispatch, RootState } from '@/redux/redux-store'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
-export const [springs, api] = useSpring(() => ({
-    from: {
-        x: 0,
-        opacity: 0,
-    },
-    to: {
-        x: 100,
-        opacity: 1,
-    },
-}))
-
-export const handleClick = () => {
-    api.start({
-        from: {
-            x: 0,
-            opacity: 0,
-        },
-        to: {
-            x: 100,
-            opacity: 1,
-        },
-    })
-}
+export const useAppDispatch = () => useDispatch<AppDispatch>()
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 

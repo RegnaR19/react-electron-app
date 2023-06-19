@@ -1,20 +1,36 @@
 // страница header
+import { useAppSelector } from '@/hoc/hooks';
 import { Grid } from '@mantine/core'
-import Indent10 from '../Forms/Indent';
+import { useSelector } from 'react-redux';
 
-const Sidebar2 = () => {
+type Type = {
+   currentAchievement: any
+}
+
+const Sidebar2: React.FC<Type> = () => {
+
+   // const currentAchievement = useSelector((state) => state.achievement.points)
+
+   const currentAchievement = useAppSelector(state => state.achievement.points)
+
+
+   const total = currentAchievement[1].total + currentAchievement[2].total
+   const attach = currentAchievement[1].total
+   const status = currentAchievement[2].total
 
    return (
       <>
          <Grid justify="center" align="center">
             <Grid.Col>
-               <center><div className='big-text'>Achievement system</div><Indent10 /> (будет реализовано в обновлении 1.0.7)
-                  <br /><div className='achievement'><p>0 G</p></div>
-
+               <center><div className='big-text'>Система достижений</div>
+                  <div className='achievement'>
+                     <p>{total} G</p>
+                     <p>{attach} G</p>
+                     <p>{status} G</p>
+                  </div>
                </center>
             </Grid.Col>
          </Grid >
-         <Indent10 />
       </>
    );
 }

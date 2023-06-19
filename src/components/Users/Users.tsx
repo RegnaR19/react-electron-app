@@ -1,22 +1,19 @@
 import UsersPage from "./UsersPage";
-import React, { useEffect } from "react";
+import React from "react";
 import Paginator from "./Paginator";
 import Indent10 from "../Forms/Indent";
-import { useDispatch, useSelector } from 'react-redux';
-import { AppStateType } from '@/redux/redux-store';
+import { useAppSelector } from '@/hoc/hooks';
 
 type Props = {
    onPageChanged: any
 }
 
-const Users: React.FC<Props> = ({onPageChanged}) => {
+const Users: React.FC<Props> = ({ onPageChanged }) => {
 
-   const totalUsersCount = useSelector((state: AppStateType) => state.usersPage.totalUsersCount)
-   const usersList = useSelector((state: AppStateType) => state.usersPage.usersList)
-   const pageSize = useSelector((state: AppStateType) => state.usersPage.pageSize)
-   const currentPage = useSelector((state: AppStateType) => state.usersPage.currentPage)
-
-   const dispatch = useDispatch()
+   const totalUsersCount = useAppSelector(state => state.usersPage.totalUsersCount)
+   const usersList = useAppSelector(state => state.usersPage.usersList)
+   const pageSize = useAppSelector(state => state.usersPage.pageSize)
+   const currentPage = useAppSelector(state => state.usersPage.currentPage)
 
    let usersElements = usersList.map((e: any) =>
       <UsersPage id2={e.id} key={e.id} name={e.name}

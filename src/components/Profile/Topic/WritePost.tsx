@@ -6,6 +6,7 @@ import { IconBrandXbox } from "@tabler/icons-react";
 import { Form, Field } from 'react-final-form'
 import s from "../../Common/FormsControls.module.css"
 import UploadPhotoPost from "./UploadPhotoPost";
+import { useDispatch } from 'react-redux';
 
 type Props = {
    addPost: any,
@@ -13,11 +14,18 @@ type Props = {
 
 const WritePost: React.FC<Props> = ({ ...props }) => {
 
+   // const dispatch = useDispatch()
+
+   // const addAchievement = (achievement: number) => {
+   //    dispatch()
+   // }
+
    const successForm = () => {
       notifications.show({
          withCloseButton: false,
-         autoClose: 5000,
-         title: "10G за новый пост!",
+         autoClose: 10000,
+         id: "newpost",
+         title: "50G за новый пост!",
          message: 'Вы разместили новый пост.',
          color: 'green',
          icon: <IconBrandXbox />,

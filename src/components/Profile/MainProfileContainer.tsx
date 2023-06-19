@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MainProfile from './MainProfile';
 import { getUserProfile, getUserStatus, savePhoto, updateStatus } from "../../redux/profileReducer";
 import { useNavigate, useParams } from "react-router-dom";
-import { AppStateType } from '@/redux/redux-store';
+import { RootState } from '@/redux/redux-store';
 import { compose } from 'redux';
 
 type Props = {
@@ -48,7 +48,7 @@ const MainProfileContainer: React.FC<Props> = (props) => {
    )
 }
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: RootState) => {
    return {
       profile: state.profilePage.profile,
       status: state.profilePage.status,

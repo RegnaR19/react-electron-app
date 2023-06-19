@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense, useEffect, useMemo } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import FooterOne from "./components/Navbar/Footer";
 import NewsPage from "./components/News/NewsPage";
 import MusicPage from "./components/Music/MusicPage";
@@ -23,13 +23,13 @@ import SidebarContainer from "./components/Navbar/SidebarContainer";
 
 const App = (props: any) => {
 
-   useMemo(() => {
+   useEffect(() => {
       props.initApp()
    }, [])
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
-         <Notifications position="bottom-right" containerWidth={350} />
+         <Notifications position="bottom-center" containerWidth={300} />
          <header className={s.layout2}>
             <HeaderTwoContainer />
          </header>
@@ -41,13 +41,21 @@ const App = (props: any) => {
             </aside>
             <main>
                <Routes>
-                  <Route path="/" element={<MainProfileContainer />} />
+                  <Route path="/" element={
+                     <Suspense fallback={' '}>
+                        <MainProfileContainer />
+                     </Suspense>
+                  } />
                   <Route path="profile" element={
                      <Suspense fallback={' '}>
                         <MainProfileContainer />
                      </Suspense>
                   } />
-                  <Route path="profile/:userId" element={<MainProfileContainer />} />
+                  <Route path="profile/:userId" element={
+                     <Suspense fallback={' '}>
+                        <MainProfileContainer />
+                     </Suspense>
+                  } />
                   <Route path="messages" element={<DialogsContainer />} />
                   <Route path="users" element={
                      <Suspense fallback={' '}>

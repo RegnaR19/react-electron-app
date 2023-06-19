@@ -69,32 +69,28 @@ export const setUserProfile = (profile: any) => ({ type: SET_USER_PROFILE, profi
 export const setStatus = (status: any) => ({ type: SET_STATUS, status })
 export const savePhotoSuccess = (photos: any) => ({ type: SAVE_PHOTO_SUCCESS, photos })
 
-export const getUserProfile = (userId: any) => (dispatch: any) => {
-   return usersAPI.getProfile(userId).then((response: any) => {
-      dispatch(setUserProfile(response.data))
-   })
+export const getUserProfile = (userId: any) => async (dispatch: any) => {
+   const response = await usersAPI.getProfile(userId);
+   dispatch(setUserProfile(response.data));
 }
 
-export const getUserStatus = (userId: any) => (dispatch: any) => {
-   return profileAPI.getStatus(userId).then((response: any) => {
-      dispatch(setStatus(response.data))
-   })
+export const getUserStatus = (userId: any) => async (dispatch: any) => {
+   const response = await profileAPI.getStatus(userId);
+   dispatch(setStatus(response.data));
 }
 
-export const updateStatus = (status: any) => (dispatch: any) => {
-   return profileAPI.updateStatus(status).then((response: any) => {
-      if (response.data.resultCode === 0) {
-         dispatch(setStatus(status))
-      }
-   })
+export const updateStatus = (status: any) => async (dispatch: any) => {
+   const response = await profileAPI.updateStatus(status);
+   if (response.data.resultCode === 0) {
+      dispatch(setStatus(status));
+   }
 }
 
-export const savePhoto = (file: any) => (dispatch: any) => {
-   return profileAPI.savePhoto(file).then((response: any) => {
-      if (response.data.resultCode === 0) {
-         dispatch(savePhotoSuccess(response.data.data.photos))
-      }
-   })
+export const savePhoto = (file: any) => async (dispatch: any) => {
+   const response = await profileAPI.savePhoto(file);
+   if (response.data.resultCode === 0) {
+      dispatch(savePhotoSuccess(response.data.data.photos));
+   }
 }
 
 export default profileReducer
