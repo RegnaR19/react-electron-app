@@ -1,4 +1,4 @@
-const SEND_MESSAGE = 'SEND_MESSAGE'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 type Dialog = {
    id: number
@@ -25,29 +25,16 @@ let initialState = {
 
 export type InitialStateType = typeof initialState
 
-const dialogsReducer = (state = initialState, action: any): InitialStateType => {
-
-   switch (action.type) {
-      case SEND_MESSAGE: {
-         return {
-            ...state,
-            messages: [...state.messages, { id: 99, message: action.message }]
-         }
+export const dialogsSlice = createSlice({
+   name: 'dialogs',
+   initialState,
+   reducers: {
+      sendMessage(state, action: PayloadAction<string>) {
+         state.messages = [...state.messages, { id: 4, message: action.payload }]
       }
-      default:
-         return state
    }
-}
+})
 
-type SendMessageCreatorType = {
-   type: typeof SEND_MESSAGE
-   message: string
-}
+export const { sendMessage } = dialogsSlice.actions
 
-export const sendMessageCreator = (message: string): SendMessageCreatorType => {
-   return {
-      type: SEND_MESSAGE, message
-   }
-}
-
-export default dialogsReducer
+export default dialogsSlice.reducer

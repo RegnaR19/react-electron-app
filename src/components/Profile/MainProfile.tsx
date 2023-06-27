@@ -7,34 +7,46 @@ import PostElementsContainer from './Topic/PostElementsContainer';
 import ProfileStatus from './ProfileStatus';
 import Indent10 from '../Forms/Indent';
 import UploadAvatar from './common/UploadAvatar';
+import { useAppDispatch, useAppSelector } from '@/hoc/hooks';
+import { getUserProfile, getUserStatus, savePhoto } from '@/redux/profileReducer';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-type Props = {
-   savePhoto: any;
-   profile: any,
-   status: any,
-   updateStatus: any
-   isAuth: any
-}
+const MainProfile = () => {
 
-const MainProfile: React.FC<Props> = (props) => {
+   const auth = useAppSelector(state => state.auth)
+   const profile = useAppSelector(state => state.profilePage.profile)
+   const userId = auth.userId
+
+   const dispatch = useAppDispatch()
+   const navigate = useNavigate()
+
+   useEffect(() => {
+      if (!userId) {
+         navigate("/login")
+      }
+      if (userId) {
+         dispatch(getUserProfile(userId))
+         dispatch(getUserStatus(userId))
+      }
+   }, [userId])
+
 
    return (
       <>
          <div className='col2-app'>
-            {/* <AccountMenu profile={props.profile} /> */}
-            {/* <HeaderImg /> */}
-            <div className='big-text'>{props.profile.fullName}</div>
+            <div className='big-text'>{profile.fullName}</div>
             <Indent10 />
-            <UploadAvatar savePhoto={props.savePhoto} />
+            <UploadAvatar savePhoto={savePhoto} />
             <Indent10 />
             <Grid>
-               <Grid.Col span="content"><Avatar profile={props.profile} /></Grid.Col>
+               <Grid.Col span="content"><Avatar profile={profile} /></Grid.Col>
                <Grid.Col span="auto">
-                  <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
-                  <ProfileInfo profile={props.profile} status={props.status} />
+                  <ProfileStatus />
+                  <ProfileInfo profile={profile} auth={auth} />
                </Grid.Col>
             </Grid>
-         </div>
+         </div >
          <div className='col2-app'>
             <WritePostContainer />
          </div>

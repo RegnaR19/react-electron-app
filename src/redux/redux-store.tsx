@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { configureStore, createImmutableStateInvariantMiddleware, getDefaultMiddleware } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 import usersReducer from "./usersReducer";
@@ -19,8 +19,6 @@ const rootReducer = combineReducers({
 export type RootState = ReturnType<typeof rootReducer>
 export type AppStore = ReturnType<typeof setupStore>
 export type AppDispatch = AppStore['dispatch']
-
-
 
 export const setupStore = () => {
    return configureStore({

@@ -1,6 +1,5 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { getAuthUserData } from "./authReducer"
-
-const SET_INIT = 'SET_INIT'
 
 let initialState = {
    initialized: false as boolean
@@ -8,31 +7,21 @@ let initialState = {
 
 export type InitialStateType = typeof initialState;
 
-const appReducer = (state = initialState, action: any): InitialStateType => {
-
-   switch (action.type) {
-
-      case SET_INIT: {
-         return {
-            ...state,
-            initialized: true
-         }
+export const appSlice = createSlice({
+   name: 'app',
+   initialState,
+   reducers: {
+      setInit(state) {
+         state.initialized = true
       }
-
-      default:
-         return state
    }
-}
-
-type InitSuccessType = {
-   type: string
-}
-
-export const initSuccess = (): InitSuccessType => { return { type: SET_INIT } }
+})
 
 export const initApp = () => async (dispatch: any) => {
-   await dispatch(getAuthUserData())
-   await dispatch(initSuccess())
+   dispatch(setInit())
+   dispatch(getAuthUserData())
 }
 
-export default appReducer
+export const { setInit } = appSlice.actions
+
+export default appSlice.reducer

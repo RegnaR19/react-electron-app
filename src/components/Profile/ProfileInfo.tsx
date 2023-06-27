@@ -1,20 +1,13 @@
-
 // информация о профиле
-const ProfileInfo = (props: any) => {
+const ProfileInfo = ({profile, auth}) => {
 
-   let ID = props.profile.userId
-   let fullName = props.profile.fullName
-   let status = props.status
-
-   if (status === null) {
-      status = "не указано"
-   }
+   let ID = profile.userId
+   let email = auth.email
 
    return (
       <>
          <div><b>ID:</b> {ID}</div>
-         <div><b>Имя:</b> {fullName}</div>
-         <div><b>Статус:</b> {props.status}</div>
+         <div><b>Email:</b> {email}</div>
       </>
    )
 }

@@ -1,35 +1,39 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense, useEffect } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import FooterOne from "./components/Navbar/Footer";
 import NewsPage from "./components/News/NewsPage";
 import MusicPage from "./components/Music/MusicPage";
 import SettingsPage from "./components/Settings/SettingsPage";
 import TestPage from "./components/Settings/TestPage";
 import VideoPage from "./components/Video/VideoPage";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
 const LoginContainer = lazy(() => import('./components/Profile/LoginContainer'));
-const MainProfileContainer = lazy(() => import('./components/Profile/MainProfileContainer'));
+const MainProfile = lazy(() => import('./components/Profile/MainProfile'));
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import s from "./App.module.css"
 import './App.scss'
 import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
-import { connect } from "react-redux";
-import { initApp } from "./redux/appReducer";
 import Sidebar2 from "./components/Navbar/Sidebar2";
 import NavigationContainer from "./components/Navbar/NavigationContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
+import { startUp, useAppDispatch } from './hoc/hooks';
+import { initApp } from './redux/appReducer';
+import Dialogs from './components/Dialogs/Dialogs';
 
-const App = (props: any) => {
+const App = () => {
 
-   useEffect(() => {
-      props.initApp()
+   const dispatch = useAppDispatch()
+
+   useMemo(() => {
+      dispatch(initApp())
+      // startUp()
    }, [])
+
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
-         <Notifications position="bottom-center" containerWidth={300} />
+         <Notifications position="bottom-center" containerWidth={350} />
          <header className={s.layout2}>
             <HeaderTwoContainer />
          </header>
@@ -43,20 +47,20 @@ const App = (props: any) => {
                <Routes>
                   <Route path="/" element={
                      <Suspense fallback={' '}>
-                        <MainProfileContainer />
+                        <MainProfile />
                      </Suspense>
                   } />
                   <Route path="profile" element={
                      <Suspense fallback={' '}>
-                        <MainProfileContainer />
+                        <MainProfile />
                      </Suspense>
                   } />
                   <Route path="profile/:userId" element={
                      <Suspense fallback={' '}>
-                        <MainProfileContainer />
+                        <MainProfile />
                      </Suspense>
                   } />
-                  <Route path="messages" element={<DialogsContainer />} />
+                  <Route path="messages" element={<Dialogs />} />
                   <Route path="users" element={
                      <Suspense fallback={' '}>
                         <UsersContainer />
@@ -84,4 +88,4 @@ const App = (props: any) => {
    );
 }
 
-export default connect(null, { initApp })(App)
+export default App

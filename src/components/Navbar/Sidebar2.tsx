@@ -1,22 +1,13 @@
 // страница header
 import { useAppSelector } from '@/hoc/hooks';
 import { Grid } from '@mantine/core'
-import { useSelector } from 'react-redux';
 
-type Type = {
-   currentAchievement: any
-}
+const Sidebar2 = () => {
 
-const Sidebar2: React.FC<Type> = () => {
-
-   // const currentAchievement = useSelector((state) => state.achievement.points)
-
-   const currentAchievement = useAppSelector(state => state.achievement.points)
-
-
-   const total = currentAchievement[1].total + currentAchievement[2].total
-   const attach = currentAchievement[1].total
-   const status = currentAchievement[2].total
+   const total = useAppSelector(state => state.achievement.total)
+   const attach = useAppSelector(state => state.achievement.attach)
+   const status = useAppSelector(state => state.achievement.status)
+   const post = useAppSelector(state => state.achievement.post)
 
    return (
       <>
@@ -27,6 +18,7 @@ const Sidebar2: React.FC<Type> = () => {
                      <p>{total} G</p>
                      <p>{attach} G</p>
                      <p>{status} G</p>
+                     <p>{post} G</p>
                   </div>
                </center>
             </Grid.Col>

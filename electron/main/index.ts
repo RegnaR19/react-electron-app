@@ -2,6 +2,7 @@ import { app, BrowserWindow, shell, ipcMain, Tray, Menu } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
 import { autoUpdater } from 'electron-updater'
+import { Howl, Howler } from 'howler';
 
 process.env.DIST_ELECTRON = join(__dirname, '../')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
@@ -84,8 +85,11 @@ async function createWindow() {
    })
 }
 
+
+
 app.whenReady().then(() => {
    createWindow()
+
    tray = new Tray('./src/assets/icon.ico')
    const contextMenu = Menu.buildFromTemplate([
       {

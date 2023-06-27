@@ -1,12 +1,14 @@
 import { Field, Form } from "react-final-form";
 import Indent10 from "../Forms/Indent";
 import { Button, Checkbox, Input } from "@mantine/core";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { login } from "@/redux/authReducer";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import s from "./../Common/FormsControls.module.css"
 import { successLogin } from "./LoginContainer";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from '@/hoc/hooks';
+import { totalAchievement } from '@/redux/achievementReducer';
 
 type Props = {
    isAuth: any
@@ -19,11 +21,11 @@ const Login: React.FC<Props> = (props: any) => {
       password?: any
    }
 
-   // const dispatch = useDispatch()
+   const dispatch = useAppDispatch()
 
-   // const addNewForExit = (achievement: number) => {
-   //    dispatch(totalAchievementAction(achievement))
-   // }
+   const addNewForExit = (achievement: number) => {
+      dispatch(totalAchievement(achievement))
+   }
 
    const onSubmit = (formData: any) => {
       props.login(formData.email, formData.password, formData.rememberMe)
@@ -40,7 +42,7 @@ const Login: React.FC<Props> = (props: any) => {
    }, [props.isAuth])
 
    useEffect(() => {
-      // { props.isAuth ? addNewForExit(50) : '' }
+      { props.isAuth ? addNewForExit(50) : '' }
    }, [props.isAuth])
 
    return (

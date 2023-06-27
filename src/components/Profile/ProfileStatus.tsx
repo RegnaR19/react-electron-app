@@ -1,40 +1,29 @@
-import { Input } from "@mantine/core";
-import { IconAt, IconBrandXbox } from "@tabler/icons-react";
-import { useEffect, useState } from "react";
-import { notifications } from "@mantine/notifications";
-import { useInView, useSpring, animated } from '@react-spring/web'
-import { useDispatch } from 'react-redux';
-import { statusAchievementAction } from '@/redux/achievementReducer';
+import { Button, Grid, Input } from "@mantine/core"
+import { IconBrandXbox } from "@tabler/icons-react"
+import { useState } from "react"
+import { notifications } from "@mantine/notifications"
+import { useSpring, animated } from '@react-spring/web'
+import { profileSlice, updateStatus } from '@/redux/profileReducer'
+import { achievementSound, useAppDispatch, useAppSelector } from '@/hoc/hooks'
+import { Field, Form } from 'react-final-form'
+import Indent10 from '../Forms/Indent'
+import { statusAchievementAction } from '@/redux/achievementReducer'
 
-type Props = {
-   status: any,
-   updateStatus: any
-}
-
-const ProfileStatus: React.FC<Props> = (props) => {
-
-   let propsStatus = props.status
+const ProfileStatus = () => {
 
    const [editMode, setEditMode] = useState(false)
-   const [status, setStatus] = useState(propsStatus)
+   const [success, setSuccess] = useState(false)
+   const { setStatus } = profileSlice.actions
+   const dispatch = useAppDispatch()
+   const status = useAppSelector(state => state.profilePage.status)
 
-   const dispatch = useDispatch()
-
-   const addAchievement = () => {
-      dispatch(statusAchievementAction())
-   }
-
-   useEffect(() => {
-      setStatus(propsStatus)
-   }, [propsStatus])
-
-   let successForm = () => {
+   const successForm = (status: string) => {
       notifications.show({
          withCloseButton: false,
-         autoClose: 5000,
-         title: "100G за изменение статуса!",
-         message: `Новый статус: ${status}`,
-         color: 'black',
+         autoClose: 10000,
+         title: "Достижение разблокировано",
+         message: `100G | Статус изменен: ${status}`,
+         color: 'green',
          icon: <IconBrandXbox />,
          className: 'my-notification-class',
          loading: false,
@@ -51,14 +40,14 @@ const ProfileStatus: React.FC<Props> = (props) => {
 
    const [springs] = useSpring(() => ({
       from: {
-         opacity: 0.4,
+         opacity: 0.6,
          scale: 1,
       },
       to: {
          opacity: 1,
          scale: 1,
       },
-      config: { duration: 1000, mass: 100, tension: 100, friction: 100 },
+      config: { duration: 800, mass: 100, tension: 100, friction: 100 },
       loop: {
          reverse: true
       }
@@ -68,34 +57,66 @@ const ProfileStatus: React.FC<Props> = (props) => {
       setEditMode(true)
    }
 
-   const deactivateEditMode = () => {
+   const addStatus = (values: any) => {
+      dispatch(setStatus(values.status))
+      dispatch(updateStatus(values.status))
+      dispatch(statusAchievementAction())
       setEditMode(false)
-      props.updateStatus(status)
-      successForm()
-      addAchievement()
+      if (!success) {
+         successForm(values.status)
+         achievementSound()
+      }
+      setSuccess(true)
    }
 
-   const onStatusChange = (e: any) => {
-      setStatus(e.currentTarget.value)
+   type Employee = {
+      status?: any
    }
 
    return (
       <>
-         <animated.div style={springs}>{!editMode &&
-            <div onClick={activateEditMode}><b>{propsStatus || "статус не указан"}</b> (изменить)</div>
+         {!editMode && <div onClick={activateEditMode}><b>Текущий статус:</b> {status || "статус не указан"}
+            <animated.div style={springs}><i>[изменить статус]</i></animated.div></div >
          }
 
-            {editMode &&
-               <div>
-                  <Input icon={<IconAt />} onChange={onStatusChange} onBlur={deactivateEditMode}
-                     placeholder="Изменение статуса" autoFocus={true}
-                     radius="md" size="sm" value={status}
-                  />
-               </div>
-            }
-         </animated.div>
+         {
+            editMode &&
+            <div>
+               <Form onSubmit={addStatus}
+                  initialValues={{ status: status }}
+                  validate={(values: any) => {
+                     const errors: Employee = {}
+                     if (!values.status) {
+                        errors.status = 'необходимо заполнить статус'
+                     }
+                     return errors
+                  }}
+                  render={({ handleSubmit, submitting }) => (
+                     <form onSubmit={handleSubmit}>
+                        <Field name="status" component="input">
+                           {({ input, meta }) => (
+                              <div>
+                                 <Input {...input} type="text" placeholder="Новый статус" autoFocus={true} />
+                                 {meta.error && meta.touched && <span>{meta.error}</span>}
+                              </div>
+                           )}
+                        </Field>
+                        <Indent10 />
+                        <Grid justify="right" align="center">
+                           <Grid.Col span="content">
+                              <Button type="submit" variant="outline" disabled={submitting}>
+                                 Изменить статус
+                              </Button>
+                           </Grid.Col>
+                        </Grid>
+                     </form>
+                  )
+                  }
+               />
+            </div>
+         }
       </>
-   );
+   )
 }
 
-export default ProfileStatus;
+export default ProfileStatus

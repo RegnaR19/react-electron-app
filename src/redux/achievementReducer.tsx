@@ -1,61 +1,61 @@
-const TOTAL_ACHIEVEMENT = 'TOTAL_ACHIEVEMENT'
-const ACHIEVEMENT_FOR_STATUS = 'ACHIEVEMENT_FOR_STATUS'
-const ACHIEVEMENT_FOR_ATTACH = 'ACHIEVEMENT_FOR_ATTACH'
+import { createSlice } from '@reduxjs/toolkit'
 
 type Achievement = {
-   name: string
+   attach: number
    total: number
-   id: number
+   status: number
+   post: number
 }
 
-let initialState = {
-   points: [
-      { id: 1, name: 'Total', total: 0 },
-      { id: 2, name: 'Attach', total: 0 },
-      { id: 3, name: 'Status', total: 0 }
-   ] as Array<Achievement>
+let initialState: Achievement = {
+   total: 0,
+   attach: 0,
+   status: 0,
+   post: 0
 }
 
 export type InitialStateType = typeof initialState
 
-const achievementReducer = (state = initialState, action: any): InitialStateType => {
-
-   switch (action.type) {
-
-      case TOTAL_ACHIEVEMENT: {
-         return {
-            ...state,
-            points: state.points.map(points => points.id[1] === action.id[1] ?
-               { ...points, total: action.payload } : points
-            )
-         }
+export const achievementSlice = createSlice({
+   name: 'achievement',
+   initialState,
+   reducers: {
+      totalAchievement(state, action) {
+         state.total = state.attach + state.status + (action.payload)
+      },
+      attachAchievement(state, action) {
+         state.attach = action.payload
+      },
+      postAchievement(state, action) {
+         state.post = action.payload
+      },
+      statusAchievement(state, action) {
+         state.status = action.payload
       }
+   }
+})
 
-      case ACHIEVEMENT_FOR_STATUS: {
-         return {
-            ...state,
-            points: state.points.map(points => points.id === action.id ?
-               { ...points, total: action.payload } : points
-            )
-         }
-      }
-
-      case ACHIEVEMENT_FOR_ATTACH: {
-
-         return {
-            ...state,
-            points: state.points.map(points => points.id === action.id ?
-               { ...points, total: action.payload } : points
-            )
-         }
-      }
-
-      default:
-         return state
+export const attachAchievementAction = () => {
+   return {
+      type: "achievement/attachAchievement",
+      payload: 100
    }
 }
 
-export const attachAchievementAction = () => ({ type: ACHIEVEMENT_FOR_ATTACH, id: 2, payload: 100 })
-export const statusAchievementAction = () => ({ type: ACHIEVEMENT_FOR_STATUS, id: 3, payload: 100 })
+export const statusAchievementAction = () => {
+   return {
+      type: "achievement/statusAchievement",
+      payload: 100
+   }
+}
 
-export default achievementReducer
+export const postAchievementAction = () => {
+   return {
+      type: "achievement/postAchievement",
+      payload: 100
+   }
+}
+
+export const { totalAchievement, attachAchievement, statusAchievement } = achievementSlice.actions
+
+export default achievementSlice.reducer

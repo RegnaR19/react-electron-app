@@ -1,15 +1,16 @@
-import { attachAchievementAction } from '@/redux/achievementReducer';
+import { useAppDispatch } from '@/hoc/hooks';
+import { achievementSlice } from '@/redux/achievementReducer';
 import { FileInput, rem } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { IconMoodSad, IconUpload } from '@tabler/icons-react';
-import { useDispatch } from 'react-redux';
 
 const UploadPhotoPost = () => {
 
-  const dispatch = useDispatch()
-
+  const dispatch = useAppDispatch()
+  const { attachAchievement } = achievementSlice.actions
+  const { totalAchievement } = achievementSlice.actions
   const addNewForAttach = () => {
-    dispatch(attachAchievementAction())
+    dispatch(attachAchievement(100))
   }
 
   const ohh = () => {

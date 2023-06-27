@@ -6,7 +6,9 @@ import { IconBrandXbox } from "@tabler/icons-react";
 import { Form, Field } from 'react-final-form'
 import s from "../../Common/FormsControls.module.css"
 import UploadPhotoPost from "./UploadPhotoPost";
-import { useDispatch } from 'react-redux';
+import { achievementSound, useAppDispatch } from '@/hoc/hooks';
+import { postAchievementAction } from '@/redux/achievementReducer';
+import { useState } from 'react';
 
 type Props = {
    addPost: any,
@@ -14,19 +16,20 @@ type Props = {
 
 const WritePost: React.FC<Props> = ({ ...props }) => {
 
-   // const dispatch = useDispatch()
+   const dispatch = useAppDispatch()
 
-   // const addAchievement = (achievement: number) => {
-   //    dispatch()
-   // }
+   const addAchievement = () => {
+      dispatch(postAchievementAction())
+   }
+
+   const [success, setSuccess] = useState(false)
 
    const successForm = () => {
       notifications.show({
          withCloseButton: false,
          autoClose: 10000,
-         id: "newpost",
-         title: "50G за новый пост!",
-         message: 'Вы разместили новый пост.',
+         title: "Достижение разблокировано",
+         message: `100G | Размещен новый пост`,
          color: 'green',
          icon: <IconBrandXbox />,
          className: 'my-notification-class',
@@ -34,7 +37,7 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
          styles: (theme) => ({
             root: {
                backgroundColor: theme.colors.gray[1],
-               '&::before': { backgroundColor: theme.white },
+               '&::before': { backgroundColor: theme.black },
             },
             title: { color: theme.black },
             description: { color: theme.black },
@@ -44,7 +47,12 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
 
    const addPost = (values: any) => {
       props.addPost(values.newPostText, values.title)
-      successForm()
+      addAchievement()
+      if (!success) {
+         successForm()
+         achievementSound()
+      }
+      setSuccess(true)
    }
 
    type Employee = {
@@ -66,7 +74,7 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
                }
                return errors
             }}
-            render={({ handleSubmit, submitting }) => (
+            render={({ handleSubmit, submitting, form }) => (
                <form onSubmit={handleSubmit}>
                   <Field name="title" component="input">
                      {({ input, meta }) => (

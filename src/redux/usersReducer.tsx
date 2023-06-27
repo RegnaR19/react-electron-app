@@ -1,8 +1,5 @@
 import { usersAPI } from "@/api/api"
-
-const SET_USERS = 'SET_USERS'
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-const TOTAL_USERS_COUNT = 'TOTAL_USERS_COUNT'
+import { createSlice } from '@reduxjs/toolkit'
 
 type Users = {
    usersList: any
@@ -20,28 +17,21 @@ let initialState: Users = {
 
 export type InitialStateType = typeof initialState
 
-const usersReducer = (state = initialState, action: any) => {
-
-   switch (action.type) {
-
-      case SET_USERS: {
-         return { ...state, usersList: [...action.usersList] }
+export const usersSlice = createSlice({
+   name: 'user',
+   initialState,
+   reducers: {
+      setUsers(state, action) {
+         state.usersList = [...action.payload]
+      },
+      setTotalUsersCount(state, action) {
+         state.totalUsersCount = action.payload
+      },
+      setCurrentPage(state, action) {
+         state.currentPage = action.payload
       }
-      case SET_CURRENT_PAGE: {
-         return { ...state, currentPage: action.currentPage }
-      }
-      case TOTAL_USERS_COUNT: {
-         return { ...state, totalUsersCount: action.totalUsersCount }
-      }
-
-      default:
-         return state
    }
-}
-
-export const setUsers = (usersList: any) => { return { type: SET_USERS, usersList } }
-export const setCurrentPage = (currentPage: any) => { return { type: SET_CURRENT_PAGE, currentPage } }
-export const setTotalUsersCount = (totalUsersCount: any) => { return { type: TOTAL_USERS_COUNT, totalUsersCount } }
+})
 
 export const getUsers = (currentPage: number) => {
    return (dispatch: any) => {
@@ -53,4 +43,6 @@ export const getUsers = (currentPage: number) => {
    }
 }
 
-export default usersReducer
+export const { setUsers, setTotalUsersCount, setCurrentPage } = usersSlice.actions
+
+export default usersSlice.reducer

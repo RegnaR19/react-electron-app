@@ -5,14 +5,20 @@ import { Grid } from '@mantine/core';
 import DialogsForm from './Messages/DialogsForm';
 import { notifications } from '@mantine/notifications';
 import { IconBrandXbox } from '@tabler/icons-react';
+import { useAppDispatch, useAppSelector } from '@/hoc/hooks';
+import { dialogsSlice } from '@/redux/dialogsReducer';
 
-const Dialogs = (props: any) => {
+const Dialogs = () => {
+
+   const dispatch = useAppDispatch()
+   const dialogsPage = useAppSelector(state => state.dialogsPage)
+   const { sendMessage } = dialogsSlice.actions
 
    let dialogsElements =
-      props.dialogsPage.dialogs.map((e: any) => <DialogItem id={e.id} key={e.id} name={e.name} />)
+      dialogsPage.dialogs.map((e: any) => <DialogItem id={e.id} key={e.id} name={e.name} />)
 
    let messagesElements =
-      props.dialogsPage.messages.map((e: any) => <Messages id={e.id} key={e.id} message={e.message} />)
+      dialogsPage.messages.map((e: any) => <Messages id={e.id} key={e.id} message={e.message} />)
 
    const successForm = () => {
       notifications.show({
@@ -35,8 +41,12 @@ const Dialogs = (props: any) => {
       })
    }
 
+   const sendMessageDispatch = (message: any) => {
+      dispatch(sendMessage(message))
+   }
+
    let addNewMessage = (values: any) => {
-      props.sendMessage(values.message)
+      sendMessageDispatch(values.message)
       successForm()
    }
 
