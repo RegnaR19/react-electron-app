@@ -20,6 +20,7 @@ import SidebarContainer from "./components/Navbar/SidebarContainer";
 import { startUp, useAppDispatch } from './hoc/hooks';
 import { initApp } from './redux/appReducer';
 import Dialogs from './components/Dialogs/Dialogs';
+import { IconPlayerPlayFilled } from '@tabler/icons-react';
 
 const App = () => {
 
@@ -29,7 +30,6 @@ const App = () => {
       dispatch(initApp())
       // startUp()
    }, [])
-
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>

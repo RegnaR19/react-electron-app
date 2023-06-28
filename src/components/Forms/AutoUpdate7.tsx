@@ -48,8 +48,8 @@ const AutoUpdate7 = () => {
             <Indent10 />
             <Group position="center">
                 <Button onClick={() => setOpened(true)} onClickCapture={successForm}
-                    variant="gradient" gradient={{ from: '#561', to: '#162', deg: 45 }}>
-                    ✅ 1.0.7</Button>
+                    variant="gradient" gradient={{ from: '#1c7ed6', to: 'lime', deg: 45 }}>
+                    ✅ Версия 1.0.7</Button>
             </Group>
             <Indent10 />
         </>

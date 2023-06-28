@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Login from './Login';
 import { compose } from 'redux';
 import { notifications } from "@mantine/notifications";
-import { IconCircleCheck } from "@tabler/icons-react";
+import { IconBrandXbox } from "@tabler/icons-react";
 import { RootState } from '@/redux/redux-store';
 
 export const successLogin = () => {
@@ -10,16 +10,16 @@ export const successLogin = () => {
       id: 'login',
       withCloseButton: false,
       autoClose: 5000,
-      title: "Достижение разблокировано!",
-      message: '50G за успешный вход',
+      title: "Достижение разблокировано",
+      message: '100G | Вы вошли в аккаунт',
       color: 'green',
-      icon: <IconCircleCheck />,
+      icon: <IconBrandXbox />,
       className: 'my-notification-class',
       loading: false,
       styles: (theme) => ({
          root: {
             backgroundColor: theme.colors.gray[1],
-            '&::before': { backgroundColor: theme.white },
+            '&::before': { backgroundColor: theme.black },
          },
          title: { color: theme.black },
          description: { color: theme.black },
