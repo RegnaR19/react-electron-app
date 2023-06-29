@@ -1,6 +1,6 @@
 // страница header
 import { theEND, useAppSelector } from '@/hoc/hooks';
-import { Grid, Image, List, Modal } from '@mantine/core'
+import { Grid, Image, Modal } from '@mantine/core'
 import gif from '../../assets/idol.gif'
 import { useEffect, useState } from 'react';
 
@@ -19,15 +19,12 @@ const Sidebar2 = () => {
    const newPhoto = useAppSelector(state => state.achievement.newPhoto)
 
    const total = attach + status + post + login + logout + changelog + message + hidest + newPhoto
-   // useEffect(() => {
-   //    if (total === 100) {
-   //       theEND()
-   //       setOpened(true)
-   //    }
-   // }, [total])
-
-
-
+   useEffect(() => {
+      if (total === 1000) {
+         theEND()
+         setOpened(true)
+      }
+   }, [total])
 
    return (
       <>
@@ -35,16 +32,7 @@ const Sidebar2 = () => {
             <Grid.Col>
                <center><div className='big-text'>Система достижений</div>
                   <div className='achievement'>
-                     <p>total {total} G</p>
-                     <p>attach {attach} G</p>
-                     <p>status {status} G</p>
-                     <p>post {post} G</p>
-                     <p>{login} login G</p>
-                     <p>{logout} logout G</p>
-                     <p>changelog {changelog} G</p>
-                     <p>message {message} G</p>
-                     <p>hidest {hidest} G</p>
-                     <p>newPhoto {newPhoto} G</p>
+                     <p>{total} G</p>
                   </div>
                </center>
             </Grid.Col>
@@ -55,7 +43,7 @@ const Sidebar2 = () => {
             title="Congratulations!"
          >
             <Image src={gif} mx="auto" radius="md" />
-            <h2>Вы достигли 1000 G и получаете приз: автомобиль!
+            <h2>Вы достигли 1000 G и получаете приз: автомобиль!<br />
                И песню Yoasobi - Idol</h2>
          </Modal>
       </>

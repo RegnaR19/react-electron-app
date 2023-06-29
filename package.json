@@ -1,6 +1,6 @@
 {
-   "name": "via-next",
-   "version": "1.0.6",
+   "name": "bund",
+   "version": "1.0.7",
    "main": "dist-electron/main/index.js",
    "description": "beta version",
    "private": false,

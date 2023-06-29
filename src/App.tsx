@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense, useMemo } from 'react'
+import { lazy, Suspense, useEffect, useMemo } from 'react'
 import FooterOne from "./components/Navbar/Footer";
 import NewsPage from "./components/News/NewsPage";
 import MusicPage from "./components/Music/MusicPage";
@@ -10,7 +10,7 @@ const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
 const LoginContainer = lazy(() => import('./components/Profile/LoginContainer'));
 const MainProfile = lazy(() => import('./components/Profile/MainProfile'));
 import { MantineProvider } from "@mantine/core";
-import { Notifications } from "@mantine/notifications";
+import { Notifications, notifications } from "@mantine/notifications";
 import s from "./App.module.css"
 import './App.scss'
 import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
@@ -20,16 +20,37 @@ import SidebarContainer from "./components/Navbar/SidebarContainer";
 import { startUp, useAppDispatch } from './hoc/hooks';
 import { initApp } from './redux/appReducer';
 import Dialogs from './components/Dialogs/Dialogs';
-import { IconPlayerPlayFilled } from '@tabler/icons-react';
+import { IconBrandXbox } from '@tabler/icons-react';
 
 const App = () => {
 
    const dispatch = useAppDispatch()
+   const successForm = () => {
+      notifications.show({
+         withCloseButton: true,
+         autoClose: 10000,
+         title: "Добро пожаловать, пользователь",
+         message: 'Сможешь ли набрать 1000G?',
+         color: 'green',
+         icon: <IconBrandXbox />,
+         className: 'my-notification-class',
+         loading: false,
+         styles: (theme) => ({
+            root: {
+               backgroundColor: theme.colors.gray[1],
+               '&::before': { backgroundColor: theme.black },
+            },
+            title: { color: theme.black },
+            description: { color: theme.black },
+         }),
+      })
+   }
 
-   useMemo(() => {
+   useEffect(() => {
       dispatch(initApp())
-      // startUp()
-   }, [])
+      successForm()
+      startUp()
+   }, [successForm])
 
    return (
       <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>

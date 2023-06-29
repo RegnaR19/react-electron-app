@@ -37,7 +37,7 @@ const MainProfile = () => {
          <div className='col2-app'>
             <div className='big-text'>{profile.fullName}</div>
             <Indent10 />
-            <UploadAvatar savePhoto={savePhoto} />
+            <UploadAvatar />
             <Indent10 />
             <Grid>
                <Grid.Col span="content"><Avatar profile={profile} /></Grid.Col>

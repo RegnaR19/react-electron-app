@@ -112,7 +112,7 @@ export const messageAchievementAction = () => {
 export const hidestAchievementAction = () => {
    return {
       type: "achievement/hidestAchievement",
-      payload: 100
+      payload: 200
    }
 }
 export const newPhotoAchievementAction = () => {
