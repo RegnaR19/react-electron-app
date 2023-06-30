@@ -1,7 +1,7 @@
 // страница header
 import { theEND, useAppSelector } from '@/hoc/hooks';
 import { Grid, Image, Modal } from '@mantine/core'
-import gif from '../../assets/idol.gif'
+import gif from '../../assets/bund.jpg'
 import { useEffect, useState } from 'react';
 
 const Sidebar2 = () => {
