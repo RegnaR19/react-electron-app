@@ -10,9 +10,21 @@ const NewsPage = () => {
       <>
          <div className='col2-app'>
             <div className='big-title'>Новостная лента</div>
-            <Timeline active={1} bulletSize={24} lineWidth={2}>
+            <Timeline active={2} bulletSize={30} lineWidth={7}>
 
-               <Timeline.Item bullet={<IconGitBranch size={12} />} title="Спустя месяц отдыха и домашней работы">
+               <Timeline.Item bullet={<IconGitBranch size={12} />} title="Текущая версия">
+                  <Text color="dimmed" size="sm">Выпуск версии 1.0.8</Text>
+                  <Text size="xs" mt={4}>хх июля 2023 г.</Text>
+               </Timeline.Item>
+               <Timeline.Item bullet={<IconGitBranch size={12} />} title="Большое обновление">
+                  <Text color="dimmed" size="sm">Выпуск версии 1.0.7</Text>
+                  <Text size="xs" mt={4}>30 июня 2023 г.</Text>
+               </Timeline.Item>
+               <Timeline.Item bullet={<IconGitBranch size={12} />} title="Новая версия">
+                  <Text color="dimmed" size="sm">Выпуск версии 1.0.6</Text>
+                  <Text size="xs" mt={4}>31 мая 2023 г.</Text>
+               </Timeline.Item>
+               <Timeline.Item bullet={<IconGitBranch size={12} />} title="Новая версия">
                   <Text color="dimmed" size="sm">Выпуск версии 1.0.5</Text>
                   <Text size="xs" mt={4}>14 мая 2023 г.</Text>
                </Timeline.Item>

@@ -8,43 +8,52 @@ import ProfileStatus from './ProfileStatus';
 import Indent10 from '../Forms/Indent';
 import UploadAvatar from './common/UploadAvatar';
 import { useAppDispatch, useAppSelector } from '@/hoc/hooks';
-import { getUserProfile, getUserStatus, savePhoto } from '@/redux/profileReducer';
-import { useNavigate } from 'react-router-dom';
+import { getUserProfile, getUserStatus } from '@/redux/profileReducer';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+
 
 const MainProfile = () => {
 
    const auth = useAppSelector(state => state.auth)
    const profile = useAppSelector(state => state.profilePage.profile)
-   const userId = auth.userId
-
+   const { userId } = useParams()
+   const authUserId = auth.userId
    const dispatch = useAppDispatch()
    const navigate = useNavigate()
+   const status = useAppSelector(state => state.profilePage.status)
 
    useEffect(() => {
-      if (!userId) {
-         navigate("/login")
-      }
       if (userId) {
          dispatch(getUserProfile(userId))
          dispatch(getUserStatus(userId))
       }
-   }, [userId])
+      else if (authUserId) {
+         dispatch(getUserProfile(authUserId))
+         dispatch(getUserStatus(authUserId))
+      }
+      else if (!authUserId) {
+         navigate("/login")
+      }
+   }, [userId, authUserId])
 
 
    return (
       <>
          <div className='col2-app'>
-            <div className='big-text'>{profile.fullName}</div>
-            <Indent10 />
-            <UploadAvatar />
-            <Indent10 />
             <Grid>
-               <Grid.Col span="content"><Avatar profile={profile} /></Grid.Col>
-               <Grid.Col span="auto">
-                  <ProfileStatus />
+               <Grid.Col span={6}><Avatar /></Grid.Col>
+               <Grid.Col span={6}>
+                  {userId &&
+                     <div className="big-text2">{status || "Статус не указан"}</div>
+                  }
+                  {!userId && <ProfileStatus />}
+                  <Indent10 />
                   <ProfileInfo profile={profile} auth={auth} />
                </Grid.Col>
+               {!userId &&
+                  <Grid.Col span={'content'}>  <UploadAvatar /> </Grid.Col>
+               }
             </Grid>
          </div >
          <div className='col2-app'>

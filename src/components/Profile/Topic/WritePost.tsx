@@ -1,6 +1,6 @@
 // страница написания постов
 import Indent10 from "@/components/Forms/Indent";
-import { Button, Grid, Input, Textarea } from "@mantine/core";
+import { Accordion, Button, Grid, Input, Textarea } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { IconBrandXbox } from "@tabler/icons-react";
 import { Form, Field } from 'react-final-form'
@@ -62,52 +62,59 @@ const WritePost: React.FC<Props> = ({ ...props }) => {
 
    return (
       <>
-         <div className='big-title'>Новая запись</div>
-         <Form onSubmit={addPost}
-            validate={(values: any) => {
-               const errors: Employee = {}
-               if (!values.title) {
-                  errors.title = 'Необходимо заполнить заголовок'
-               }
-               if (!values.newPostText) {
-                  errors.newPostText = 'Необходимо заполнить сообщение'
-               }
-               return errors
-            }}
-            render={({ handleSubmit, submitting, form }) => (
-               <form onSubmit={handleSubmit}>
-                  <Field name="title" component="input">
-                     {({ input, meta }) => (
-                        <div className={s.form}>
-                           <Input {...input} type="text" placeholder="Заголовок" />
-                           {meta.error && meta.touched && <span>{meta.error}</span>}
-                        </div>
-                     )}
-                  </Field>
-                  <Indent10 />
-                  <Field name="newPostText" component="textarea">
-                     {({ input, meta }) => (
-                        <div className={s.form}>
-                           <Textarea {...input} placeholder="Дуров, верни стену!" />
-                           {meta.error && meta.touched && <span>{meta.error}</span>}
-                        </div>
-                     )}
-                  </Field>
-                  <Indent10 />
-                  <Grid justify="right" align="center">
-                     <Grid.Col span="auto"><UploadPhotoPost /></Grid.Col>
-                     <Grid.Col span="content">
-                        <Button type="submit" variant="gradient" gradient={{ from: 'red', to: 'yellow', deg: 60 }} disabled={submitting}>
-                           Опубликовать
-                        </Button>
-                     </Grid.Col>
-                  </Grid>
-                  <Indent10 />
+         <Accordion defaultValue="customization">
+            <Accordion.Item value="flexibility">
+               <Accordion.Control><span className='big-title'>Новая запись</span></Accordion.Control>
+               <Accordion.Panel>
 
-               </form>
-            )
-            }
-         />
+                  <Form onSubmit={addPost}
+                     validate={(values: any) => {
+                        const errors: Employee = {}
+                        if (!values.title) {
+                           errors.title = 'Необходимо заполнить заголовок'
+                        }
+                        if (!values.newPostText) {
+                           errors.newPostText = 'Необходимо заполнить сообщение'
+                        }
+                        return errors
+                     }}
+                     render={({ handleSubmit, submitting, form }) => (
+                        <form onSubmit={handleSubmit}>
+                           <Field name="title" component="input">
+                              {({ input, meta }) => (
+                                 <div className={s.form}>
+                                    <Input {...input} type="text" placeholder="Заголовок" />
+                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                 </div>
+                              )}
+                           </Field>
+                           <Indent10 />
+                           <Field name="newPostText" component="textarea">
+                              {({ input, meta }) => (
+                                 <div className={s.form}>
+                                    <Textarea {...input} placeholder="Дуров, верни стену!" />
+                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                 </div>
+                              )}
+                           </Field>
+                           <Indent10 />
+                           <Grid justify="right" align="center">
+                              <Grid.Col span="auto"><UploadPhotoPost /></Grid.Col>
+                              <Grid.Col span="content">
+                                 <Button type="submit" variant="gradient" gradient={{ from: 'red', to: 'yellow', deg: 60 }} disabled={submitting}>
+                                    Опубликовать
+                                 </Button>
+                              </Grid.Col>
+                           </Grid>
+                           <Indent10 />
+
+                        </form>
+                     )
+                     }
+                  />
+               </Accordion.Panel>
+            </Accordion.Item>
+         </Accordion>
       </>
    )
 }

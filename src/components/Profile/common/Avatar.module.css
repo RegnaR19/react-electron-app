@@ -1,6 +1,7 @@
-.avatar img {
-   width: 100px !important;
+.avatar {
    z-index: 9999 !important;
+   height: 250px;
+   width: 250px;
 }
 
 .leftSide {

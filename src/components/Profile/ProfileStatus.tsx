@@ -75,8 +75,9 @@ const ProfileStatus = () => {
 
    return (
       <>
-         {!editMode && <div onClick={activateEditMode}><b>Текущий статус:</b> {status || "статус не указан"}
-            <animated.div style={springs}><i>[изменить статус]</i></animated.div></div >
+         {!editMode && <div onClick={activateEditMode}>
+            <div className="big-text2">{status || "статус не указан"}</div >
+            <animated.div style={springs} className="status"><i>[изменить статус]</i></animated.div></div>
          }
 
          {

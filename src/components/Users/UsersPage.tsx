@@ -31,7 +31,7 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
          {...others}
       >
          <Group>
-            <Avatar src={img} radius="xl" />
+            <Avatar src={img} radius="xl" size={20} />
 
             <div style={{ flex: 1 }}>
                <Text size="sm" weight={500}>

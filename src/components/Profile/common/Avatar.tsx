@@ -1,21 +1,17 @@
 // аватар профиля
-import { Avatar, Grid } from '@mantine/core';
+import { Avatar } from '@mantine/core';
 import s from './Avatar.module.css'
-import { compose } from 'redux';
+import { useAppSelector } from '@/hoc/hooks';
 
-const AvatarMain = (props: any) => {
+const AvatarMain = () => {
 
-   let avatar = props.profile.photos.large
+   let avatar = useAppSelector(state => state.profilePage.profile.photos.large)
 
    return (
       <>
-         <Grid>
-            <Grid.Col span="content">
-               <Avatar src={avatar} className={s.avatar} size={100} />
-            </Grid.Col>
-         </Grid>
+         <Avatar src={avatar} radius={'md'} color="indigo" className={s.avatar} />
       </>
    );
 }
 
-export default compose(AvatarMain);
+export default AvatarMain

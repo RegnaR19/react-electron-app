@@ -1,13 +1,13 @@
 // информация о профиле
-const ProfileInfo = ({profile, auth}) => {
+const ProfileInfo = ({ profile, auth }) => {
 
    let ID = profile.userId
-   let email = auth.email
+   let login = profile.fullName
 
    return (
       <>
-         <div><b>ID:</b> {ID}</div>
-         <div><b>Email:</b> {email}</div>
+         <div className="big-text2"><b>ID:</b> {ID}</div>
+         <div className="big-text2"><b>Никнейм:</b> {login}</div>
       </>
    )
 }

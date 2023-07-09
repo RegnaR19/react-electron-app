@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense, useEffect, useMemo } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import FooterOne from "./components/Navbar/Footer";
 import NewsPage from "./components/News/NewsPage";
 import MusicPage from "./components/Music/MusicPage";
@@ -17,7 +17,7 @@ import HeaderTwoContainer from "./components/Navbar/HeaderTwoContainer";
 import Sidebar2 from "./components/Navbar/Sidebar2";
 import NavigationContainer from "./components/Navbar/NavigationContainer";
 import SidebarContainer from "./components/Navbar/SidebarContainer";
-import { startUp, useAppDispatch } from './hoc/hooks';
+import { useAppDispatch } from './hoc/hooks';
 import { initApp } from './redux/appReducer';
 import Dialogs from './components/Dialogs/Dialogs';
 import { IconBrandXbox } from '@tabler/icons-react';
@@ -45,11 +45,10 @@ const App = () => {
          }),
       })
    }
-
    useEffect(() => {
       dispatch(initApp())
-      successForm()
-      startUp()
+      // successForm()
+      // startUp()
    }, [successForm])
 
    return (
@@ -59,7 +58,7 @@ const App = () => {
             <HeaderTwoContainer />
          </header>
          <div className={s.layout}>
-            <nav className={s.col1}> <NavigationContainer /> </nav>
+            <nav className={s.col1}> <NavigationContainer /></nav>
             <aside className={s.col3}>
                <div className={s.sidebar}><Sidebar2 /></div>
                <div className={s.sidebar}><SidebarContainer /></div>
@@ -97,7 +96,7 @@ const App = () => {
                      </Suspense>} />
                </Routes>
             </main>
-         </div >
+         </div>
          <footer className={s.layout}>
             <div className={s.col1_noborder}></div>
             <div className={s.col3_noborder}></div>

@@ -47,7 +47,7 @@ export const profileSlice = createSlice({
          state.profile = action.payload
       },
       setStatus(state, action) {
-            state.status = action.payload
+         state.status = action.payload
       },
       savePhotoSuccess(state, action) {
          state.profile = { ...state.profile, photos: action.payload }
@@ -60,12 +60,12 @@ export const setUserProfileCreator = (profile: any) => ({ type: "profile/setUser
 export const setStatusCreator = (status: any) => ({ type: "profile/setStatus", payload: status })
 export const savePhotoSuccessCreator = (photos: any) => ({ type: "profile/savePhotoSuccess", payload: photos })
 
-export const getUserProfile = (userId: number) => async (dispatch: any) => {
+export const getUserProfile = (userId: any) => async (dispatch: any) => {
    const response = await usersAPI.getProfile(userId);
    dispatch(setUserProfileCreator(response.data))
 }
 
-export const getUserStatus = (userId: number) => async (dispatch: any) => {
+export const getUserStatus = (userId: any) => async (dispatch: any) => {
    const response = await profileAPI.getStatus(userId)
    dispatch(setStatusCreator(response.data))
 }

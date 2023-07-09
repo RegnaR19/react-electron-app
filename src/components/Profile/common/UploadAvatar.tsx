@@ -1,22 +1,23 @@
 import { achievementSound, useAppDispatch } from '@/hoc/hooks'
 import { newPhotoAchievementAction } from '@/redux/achievementReducer'
-import { profileSlice } from '@/redux/profileReducer'
+import { savePhoto } from '@/redux/profileReducer'
+import { FileInput, rem } from '@mantine/core'
 import { notifications } from '@mantine/notifications'
-import { IconBrandXbox } from '@tabler/icons-react'
+import { IconBrandXbox, IconUpload } from '@tabler/icons-react'
 import { useState } from 'react'
 
 const UploadAvatar = () => {
 
    const [success, setSuccess] = useState(false)
    const dispatch = useAppDispatch()
-   const { savePhotoSuccess } = profileSlice.actions
+   const [value, setValue] = useState<File | null>(null);
 
    const successForm = () => {
       notifications.show({
          withCloseButton: true,
          autoClose: 10000,
          title: "Достижение разблокировано",
-         message: '100G | Вы попытались изменить аватар, но у вас ничего не вышло',
+         message: '100G | Вы успешно изменили аватар',
          color: 'green',
          icon: <IconBrandXbox />,
          className: 'my-notification-class',
@@ -32,10 +33,11 @@ const UploadAvatar = () => {
       })
    }
 
-   const onMainPhotoSelected = (e: any) => {
-      let partName = e.target.files[0];
-      if (e.target.files.length) {
-         savePhotoSuccess(partName)
+   const onMainPhotoSelected = (value: any) => {
+      let partName = value
+
+      if (partName) {
+         dispatch(savePhoto(partName))
          dispatch(newPhotoAchievementAction())
          if (!success) {
             successForm()
@@ -45,12 +47,9 @@ const UploadAvatar = () => {
       }
    }
 
-
-
-
    return (
       <>
-         <input type="file" onChange={onMainPhotoSelected} />
+         <FileInput value={value} placeholder="Загрузить новый аватар" icon={<IconUpload size={rem(18)} />} onChange={onMainPhotoSelected} />
       </>
    );
 }
